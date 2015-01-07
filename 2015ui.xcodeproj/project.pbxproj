@@ -8,12 +8,14 @@
 
 /* Begin PBXFileReference section */
 		A2F2B1F51A5DAA4400D84466 /* bootstrap_baisicTemplate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = bootstrap_baisicTemplate.html; sourceTree = "<group>"; };
+		A2F2B1F91A5DC0C400D84466 /* driverStation.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = driverStation.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		A2F2B1EA1A5D713200D84466 = {
 			isa = PBXGroup;
 			children = (
+				A2F2B1F91A5DC0C400D84466 /* driverStation.html */,
 				A2F2B1F51A5DAA4400D84466 /* bootstrap_baisicTemplate.html */,
 			);
 			sourceTree = "<group>";
