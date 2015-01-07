@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		A2F2B1F51A5DAA4400D84466 /* bootstrap_baisicTemplate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = bootstrap_baisicTemplate.html; sourceTree = "<group>"; };
-		A2F2B1F91A5DC0C400D84466 /* driverStation.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = driverStation.html; sourceTree = "<group>"; };
+		A2F2B1FC1A5DFA6C00D84466 /* driverStationPrototype.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = driverStationPrototype.js; sourceTree = "<group>"; };
+		A2F2B1FD1A5DFA7700D84466 /* driverStationPrototype.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = driverStationPrototype.html; sourceTree = "<group>"; };
+		A2F2B1FE1A5DFA8400D84466 /* testingPage.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = testingPage.html; sourceTree = "<group>"; };
+		A2F2B1FF1A5DFA8400D84466 /* testingPage.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = testingPage.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		A2F2B1EA1A5D713200D84466 = {
 			isa = PBXGroup;
 			children = (
-				A2F2B1F91A5DC0C400D84466 /* driverStation.html */,
-				A2F2B1F51A5DAA4400D84466 /* bootstrap_baisicTemplate.html */,
+				A2F2B1FE1A5DFA8400D84466 /* testingPage.html */,
+				A2F2B1FF1A5DFA8400D84466 /* testingPage.js */,
+				A2F2B1FD1A5DFA7700D84466 /* driverStationPrototype.html */,
+				A2F2B1FC1A5DFA6C00D84466 /* driverStationPrototype.js */,
 			);
 			sourceTree = "<group>";
 		};
