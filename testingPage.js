@@ -25,8 +25,8 @@ jQuery(function($){
        // Note: You have to change the host var
        // if your client runs on a different machine than the websocket server
        
-       var host = "ws://localhost:8888/ws";
-       var socket = new WebSocket(host);
+       var host = "ws://localhost:8888/";           //ws + localhost + portnum + uri
+       var socket = new WebSocket(host);            //currently failing to connect to websocket onthis line
        //console.log("socket status: " + socket.readyState);
        
        var $txt = $("#inputField");       //    original=  var $txt = $("#data");
@@ -46,11 +46,11 @@ jQuery(function($){
                    $txt.val("");
                    });
        
-       $txt.keypress(function(evt){
+       /*$txt.keypress(function(evt){
                      if(evt.which == 13){
                      $btnSend.click();
                      }
-                     });
+                     });*/
        
        // event handlers for websocket
        if(socket){

@@ -5,7 +5,7 @@ from tornado.websocket import WebSocketHandler
 from tornado.options import define, options, parse_command_line
 
 define("port", default=8888, help="run on the given port", type=int)
-#link - http://localhost:8888/
+#link - http://localhost:8889/
 #experimental websocket- if fails comment out
 class EchoWebSocket(tornado.websocket.WebSocketHandler):
     def open(self):
@@ -13,6 +13,7 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         
     def on_message(self, message):
         self.write_message("You said: " , message)
+        print("messge recieved",message)
 
     def on_close(self):
         print("WebSocket closed")
