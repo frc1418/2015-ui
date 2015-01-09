@@ -9,7 +9,7 @@ $(document).ready(
     
                            });
 
-
+var pingcount=1;
 //stolen websocket code
 jQuery(function($){
        
@@ -26,6 +26,7 @@ jQuery(function($){
        // if your client runs on a different machine than the websocket server
        
        var host = "ws://localhost:8889/";           //ws + localhost + portnum + uri
+       //var host2="ws://loc:8889/";
        var socket = new WebSocket(host);            //currently failing to connect to websocket onthis line
        //console.log("socket status: " + socket.readyState);
        
@@ -46,11 +47,11 @@ jQuery(function($){
                    $txt.val("");
                    });
        
-       /*$txt.keypress(function(evt){
+       $txt.keypress(function(evt){
                      if(evt.which == 13){
                      $btnSend.click();
                      }
-                     });*/
+                     });
        
        // event handlers for websocket
        if(socket){
@@ -60,9 +61,14 @@ jQuery(function($){
        }
        
        socket.onmessage = function(msg){
-       showServerResponse(msg.data);
-       //$("#messageText").text(msg);         //testing, remove if needed
-       //alert(msg);
+       //showServerResponse(msg.data);          //commented out for testing, put back if needed
+       var newmessage=msg;//=msg.txt;         //this works kinda,
+       //var newmessage= jQuery.parseJSON( msg.data );//blob parsing,
+       //var newmessage= $.parseJSON( msg.data );//blob parsing,
+       console.log(newmessage);
+       $("#messageText").text(newmessage.data+pingcount);        //add .data to newmessage if newmessage=msg
+       pingcount++;
+       //alert(newmessage.data);
        }
        
        socket.onclose = function(){

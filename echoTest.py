@@ -14,8 +14,9 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         print ("WebSocket opened")
         
     def on_message(self, message):
+        
         self.write_message("You said: " , message)
-        print("messge recieved",message)
+        print("message recieved",message)
 
     def on_close(self):
         print("WebSocket closed")
