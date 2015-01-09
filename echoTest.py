@@ -4,10 +4,12 @@ import tornado.websocket
 from tornado.websocket import WebSocketHandler
 from tornado.options import define, options, parse_command_line
 
-define("port", default=8888, help="run on the given port", type=int)
+define("port", default=8889, help="run on the given port", type=int)
 #link - http://localhost:8889/
-#experimental websocket- if fails comment out
+#experimental websocket
 class EchoWebSocket(tornado.websocket.WebSocketHandler):
+    def check_origin(self, origin):
+        return True
     def open(self):
         print ("WebSocket opened")
         
