@@ -15,23 +15,31 @@ this should read and set values on a networktable when instructed,
 '''
 #link - http://localhost:8889/
 #ip is probably 127.0.0.1
-    
-def valueChanged(table, key, value, isNew):
-        IOLoop.current().add_callback(changeValue,key,value)
-def changeValue(key,value):
-        print(key,'has been changed to',value)
-        #send a message to the website to change the value of the element
-        #whose id=key to value
 ipadd='127.0.0.1'
 if len(ipadd) != 2:
-    print("Error: specify an IP to connect to!")
+        print("Error: specify an IP to connect to!")
 NetworkTable.setIPAddress(ipadd)
 NetworkTable.setClientMode()
 NetworkTable.initialize()
 sd = NetworkTable.getTable("SmartDashboard")
-sd.addTableListener(valueChanged)
+#sd.addTableListener(valueChanged)
 class EchoWebSocket(tornado.websocket.WebSocketHandler):
+    def __init__(self,application, request, **kwargs):
+        sd.addTableListener(self.valueChanged)
+        print('tableListenerhopefullyadded')
+        super().__init__(application,request)
+        
     print('echowebsocket created')
+        
+    def changeValue(self,key,value):
+            print(key,'has been changed to',value)
+            message=key+'|'+value
+            self.write_message(message,False)
+            #send a message to the website to change the value of the element
+            #whose id=key to value
+    def valueChanged(self,table, key, value, isNew):
+            IOLoop.current().add_callback(self.changeValue,key,value)
+            
     
     def check_origin(self, origin):
         return True
