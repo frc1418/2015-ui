@@ -40,6 +40,9 @@ htmlcov/
 nosetests.xml
 coverage.xml
 
+# OS generated files
+.DS_Store
+
 # Translations
 *.mo
 *.pot
