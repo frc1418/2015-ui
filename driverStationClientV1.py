@@ -22,14 +22,11 @@ NetworkTable.setIPAddress(ipadd)
 NetworkTable.setClientMode()
 NetworkTable.initialize()
 sd = NetworkTable.getTable("SmartDashboard")
-#sd.addTableListener(valueChanged)
 class EchoWebSocket(tornado.websocket.WebSocketHandler):
     def __init__(self,application, request, **kwargs):
         sd.addTableListener(self.valueChanged)
-        print('tableListenerhopefullyadded')
         super().__init__(application,request)
         
-    print('echowebsocket created')
         
     def changeValue(self,key,value):
             print(key,'has been changed to',value)
@@ -62,18 +59,15 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
 
     def on_close(self):
         print("WebSocket closed")
-
-    #connectToIP(ipadd)
+        
 
 app = tornado.web.Application([
     (r'/', EchoWebSocket),
 ])
 if __name__ == '__main__':
-    print('starting')
     parse_command_line()
     app.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()
-    print('goodbye')
 #connectToIP(ipadd)
         
         
