@@ -8,6 +8,7 @@ from networktables import NetworkTable
 from tornado.websocket import WebSocketHandler
 from tornado.options import define, options, parse_command_line
 import logging
+import json
 logging.basicConfig(level=logging.DEBUG)
 define("port", default=8888, help="run on the given port", type=int)
 '''
@@ -30,8 +31,10 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         
     def changeValue(self,key,value):
             print(key,'has been changed to',value)
-            message=key+'|'+value
-            self.write_message(message,False)
+            
+            message={'key':key,'value':value,'sendTo':"#"+key,'event':'valChanged'}
+            sendMessage=json.dumps(message)
+            self.write_message(sendMessage,False)
             #send a message to the website to change the value of the element
             #whose id=key to value
     def valueChanged(self,table, key, value, isNew):
@@ -43,20 +46,28 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
     def open(self):
         print ("WebSocket opened")
     def writeStringToNetworkTable(self,message):
-        '''
-        message=key|message
-        '''
-        delimiterIndex=message.index('|')
-        key=message[:delimiterIndex]
-        newMessage=message[delimiterIndex+1:]
+        #message=key|message
+        key=message['key']
+        newMessage=message["value"]
         print('key-',key,',message-',newMessage)
         sd.putString(key,newMessage)
+    def getStringValue(self,message):
+        key=message['key']
+        value=sd.getString(message['key'])
+        print(value,'-read, from key-',key)
+        message['value']=value
+        message['event']='read'
+        sendmsg=json.dumps(message)
+        self.write_message(sendmsg, False)
     def on_message(self, message):
-        prntout="You said:"+message
-        print(prntout)
-        #self.write_message(prntout,False)
-        self.writeStringToNetworkTable(message)
-
+        data=json.loads(message)
+        #data=json.
+        print("Recieved-",data)
+        actiontype=data["action"]
+        if actiontype=='read':
+            self.getStringValue(data)
+        elif actiontype=="write":
+            self.writeStringToNetworkTable(data)
     def on_close(self):
         print("WebSocket closed")
         
