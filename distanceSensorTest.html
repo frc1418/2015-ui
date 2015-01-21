@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <title>Sensor Test</title><!-- Latest compiled and minified CSS -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    </head>
+    <body>
+            <form id="readForm">
+                Distance between sensors<input type="text" id="SensorsDistance"
+                    title="key"class="reg" value="400"></input><br>
+                Distance 1<input type="text" id="distance1" title="value"class="reg" value="100"></input><br>
+                Distance 2<input type="text" id="distance2" title="value"class="reg" value="130"></input><br>
+                <input type="submit" id="readButton" value="Check KeyValue"class="reg"></input>
+            </form><br>
+            <span id="outputField">Output Goes Here</span><br>
+            
+            <script type="text/javascript">
+                var svg=null;
+                var svgWidth=400;
+                var svgHeight=350;
+                var $distance=$("#SensorsDistance");
+                var $distance1=$("#distance1");
+                var $distance2=$("#distance2");
+                $(document).ready(
+                function(){
+                var svg = d3.select("body")
+                .append("svg")
+                .attr("width", svgWidth)
+                .attr("height", svgHeight);
+                var line=svg.append("line")
+                                  .attr("x1","0").attr("y1","0").attr("x2","400")
+                                  .attr("y2","0").attr("stroke","black");
+                var line2=svg.append("line")
+                                  .attr("x1","0").attr("y1",svgHeight).attr("x2",svgWidth)
+                                  .attr("y2",svgHeight).attr("stroke","black");
+                                  
+                });
+                $("#readForm").submit(function(){
+                       event.preventDefault();
+                   var linelength=$distance.val();
+                   var h1=$distance1.val();
+                   var h2=$distance2.val();
+                var theLine=d3.select("svg").append("line").attr("x1","0").attr("y1",svgHeight-h1).attr("x2",linelength)
+                                      .attr("y2",svgHeight-h2).attr("stroke","green");
+                                        console.log("readButton Pressed");
+                });
+                </script>
+    </body>
+</html>
