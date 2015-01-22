@@ -28,29 +28,42 @@
                 var $distance=$("#SensorsDistance");
                 var $distance1=$("#distance1");
                 var $distance2=$("#distance2");
-                $(document).ready(
-                function(){
+				var linelength=$distance.val();
+				var h1=$distance1.val();
+				var h2=$distance2.val();
                 var svg = d3.select("body")
                 .append("svg")
                 .attr("width", svgWidth)
                 .attr("height", svgHeight);
+                $(document).ready(
+                function(){
+								  
                 var line=svg.append("line")
                                   .attr("x1","0").attr("y1","0").attr("x2","400")
                                   .attr("y2","0").attr("stroke","black");
                 var line2=svg.append("line")
                                   .attr("x1","0").attr("y1",svgHeight).attr("x2",svgWidth)
                                   .attr("y2",svgHeight).attr("stroke","black");
-                                  
+								  
+				var line3=svg.append("line")
+								  .attr("id","theLine")
+								  .attr("x1","0").attr("y1",svgHeight-h1).attr("x2",linelength)
+								  .attr("y2",svgHeight-h2).attr("stroke","green");
+								  
                 });
                 $("#readForm").submit(function(){
                        event.preventDefault();
                    var linelength=$distance.val();
                    var h1=$distance1.val();
                    var h2=$distance2.val();
-                var theLine=d3.select("svg").append("line").attr("x1","0").attr("y1",svgHeight-h1).attr("x2",linelength)
-                                      .attr("y2",svgHeight-h2).attr("stroke","green");
+                var theLine=d3.select("#theLine")
+									  theLine
+									  .attr("x1","0").attr("y1",svgHeight-h1).attr("x2",linelength)
+									  .attr("y2",svgHeight-h2).attr("stroke","green");
                                         console.log("readButton Pressed");
                 });
                 </script>
+			
+			<script src="distanceSensorTest.js"></script>
     </body>
 </html>
