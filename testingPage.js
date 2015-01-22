@@ -1,7 +1,4 @@
 var keyExceptions=new Array();
-$(document).ready(
-    function(){
-});
 jQuery(function($){
        if (!("WebSocket" in window)) {
        alert("Your browser does not support web sockets");
