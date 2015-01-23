@@ -15,8 +15,8 @@
             <form id="readForm">
                 Distance between sensors<input type="text" id="SensorsDistance"
                     title="key"class="reg" value="400"></input><br>
-                Distance 1<input type="text" id="distance1" title="value"class="reg" value="100"></input><br>
-                Distance 2<input type="text" id="distance2" title="value"class="reg" value="130"></input><br>
+                Distance 1<input type="text" id="distance1" title="smallSensorValue"class="reg" value="100"></input><br>
+                Distance 2<input type="text" id="distance2" title="largeSensorValue"class="reg" value="130"></input><br>
                 <input type="submit" id="readButton" value="Check KeyValue"class="reg"></input>
             </form><br>
             <span id="outputField">Output Goes Here</span><br>
@@ -49,19 +49,33 @@
 								  .attr("id","theLine")
 								  .attr("x1","0").attr("y1",svgHeight-h1).attr("x2",linelength)
 								  .attr("y2",svgHeight-h2).attr("stroke","green");
+								  findAngles();
 								  
                 });
                 $("#readForm").submit(function(){
                        event.preventDefault();
-                   var linelength=$distance.val();
-                   var h1=$distance1.val();
-                   var h2=$distance2.val();
+                   linelength=$distance.val();
+                   h1=$distance1.val();
+                   h2=$distance2.val();
                 var theLine=d3.select("#theLine")
 									  theLine
 									  .attr("x1","0").attr("y1",svgHeight-h1).attr("x2",linelength)
 									  .attr("y2",svgHeight-h2).attr("stroke","green");
                                         console.log("readButton Pressed");
+					findAngles();
                 });
+				
+				function findAngles(){
+					
+					var heightDifference=Math.abs(h1-h2);
+					var angle=Math.atan(heightDifference/linelength); // tan, opposite/adjacent //may be in radians
+					var angle2=angle*180/Math.PI;
+					console.log("findAngles Called"+angle+"---"+angle2);
+					var ang=angle2+"";
+					var ang2=ang.substring(0,5)+" degrees";
+					$("#outputField").text("Angle-"+ang2);
+				}
+				
                 </script>
 			
 			<script src="distanceSensorTest.js"></script>

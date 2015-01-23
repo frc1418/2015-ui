@@ -1,4 +1,5 @@
 var keyExceptions=new Array();
+
 jQuery(function($){
        if (!("WebSocket" in window)) {
        alert("Your browser does not support web sockets");
@@ -32,6 +33,7 @@ jQuery(function($){
 	   theLine
 	   .attr("x1","0").attr("y1",svgHeight-h1).attr("x2",linelength)
 	   .attr("y2",svgHeight-h2).attr("stroke","green");
+	   findAngles();
        }
        socket.onclose = function(){
        console.log("socket Closed");}
