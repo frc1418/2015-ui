@@ -33,8 +33,7 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
     def on_message(self, message):
 
         data=json.loads(message)
-        #data=json.
-        print("Recieved-",data)
+        
         actiontype=data["action"]
 
         if actiontype=='read':
@@ -60,8 +59,6 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
             whose id=key to value
         '''
         
-        print(key,'has been changed to',value)
-
         message={'key':key,
                  'value':value, 
                  'event':'valChanged'}
