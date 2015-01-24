@@ -6,7 +6,7 @@ jQuery(function($){
        setup();
        }
        function setup(){
-       var host = "ws://localhost:8888/";
+       var host = "ws://localhost:8888/ws";
        var socket = new WebSocket(host);
        var $key=$("#keyField");
        var $txt = $("#textField");

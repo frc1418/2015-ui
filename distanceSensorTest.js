@@ -9,7 +9,7 @@ jQuery(function($){
        }
        function setup(){
 	   console.log("setup Called");
-       var host = "ws://localhost:8888/";
+       var host = "ws://localhost:8888/ws";
        var socket = new WebSocket(host);
 	   
        if(socket){
