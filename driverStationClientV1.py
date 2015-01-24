@@ -9,6 +9,7 @@ from tornado.websocket import WebSocketHandler
 from tornado.options import define, options, parse_command_line
 import logging
 import json
+import os.path
 logging.basicConfig(level=logging.DEBUG)
 define("port", default=8888, help="run on the given port", type=int)
 '''
@@ -17,8 +18,8 @@ this should read and set values on a networktable when instructed,
 #link - http://localhost:8889/
 #ip is probably 127.0.0.1
 ipadd='10.14.18.2'
-if len(ipadd) != 2:
-        print("Error: specify an IP to connect to!")
+#if len(ipadd) != 2:
+        #print("Error: specify an IP to connect to!")
 NetworkTable.setIPAddress(ipadd)
 NetworkTable.setClientMode()
 NetworkTable.initialize()
@@ -73,7 +74,9 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         
 
 app = tornado.web.Application([
-    (r'/', EchoWebSocket),
+    (r'/ws', EchoWebSocket),
+    (r"/(.*)", tornado.web.StaticFileHandler, {"path": os.path.dirname(__file__)}),
+    
 ])
 if __name__ == '__main__':
     parse_command_line()
