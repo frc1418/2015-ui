@@ -16,7 +16,7 @@ this should read and set values on a networktable when instructed,
 '''
 #link - http://localhost:8889/
 #ip is probably 127.0.0.1
-ipadd='127.0.0.1'
+ipadd='10.14.18.2'
 if len(ipadd) != 2:
         print("Error: specify an IP to connect to!")
 NetworkTable.setIPAddress(ipadd)
