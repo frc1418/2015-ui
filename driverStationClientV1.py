@@ -15,47 +15,21 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 class EchoWebSocket(tornado.websocket.WebSocketHandler):
-    def __init__(self,application, request, **kwargs):
-        
-        self.sd = NetworkTable.getTable("SmartDashboard")
-        self.sd.addTableListener(self.valueChanged)
-        
-        super().__init__(application,request)
 
-
-    def changeValue(self,key,value):
-            print(key,'has been changed to',value)
-
-            message={'key':key,'value':value,'sendTo':"#"+key,'event':'valChanged'}
-            sendMessage=json.dumps(message)
-            self.write_message(sendMessage,False)
-            #send a message to the website to change the value of the element
-            #whose id=key to value
-    def valueChanged(self,table, key, value, isNew):
-            IOLoop.current().add_callback(self.changeValue,key,value)
-
+    #
+    # WebSocket API
+    #
 
     def check_origin(self, origin):
         return True
 
     def open(self):
-        print ("WebSocket opened")
-
-    def writeStringToNetworkTable(self,message):
-        #message=key|message
-        key=message['key']
-        newMessage=message["value"]
-        print('key-',key,',message-',newMessage)
-        self.sd.putString(key,newMessage)
-
-    def getStringValue(self,message):
-        key=message['key']
-        value=self.sd.getString(message['key'])
-        print(value,'-read, from key-',key)
-        message['value']=value
-        message['event']='read'
-        sendmsg=json.dumps(message)
-        self.write_message(sendmsg, False)
+        print("New WebSocket open")
+        
+        self.ioloop = IOLoop.current()
+        self.sd = NetworkTable.getTable("SmartDashboard")
+        self.sd.addTableListener(self.valueChanged)
+        
     def on_message(self, message):
 
         data=json.loads(message)
@@ -71,6 +45,46 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
 
     def on_close(self):
         print("WebSocket closed")
+        self.sd.removeTableListener(self.valueChanged)
+
+    #
+    # NetworkTables specific stuff
+    #
+    
+    def valueChanged(self,table, key, value, isNew):
+        self.ioloop.add_callback(self.changeValue,key,value)
+
+    def changeValue(self, key, value):
+        '''
+            Sends a message to the website to change the value of the element
+            whose id=key to value
+        '''
+        
+        print(key,'has been changed to',value)
+
+        message={'key':key,
+                 'value':value, 
+                 'event':'valChanged'}
+        
+        self.write_message(message, False)
+    
+    def writeStringToNetworkTable(self, message):
+        #message=key|message
+        key=message['key']
+        newMessage=message["value"]
+        print('key-',key,',message-',newMessage)
+        self.sd.putString(key, newMessage)
+
+    def getStringValue(self, message):
+        key=message['key']
+        value=self.sd.getString(message['key'])
+        print(value,'-read, from key-',key)
+        message['value']=value
+        message['event']='read'
+        sendmsg=json.dumps(message)
+        self.write_message(sendmsg, False)
+    
+    
 
 def init_networktables(ipaddr):
     
