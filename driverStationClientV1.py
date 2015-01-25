@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import tornado.ioloop
 from tornado.ioloop import IOLoop
 import tornado.web
@@ -28,7 +30,7 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         
         self.ioloop = IOLoop.current()
         self.sd = NetworkTable.getTable("SmartDashboard")
-        self.sd.addTableListener(self.valueChanged)
+        self.sd.addTableListener(self.valueChanged, immediateNotify=True)
         
     def on_message(self, message):
 
@@ -93,6 +95,12 @@ def init_networktables(ipaddr):
     print("Networktables Initialized")
 
 
+class MyStaticFileHandler(tornado.web.StaticFileHandler):
+    
+    # This is broken in tornado, disable it
+    def check_etag_header(self):
+        return False
+
 def main():
     
     define("host", default='127.0.0.1', help="Hostname of robot", type=str)
@@ -104,7 +112,7 @@ def main():
     
     app = tornado.web.Application([
         (r'/ws', EchoWebSocket),
-        (r"/(.*)", tornado.web.StaticFileHandler, {"path": os.path.dirname(__file__)}),
+        (r"/(.*)", MyStaticFileHandler, {"path": os.path.dirname(__file__)}),
     
     ])
     
