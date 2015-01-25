@@ -13,16 +13,25 @@ Make sure you have tornado installed:
 
 	pip3 install tornado
 	
-Running it
-----------
+Connect to a local simulation
+-----------------------------
 
-1. Go to the terminal
-2. Run this command
+Run this command:
 
 	python3 driverStationClientV1.py
 	
+Connect to the robot
+--------------------
+
+Run this command:
+
+	python3 driverStationClientV1.py --host=roborio-1418.local
 	
-3. Open a web browser (preferably Chrome), and go to:
+	
+View the output
+---------------
+
+Open a web browser (preferably Chrome), and go to:
 
 	http://localhost:8888/distanceSensorTest.html
 	
