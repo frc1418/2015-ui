@@ -1,5 +1,11 @@
 
+var keyStore={
 
+	"largeSensorValue":0,
+	"shortSensorValue":0,
+	"largeSensorValue2":0,
+	"shortSensorValue2":0
+};
 var keyVals={
 	0:"largeSensorValue",
 	1:"shortSensorValue",
@@ -56,21 +62,22 @@ jQuery(function($) {
 				var key = data['key'];
 				var sendTo = "#" + key;
 				var event = data['event'];
-				if (key == 'largeSensorValue') {
-					vals[0] = value;
-				} else if (key == "shortSensorValue") {
-					vals[1] = value;
-				} else if (key == 'largeSensorValue2') {
-					vals[2] = value;
-				} else if (key == "shortSensorValue2") {
-					vals[3] = value;
-				}
+				keyStore[key]=value;
+					vals[0] = keyStore['largeSensorValue'];
+					vals[1] = keyStore['shortSensorValue'];
+					
+					vals[2] = keyStore['largeSensorValue2'];
+					vals[3] = keyStore['shortSensorValue2'];
+				
 				
 				console.log(vals, data);
 				draw(vals);
 			}
 			socket.onclose = function() {
 				console.log("socket Closed");
+				setTimeout(function(){
+				    setup();
+				}, 2000);
 			}
 
 		} else {
