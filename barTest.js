@@ -1,5 +1,11 @@
 
 
+var keyVals={
+	0:"largeSensorValue",
+	1:"shortSensorValue",
+	2:"largeSensorValue2",
+	3:"shortSensorValue2"
+}
 function draw(data) {
     var scale = d3.scale.linear()
         .domain([0, 200])
@@ -8,6 +14,7 @@ function draw(data) {
     var bars = d3.select("#barchart")
         .selectAll("div")
         .attr("id","barchart")
+        .attr("title",function(d,i){return keyVals[i];})
         .data(data);
      
     // enter selection
