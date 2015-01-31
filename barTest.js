@@ -77,7 +77,7 @@ jQuery(function($) {
 				console.log("socket Closed");
 				setTimeout(function(){
 				    setup();
-				}, 2000);
+				}, 300);
 			}
 
 		} else {

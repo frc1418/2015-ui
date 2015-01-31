@@ -1,38 +1,38 @@
-var keyExceptions = new Array();
+
+var keyStore={
+};
+
 
 jQuery(function($) {
+	var socket;
 	if (!("WebSocket" in window)) {
 		alert("Your browser does not support web sockets");
 	} else {
-
 		setup();
+	}
+	function getValue(key){
+		//checks keyStore for val of key
+		return keyStore[key];
+	}
+	function setValue(val){//val is a json
+		socket.send(val);
 	}
 	function setup() {
 		console.log("setup Called");
 		var host = "ws://localhost:8888/ws";
-		var socket = new WebSocket(host);
+		socket = new WebSocket(host);
 
 		if (socket) {
 			socket.onopen = function() {
 			}
 			socket.onmessage = function(msg) {
 				var data = JSON.parse(msg.data);
-				console.log(data);
 				var value = data['value'];
 				var key = data['key'];
-				var sendTo = data['sendTo'];
+				var sendTo = "#" + key;
 				var event = data['event'];
-				console.log("key-" + key + " is changed to " + value);
-				if (key == 'largeSensorValue') {
-					h1 = value;
-				} else if (key == "smallSensorValue") {
-					h2 = value;
-				}
-				var theLine = d3.select("#theLine")
-				theLine.attr("x1", "0").attr("y1", svgHeight - h1).attr("x2",
-						linelength).attr("y2", svgHeight - h2).attr("stroke",
-						"green");
-				findAngles();
+				keyStore[key]=value;
+				
 			}
 			socket.onclose = function() {
 				console.log("socket Closed");
@@ -46,3 +46,6 @@ jQuery(function($) {
 		}
 	}
 });
+
+
+
