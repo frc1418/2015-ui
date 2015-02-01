@@ -1,6 +1,18 @@
 
 var keyStore={
 };
+function saveCookie(val){
+	document.cookie=JSON.stringify(val);
+}
+$(document).ready(function(){
+	try{
+	keyStore=JSON.parse(document.cookie);
+	console.log(keyStore);
+}
+	catch(err){
+		console.log("error in importing cookie");
+	}
+});
 jQuery(function($) {
 	var socket;
 	if (!("WebSocket" in window)) {
@@ -30,7 +42,7 @@ jQuery(function($) {
 				var sendTo = "#" + key;
 				var event = data['event'];
 				keyStore[key]=value;
-				
+				saveCookie(keyStore);
 			}
 			socket.onclose = function() {
 				console.log("socket Closed");
