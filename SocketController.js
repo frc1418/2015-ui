@@ -1,8 +1,6 @@
 
 var keyStore={
 };
-
-
 jQuery(function($) {
 	var socket;
 	if (!("WebSocket" in window)) {
@@ -46,6 +44,3 @@ jQuery(function($) {
 		}
 	}
 });
-
-
-
