@@ -1,32 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html  lang="en">
 <head>
+<meta charset="utf-8">
+<link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
+	<title>Aki</title>
+			<script src="Resources/d3/d3.js"></script>
+			<script src="Resources/jquery-2.1.3.min.js"></script>
+            <link href="Resources/dist/css/bootstrap.min.css" rel="stylesheet">
+        	<script src="Resources/dist/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="UI_MainPage.html">Drive</a></li>
+  <li><a href="UI_SettingsPage.html">Settings</a></li>
+</ul>
+
   <div class="MainDivide" id="ForkliftControls">
-    <button class="ToteLiftLevels" id="ToteButton1"></button>
-    <button class="ToteLiftLevels" id="ToteButton2"></button>
-    <button class="ToteLiftLevels" id="ToteButton3"></button>
-    <button class="ToteLiftLevels" id="ToteButton4"></button>
-    <button class="BinsLiftLevels" id="BinButton1"></button>
-    <button class="BinsLiftLevels" id="BinButton2"></button>
-    <button id="ReverserSwitch"></button>
-    <button id="AutoLiferSwitch"></button>
+	
+   	<button class="ToteLiftLevels" id="ToteButton1">Tote Level 0</button>
+   	<button class="ToteLiftLevels" id="ToteButton2">Tote Level 1</button>
+   	<button class="ToteLiftLevels" id="ToteButton3">Tote Level 2</button>
+   	<button class="ToteLiftLevels" id="ToteButton4">Tote Level 3</button>
+<div id=""></div>
+   	<button class="BinsLiftLevels" id="BinButton1">Bin Level 0</button>
+   	<button class="BinsLiftLevels" id="BinButton2">Bin Level 1</button>
+    	<button id="ReverserSwitch">Reverse Controls</button>
+    	<button id="AutoLiferSwitch">Auto-Picker</button>
   </div>
   <div class="MainDivide" id="CameraBox">
-    <img src="https://38.media.tumblr.com/7b1d452a4f9b7931297e23e1bf54541b/tumblr_mqukflkX1o1s7r42qo2_400.gif" height=“70” width=“70”></img>
+	<img src=""></img>
   </div>
   <div class="MainDivide" id="RobotDiagram">
-    
+   	<img src=""></img>
+	<img src=""></img>
   </div>
   <div class="MainDivide" id="AutoPathChoice">
    	<select>
-		<option></option>
-		<option></option>
-		<option></option>
-		<option></option>
-		<option></option>
-		<option></option>
+		<option>Strat. Alpha</option>
+		<option>Strat. Beta</option>
+		<option>Strat. Gamma</option>
+		<option>Strat. Delta</option>
+		<option>Strat. Epsilon</option>
+		<option>Strat. Wreck their sh*t</option>
 	</select>
   </div>
 </body>
