@@ -1,4 +1,4 @@
-div{
+.MainDivide{
  	height: 250px;
 	width: 550px;
   	border: 1.5px solid black;
@@ -12,9 +12,19 @@ div{
 }
 
 button{
-   	height: 50px;
-	width: 50px;
+   	height:65px;
+	width: 65px;
   	margin:auto;
   	display:inline-block;
 }
 
+.ButtonDivide{	
+	height: 20px;
+	width: 200px;
+	border: none;
+  	display:block;
+}
+select{
+	margin:auto;
+  	display:inline-block;
+}
