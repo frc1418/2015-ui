@@ -1,0 +1,20 @@
+div{
+ 	height: 250px;
+	width: 550px;
+  	border: 1.5px solid black;
+  	border-radius: 0.5px;
+  	margin:auto;
+  	display:inline-block;
+}
+
+*{
+  
+}
+
+button{
+   	height: 50px;
+	width: 50px;
+  	margin:auto;
+  	display:inline-block;
+}
+
