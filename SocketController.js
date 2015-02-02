@@ -1,18 +1,25 @@
+//socketController should handle all of the websocket Code,
 
 var keyStore={
-};
-function saveCookie(val){
-	document.cookie=JSON.stringify(val);
 }
+
+function writeSettings(){
+	//writes settings UI elements from file, to UI
+	var div=$(".settingsBox");
+	var vals=keyStore[document.title+"Vals"]		//get the array of stuff to display, title of document+"vals"
+}
+
 $(document).ready(function(){
-	try{
-	keyStore=JSON.parse(document.cookie);
-	console.log(keyStore);
-}
-	catch(err){
-		console.log("error in importing cookie");
+	var retrievedData=localStorage.getItem("keyStore");
+	var data=JSON.parse(retrievedData);
+	if(data==null){
+		console.log("read from localhost == null");
 	}
+	else{
+	keyStore=data;}
+	console.log(keyStore);
 });
+
 jQuery(function($) {
 	var socket;
 	if (!("WebSocket" in window)) {
@@ -28,12 +35,14 @@ jQuery(function($) {
 		socket.send(val);
 	}
 	function setup() {
+
 		console.log("setup Called");
 		var host = "ws://localhost:8888/ws";
 		socket = new WebSocket(host);
 
 		if (socket) {
 			socket.onopen = function() {
+				console.log(keyStore);
 			}
 			socket.onmessage = function(msg) {
 				var data = JSON.parse(msg.data);
@@ -42,7 +51,10 @@ jQuery(function($) {
 				var sendTo = "#" + key;
 				var event = data['event'];
 				keyStore[key]=value;
-				saveCookie(keyStore);
+				console.log("Message Recieved-key"+key+"-"+value);
+							
+				var val=JSON.stringify(keyStore);
+				localStorage.setItem("keyStore", val);
 			}
 			socket.onclose = function() {
 				console.log("socket Closed");

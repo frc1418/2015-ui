@@ -32,6 +32,7 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         self.sd = NetworkTable.getTable("SmartDashboard")
         self.sd.addTableListener(self.valueChanged, immediateNotify=True)
         
+        
     def on_message(self, message):
 
         data=json.loads(message)
