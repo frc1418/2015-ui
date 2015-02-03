@@ -2,29 +2,67 @@
  	height: 250px;
 	width: 550px;
   	border: 1.5px solid black;
-  	border-radius: 0.5px;
-  	margin:auto;
-  	display:inline-block;
+
+
+  	display:block;
+}
+#ForkliftControls{
+    position: fixed;
+    top: 50px;
+    left: 10px;
+}
+#CameraBox{
+    position: fixed;
+    top: 50px;
+    right: 10px;
+
+}
+#RobotDiagram{
+    position: fixed;
+    bottom: 20px;
+    left: 10px;
+
+}
+#AutoPathChoice{
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+
+}
+* {
+
 }
 
-*{
-  
-}
-
-button{
+button {
    	height:65px;
 	width: 65px;
   	margin:auto;
   	display:inline-block;
 }
 
-.ButtonDivide{	
+. {
 	height: 20px;
-	width: 200px;
+	width: 100px;
 	border: none;
   	display:block;
 }
-select{
+select {
+	height:210px;
+	width: 540px;
+	border: 10px none;
 	margin:auto;
   	display:inline-block;
+	font-size:50px;
+
+}
+
+.RoboPhoto {
+	height: 80px;
+	width: 800px;
+
+}
+.gap{
+  height: 20px;
+  width:10px;
+  margin:auto;
 }

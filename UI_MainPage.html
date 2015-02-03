@@ -17,26 +17,39 @@
   <li><a href="UI_SettingsPage.html">Settings</a></li>
 </ul>
 
-  <div class="MainDivide" id="ForkliftControls">
-	
-   	<button class="ToteLiftLevels" id="ToteButton1">Tote Level 0</button>
-   	<button class="ToteLiftLevels" id="ToteButton2">Tote Level 1</button>
-   	<button class="ToteLiftLevels" id="ToteButton3">Tote Level 2</button>
-   	<button class="ToteLiftLevels" id="ToteButton4">Tote Level 3</button>
-<div id=""></div>
-   	<button class="BinsLiftLevels" id="BinButton1">Bin Level 0</button>
-   	<button class="BinsLiftLevels" id="BinButton2">Bin Level 1</button>
-    	<button id="ReverserSwitch">Reverse Controls</button>
-    	<button id="AutoLiferSwitch">Auto-Picker</button>
-  </div>
-  <div class="MainDivide" id="CameraBox">
-	<img src=""></img>
-  </div>
-  <div class="MainDivide" id="RobotDiagram">
-   	<img src=""></img>
-	<img src=""></img>
-  </div>
-  <div class="MainDivide" id="AutoPathChoice">
+  	<div class="MainDivide" id="ForkliftControls">
+			<br>
+   		<button class="ToteLiftLevels" id="ToteButton1" onclick="totebuttonZero()">Tote Level 0</button>
+   		<button class="ToteLiftLevels" id="ToteButton2" onclick="totebuttonOne()">Tote Level 1</button>
+   		<button class="ToteLiftLevels" id="ToteButton3" onclick="totebuttonTwo()">Tote Level 2</button>
+   		<button class="ToteLiftLevels" id="ToteButton4" onclick="totebuttonThree()">Tote Level 3</button>
+			<br>
+   		<button class="BinsLiftLevels" id="BinButton1" onclick="binbuttonZero()">Bin Level 0</button>
+   		<button class="BinsLiftLevels" id="BinButton2" onclick="binbuttonOne()">Bin Level 1</button>
+    		<button id="ReverserSwitch" onclick="reverse()">Reverse Controls</button>
+    		<button id="AutoLiferSwitch" onclick="AutoLift()">Auto-Lift</button>
+		<form id="myForm" action="form_action.asp">
+		Robot Speed 1: <input type="text" name="robospeed1" id="Robospeed1"><br>
+		Robot Speed 2: <input type="text" name=“robospeed2” id="Robospeed2"><br>
+			<br>
+  		<input type="button" onclick="myFunction()" value="Submit">
+		</form>
+
+		<script>
+		function myFunction() {
+    		document.getElementById("myForm").submit();
+		}
+		</script>
+  	</div>
+  	<div class="MainDivide" id="CameraBox">
+			<img src=""></img>
+  	</div>
+  	<div class="MainDivide" id="RobotDiagram">
+   	<img class=“RoboPhoto" src="http://fc03.deviantart.net/fs71/f/2010/297/3/1/wall_e_icon_by_cyberwolf245-d31g2x6.gif"></img>
+	<img class=“RoboPhoto" src="http://fc03.deviantart.net/fs71/f/2010/297/3/1/wall_e_icon_by_cyberwolf245-d31g2x6.gif"></img>
+  	</div>
+  	<div class="MainDivide" id="AutoPathChoice">
+		<br>
    	<select>
 		<option>Strat. Alpha</option>
 		<option>Strat. Beta</option>
@@ -44,8 +57,8 @@
 		<option>Strat. Delta</option>
 		<option>Strat. Epsilon</option>
 		<option>Strat. Wreck their sh*t</option>
-	</select>
-  </div>
+		</select>
+  	</div>
 </body>
-  
+
 </html>
