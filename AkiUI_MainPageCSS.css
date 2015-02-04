@@ -2,8 +2,6 @@
  	height: 250px;
 	width: 550px;
   	border: 1.5px solid black;
-
-
   	display:block;
 }
 #ForkliftControls{
@@ -27,7 +25,15 @@
     position: fixed;
     bottom: 20px;
     right: 10px;
-
+}
+.settingsBox{
+  height: 250px;
+ width: 550px;
+   border: 1.5px solid black;
+   display:block;
+   position: fixed;
+   top: 50px;
+   left: 10px;
 }
 * {
 
@@ -65,4 +71,10 @@ select {
   height: 20px;
   width:10px;
   margin:auto;
+}
+#Settings{
+  height: 250px;
+  width: 550px;
+  border: 1.5px solid black;
+  display:inline-block;
 }
