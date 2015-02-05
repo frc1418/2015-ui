@@ -1,6 +1,14 @@
 var keyStore={
 	//keyStore is the object that stores all of the data
 }
+
+
+var showLogs=false;
+function logConsole(message){
+	if(showLogs==true){
+	console.log(message);}
+
+}
 waitForSocketConnection=function(sock,callback){
 	//Callback to make sure it waits for finished connection before it sends messages
 	setTimeout(
@@ -19,13 +27,12 @@ var socket;
 var Socket={
 								//the socket object
 	setup:function (){
-				console.log("setup Called");
+				logConsole("setup Called");
 				var host = "ws://localhost:8888/ws";
 				socket = new WebSocket(host);
 				if (socket) {
-
 					socket.onopen = function() {
-						console.log("keystore is",keyStore);
+						logConsole("keystore is",keyStore);
 					}
 					socket.onmessage = function(msg) {
 						var data = JSON.parse(msg.data);
@@ -37,7 +44,7 @@ var Socket={
 						keyStore[key]=value;
 
 
-						console.log("Message Recieved-key"+key+"-"+value);
+						logConsole("Message Recieved-key"+key+"-"+value);
 						if(event=="Local"){
 						var val=keyStore["Local"];
 						val[key]=value;
@@ -46,14 +53,14 @@ var Socket={
 						}
 					}
 					socket.onclose = function() {
-						console.log("Socket Closed");
+						logConsole("Socket Closed");
 						setTimeout(function(){
 								Socket.setup();
 						}, 300);
 					}
 
 				} else {
-					console.log("invalid socket");
+					logConsole("invalid socket");
 				}
 			},
 
