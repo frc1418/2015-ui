@@ -38,3 +38,14 @@ Open a web browser (preferably Chrome), and go to:
 You can replace the HTML file at the end of the URL with whatever you're
 trying to test.
 
+
+NOTES
+-----
+
+http://i.imgur.com/cx0mcut.jpg
+http://i.imgur.com/hP6BA7A.jpg
+http://i.imgur.com/heevRlk.jpg
+http://i.imgur.com/j77ekyb.jpg
+http://i.imgur.com/CVz4YB6.jpg
+http://i.imgur.com/kzIR7Zg.jpg
+http://i.imgur.com/fNA2Jrj.jpg
