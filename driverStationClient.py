@@ -38,6 +38,7 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         data=json.loads(message)
         
         actiontype=data["action"]
+        
 
         if actiontype=='read':
             self.getStringValue(data)

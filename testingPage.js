@@ -15,9 +15,10 @@ jQuery(function($) {
 			event.preventDefault();
 			var key = $key.val();
 			var text = $txt.val();
+			var textval=JSON.stringify(text);
 			var protoJson = {
 				"key" : key,
-				"value" : text,
+				"value" : textval,
 				"action" : "write",
 				"sendTo" : "#messageText3"
 			};
@@ -52,23 +53,25 @@ jQuery(function($) {
 				var data = JSON.parse(msg.data);
 				console.log(data);
 				var value = data['value'];
+				var valueObject=JSON.parse(value);
+
 				var key = data['key'];
 				var sendTo = data['sendTo'];
 				var event = data['event'];
-				console.log("key-" + key + " is changed to " + value);
+				console.log("key-" + key + " is changed to " + valueObject);
 				if (event == 'valChanged') {
 					sendTo = keyExceptions[key];
-					$(sendTo).text(value);
+					$(sendTo).text(valueObject);
 				} else if (event == "read") {
-					$(sendTo).val(value);
+					$(sendTo).val(valueObject);
 				}
 
 			}
 socket.onclose = function() {
 							console.log("socket Closed");
 							setTimeout(function(){
-																		setup();
-																		}, 2000);
+								setup();
+								}, 2000);
 							}
 
 		} else {

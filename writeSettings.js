@@ -1,51 +1,43 @@
-/*
-var testSettingsObject={
-	"names":[1,2,3,4,5],
-	"values":["a","b","c","d","e"]
-}
-*/
-function writeSettings(divName){
-	//writes settings UI elements from file, to UI
-	var div=d3.select(divName);//at the moment, all of the id's should be ".settingsBox"
+
+function writeSettings(divName,key){
+	//appends saved settings to a html element with name=divName,key is the dataset within local
+
+	var div=d3.select(divName);				//selecting the html element
+	var retrievedData;							//raw json String
+	var data;												//parsed json
 
 
-	var retrievedData;
-	var data;
-	console.log("attempting to get data from local");
 	try{
-	retrievedData=localStorage.getItem("Local");
+	retrievedData=localStorage.getItem("Local");		//getting saved settings from localStoreage
 	data=JSON.parse(retrievedData);
-	keyStore["Local"]=data;
+	keyStore["Local"]=data;													//writing the retrieved data to keyStore
 	}
 	catch(err){
 		console.log("error reading from local host");
 	}
-	//setKeyValue("Local",retrievedData);			//MAKE IT IMPORT SOCKETCONTROLLER
-	console.log(keyStore);
 
-	var parsedData=data;
+	//Socket.setKeyValue("Local",retrievedData,"write");	//Should we be sending saved values to the robot??
+	var storedSettings=keyStore.Local;									//retreiving the stored settings
+	//D3 Starts Here
 
-	div.selectAll("div")		//selecting all the divs within our div
-	.data(parsedData["names"])
+	div.selectAll("div")								//selecting all the divs within our div
+	.data(data.names)
 	.enter()
 	.append("span")
 	.text(function(d,i){
-		return parsedData["names"][i];
+		return storedSettings["names"][i];
 	})
-	.append("form")				//appending submitForms for each data
-	.append("input")			//appending input forms in the submit forms
+	.append("form")														//appending submitForms for each data
+	.append("input")													//appending input forms in the submit forms
 	.attr("type","text")
-	.attr("value",function(d,i){			//setting values
-		return parsedData["values"][i];
+	.attr("value",function(d,i){						//setting values
+		return storedSettings["values"][i];
 	})
-	.attr("id",function(d,i){				//setting id's
-		return parsedData["names"][i];
+	.attr("id",function(d,i){									//setting id's
+		return storedSettings["names"][i];
 	});
-
 }
 
-$(document).ready(function(){
-
+$(document).ready(function(){											//on startup write settings
 	writeSettings(".settingsBox");
-
 });
