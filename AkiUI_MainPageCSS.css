@@ -29,6 +29,12 @@
     right: 10px;
 
 }
+#settingsBox{
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+
+}
 * {
 
 }
