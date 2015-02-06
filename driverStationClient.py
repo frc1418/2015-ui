@@ -44,7 +44,7 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
             self.getStringValue(data)
 
         elif actiontype=="write":
-            self.writeStringToNetworkTable(data)
+            self.writeJSONStringToNetworkTable(data)
 
     def on_close(self):
         print("WebSocket closed")
@@ -69,12 +69,16 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         
         self.write_message(message, False)
     
-    def writeStringToNetworkTable(self, message):
+    def writeJSONStringToNetworkTable(self, message):#json String
         #message=key|message
         key=message['key']
         newMessage=message["value"]
         print('key-',key,',message-',newMessage)
         self.sd.putString(key, newMessage)
+    def writeStringToNetworkTable(self, key,message):#key is a string, message is a string
+        #message=key|message
+        print('key-',key,',message-',message)
+        self.sd.putString(key, message)
 
     def getStringValue(self, message):
         key=message['key']
