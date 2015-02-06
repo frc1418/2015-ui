@@ -32,24 +32,26 @@ var Socket={
 				socket = new WebSocket(host);
 				if (socket) {
 					socket.onopen = function() {
-						logConsole("keystore is",keyStore);
+					 console.log("keystore is",keyStore);
 					}
 					socket.onmessage = function(msg) {
+						console.log("raw",msg);
 						var data = JSON.parse(msg.data);
-						var valueString = data['value'];				//value is a json String//is very important
+						console.log("parsed",data);
+						var value = data['value'];				//value is a json String//is very important
 						var key = data['key'];
-						var event = data['event'];
+						var Event = data['event'];
 
-						var value=JSON.parse(valueString);			//parsed jsonString
 						keyStore[key]=value;
 
+						console.log(key+" "+Event+" "+value);
 
 						logConsole("Message Recieved-key"+key+"-"+value);
-						if(event=="Local"){
+						if(Event=="Local"){
 						var val=keyStore["Local"];
 						val[key]=value;
 						keyStore.Local=val;
-						localStorage.setItem("Local", JSON.stringify(val));	//re recording anything in local
+						localStorage.setItem("Local", val);	//re recording anything in local
 						}
 					}
 					socket.onclose = function() {

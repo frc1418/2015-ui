@@ -15,10 +15,9 @@ jQuery(function($) {
 			event.preventDefault();
 			var key = $key.val();
 			var text = $txt.val();
-			var textval=JSON.stringify(text);
 			var protoJson = {
 				"key" : key,
-				"value" : textval,
+				"value" : text,
 				"action" : "write",
 				"sendTo" : "#messageText3"
 			};
@@ -51,19 +50,18 @@ jQuery(function($) {
 				// it should in the future find the thing with the id ==key
 				// console.log(msg.data);
 				var data = JSON.parse(msg.data);
-				console.log(data);
+				logConsole(data);
 				var value = data['value'];
-				var valueObject=JSON.parse(value);
 
 				var key = data['key'];
 				var sendTo = data['sendTo'];
 				var event = data['event'];
-				console.log("key-" + key + " is changed to " + valueObject);
+				console.log("key-" + key + " is changed to " + value);
 				if (event == 'valChanged') {
 					sendTo = keyExceptions[key];
-					$(sendTo).text(valueObject);
+					$(sendTo).text(value);
 				} else if (event == "read") {
-					$(sendTo).val(valueObject);
+					$(sendTo).val(value);
 				}
 
 			}
