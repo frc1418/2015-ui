@@ -35,9 +35,7 @@ var Socket={
 					 console.log("keystore is",keyStore);
 					}
 					socket.onmessage = function(msg) {
-						console.log("raw",msg);
 						var data = JSON.parse(msg.data);
-						console.log("parsed",data);
 						var value = data['value'];				//value is a json String//is very important
 						var key = data['key'];
 						var Event = data['event'];

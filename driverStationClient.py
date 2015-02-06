@@ -12,7 +12,6 @@ from tornado.options import define, options, parse_command_line
 import logging
 import json
 import os.path
-
 logging.basicConfig(level=logging.DEBUG)
 
 
@@ -31,6 +30,7 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         self.ioloop = IOLoop.current()
         self.sd = NetworkTable.getTable("SmartDashboard")
         self.sd.addTableListener(self.valueChanged, immediateNotify=True)
+        self.sd.addSubTableListener(self.subtableValueChanged);
         
         
     def on_message(self, message):
@@ -54,21 +54,29 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
     # NetworkTables specific stuff
     #
     
+    def subtableValueChanged(self,table, key, value, isNew):
+        self.ioloop.add_callback(self.subtableChangeValue,key,value)
     def valueChanged(self,table, key, value, isNew):
         self.ioloop.add_callback(self.changeValue,key,value)
-
     def changeValue(self, key, value):
         '''
             Sends a message to the website to change the value of the element
             whose id=key to value
         '''
-        
         message={'key':key,
                  'value':value, 
                  'event':'valChanged'}
-        
         self.write_message(message, False)
-    
+    def subtableChangeValue(self, key, value):
+        if type(value)==NetworkTable:
+            print('subtable listener returned subtableChangeValue')
+            value=str(value);
+        
+        message={'key':key,
+                'value':value, 
+                'event':'valChanged'}
+        self.write_message(message, False)
+        
     def writeJSONStringToNetworkTable(self, message):#json String
         #message=key|message
         key=message['key']
