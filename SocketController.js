@@ -36,21 +36,30 @@ var Socket={
 					}
 					socket.onmessage = function(msg) {
 						var data = JSON.parse(msg.data);
-						var value = data['value'];				//value is a json String//is very important
+						var value = data['value'];
 						var key = data['key'];
 						var Event = data['event'];
 
-						keyStore[key]=value;
-
 						console.log(key+" "+Event+" "+value);
-
-						logConsole("Message Recieved-key"+key+"-"+value);
-						if(Event=="Local"){
-						var val=keyStore["Local"];
-						val[key]=value;
-						keyStore.Local=val;
-						localStorage.setItem("Local", val);	//re recording anything in local
+						if(Event=="valueChanged"){
+							keyStore[key]=value;
+							logConsole("Message Recieved-key"+key+"-"+value);
 						}
+						else if(Event=="Local"){
+							var val=keyStore["Local"];
+							val[key]=value;
+							keyStore.Local=val;
+							localStorage.setItem("Local", val);	//re recording anything in local
+						}
+						else if(Event=='subtableValueChanged'){
+							console.log("subtable value changed, ",key," to ",value);
+							//put things inside keystore, figure out if there is anything special
+							//that needs to be done when a subtable value is changed
+								keyStore[key]=value;
+								logConsole("Message Recieved-key"+key+"-"+value);
+								//is the same as value changed for the time being. will probably be changed
+						}
+
 					}
 					socket.onclose = function() {
 						logConsole("Socket Closed");

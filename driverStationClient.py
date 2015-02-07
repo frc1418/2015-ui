@@ -12,10 +12,14 @@ from tornado.options import define, options, parse_command_line
 import logging
 import json
 import os.path
+from threading import RLock
 logging.basicConfig(level=logging.DEBUG)
 
 
-class EchoWebSocket(tornado.websocket.WebSocketHandler):
+table_data_lock = RLock()
+tagged_tables = list()
+
+class WebSocket(tornado.websocket.WebSocketHandler):
 
     #
     # WebSocket API
@@ -53,30 +57,32 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
     #
     # NetworkTables specific stuff
     #
-    
+    def watch_table(self,key):
+        print("Watching Table " + key)
+        with table_data_lock:
+            if key in tagged_tables:
+                return
+            new_table = self.sd.getTable(key)
+            new_table.addSubTableListener(self.subtableValueChanged)
+            new_table.addTableListener(self.valueChanged, True)
+
     def subtableValueChanged(self,table, key, value, isNew):
-        self.ioloop.add_callback(self.subtableChangeValue,key,value)
+        if table.containsSubTable(key):
+            self.watch_table(value.path)
+        else:
+            self.ioloop.add_callback(self.changeValue,key,value,"subtableValueChanged")
     def valueChanged(self,table, key, value, isNew):
-        self.ioloop.add_callback(self.changeValue,key,value)
-    def changeValue(self, key, value):
+        self.ioloop.add_callback(self.changeValue,key,value,"valueChanged")
+    def changeValue(self, key, value, event):
         '''
             Sends a message to the website to change the value of the element
             whose id=key to value
         '''
         message={'key':key,
                  'value':value, 
-                 'event':'valChanged'}
+                 'event':event}
         self.write_message(message, False)
-    def subtableChangeValue(self, key, value):
-        if type(value)==NetworkTable:
-            print('subtable listener returned subtableChangeValue')
-            value=str(value);
-        
-        message={'key':key,
-                'value':value, 
-                'event':'valChanged'}
-        self.write_message(message, False)
-        
+    
     def writeJSONStringToNetworkTable(self, message):#json String
         #message=key|message
         key=message['key']
@@ -125,7 +131,7 @@ def main():
     init_networktables(options.host)
     
     app = tornado.web.Application([
-        (r'/ws', EchoWebSocket),
+        (r'/ws', WebSocket),
         (r"/(.*)", MyStaticFileHandler, {"path": os.path.dirname(__file__)}),
     
     ])
