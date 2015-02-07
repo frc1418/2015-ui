@@ -11,10 +11,14 @@
 
 </head>
 <body>
+<script src="SocketController.js"></script>
 
 <ul class="nav nav-tabs" role="tablist">
   <li class="active"><a href="UI_MainPage.html">Drive</a></li>
-  <li><a href="UI_SettingsPage.html">Settings</a></li>
+  <li><a href="Aton.html">Aton</a></li>
+	<li><a href="Robot.html">Robot</a></li>
+	<li><a href="Camera.html">Camera</a></li>
+	<li><a href="thing.html">Things</a></li>
 </ul>
 
   	<div class="MainDivide" id="ForkliftControls">
@@ -29,10 +33,11 @@
     		<button id="ReverserSwitch" onclick="reverse()">Reverse Controls</button>
     		<button id="AutoLiferSwitch" onclick="AutoLift()">Auto-Lift</button>
 		<form id="myForm" action="form_action.asp">
-		Robot Speed 1: <input type="text" name="robospeed1" id="Robospeed1"><br>
-		Robot Speed 2: <input type="text" name=“robospeed2” id="Robospeed2"><br>
+		Robot Speed: <input type="text" name="robospeed" id="Robospeed1" value=""><br>
+
 			<br>
   		<input type="button" onclick="myFunction()" value="Submit">
+			<button id="hit">hit</button>
 		</form>
 
 		<script>
@@ -59,6 +64,61 @@
 		<option>Strat. Wreck their sh*t</option>
 		</select>
   	</div>
-</body>
 
+
+			<script type="text/javascript">
+			$autoSelector=$("#AutoPathChoice");
+			$autoSelector.change(function(event) {
+				event.preventDefault();
+				//alert( $autoSelector.children(':selected').text());
+				var val=$autoSelector.find('option:selected').text();
+				//alert(val);
+				var sendVal={
+					key:"selected",
+					value:val,
+					action:"writeToSubtable",
+					tableName:"Autonomous Mode"
+				};
+				Socket.setValue(sendVal);
+			});
+			
+			//buttons
+			$(document).ready(function() {
+				event.preventDefault();
+				//totes
+				$('#ToteButton1').click(function() {
+						test = "tote 1";
+				});
+				$('#ToteButton2').click(function() {
+					test = "tote 2";
+				})
+				$('#ToteButton3').click(function() {
+					test = "tote 3";
+				})
+				$('#ToteButton4').click(function() {
+					test = "tote 4";
+				})
+				//bins
+				$('#BinButton1').click(function() {
+					test = "Bin 1";
+				})
+				$('#BinButton2').click(function() {
+					test = "Bin 2";
+				})
+				//stuff
+				$('#ReverserSwitch').click(function() {
+					test = "Reverse";
+				})
+				$('#AutoLiferSwitch').click(function() {
+					test = "Lift";
+				})
+				//summit
+				$('#hit').click(function() {
+					event.preventDefault();
+					test = $("input[name=robospeed]").val();
+				})
+				console.log(test);
+			});
+			</script>
+</body>
 </html>
