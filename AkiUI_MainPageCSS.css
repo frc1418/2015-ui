@@ -26,6 +26,15 @@
     bottom: 20px;
     right: 10px;
 }
+#GameTimer{
+    position: fixed;
+    top: 300px;
+    bottom: 270px;
+    left:520px;
+    right: 520px;
+    border: 1.5px solid black;
+    margin:auto;
+}
 .settingsBox{
   height: 250px;
  width: 550px;
@@ -46,9 +55,9 @@
 }
 
 button {
-   	height:65px;
-	width: 65px;
-  	margin:auto;
+   	height:70px;
+	  width:75px;
+    margin:5px;
   	display:inline-block;
 }
 
