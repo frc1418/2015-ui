@@ -47,8 +47,7 @@ var Socket={
 						}
 						else if(Event=="Local"){
 							var val=keyStore["Local"];
-							val[key]=value;
-							keyStore.Local=val;
+							val[key]=value;											//no longer stores in keyStore
 							localStorage.setItem("Local", val);	//re recording anything in local
 						}
 						else if(Event=='subtableValueChanged'){

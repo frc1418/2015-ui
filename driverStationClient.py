@@ -15,7 +15,6 @@ import os.path
 from threading import RLock
 logging.basicConfig(level=logging.DEBUG)
 
-
 table_data_lock = RLock()
 tagged_tables = list()
 
@@ -27,29 +26,32 @@ class WebSocket(tornado.websocket.WebSocketHandler):
 
     def check_origin(self, origin):
         return True
-
     def open(self):
-        print("New WebSocket open")
         
         self.ioloop = IOLoop.current()
         self.sd = NetworkTable.getTable("SmartDashboard")
         self.sd.addTableListener(self.valueChanged, immediateNotify=True)
         self.sd.addSubTableListener(self.subtableValueChanged);
         
-        
     def on_message(self, message):
 
         data=json.loads(message)
+        actiontype=data["action"]   
         
-        actiontype=data["action"]
-        
-
-        if actiontype=='read':
-            self.getStringValue(data)
-
-        elif actiontype=="write":
+        if actiontype=="write":
             self.writeJSONStringToNetworkTable(data)
-
+        elif actiontype=="writeToSubtable":
+            self.writeToSubtable(data)
+    def writeToSubtable(self,message):
+        
+        key=message['key']
+        newMessage=message["value"]
+        tableName=message["tableName"]
+        subtable=self.sd.getSubTable(tableName)
+        print('SubtableWrite, key-',key,',message-',newMessage,',tableName ',tableName)
+        #subtable.putString(key, newMessage)
+        subtable.putString(key, newMessage)      #this line writes to subtable but breaks code
+        #self.sd.putString(key, newMessage)
     def on_close(self):
         print("WebSocket closed")
         self.sd.removeTableListener(self.valueChanged)
@@ -73,45 +75,34 @@ class WebSocket(tornado.websocket.WebSocketHandler):
             self.ioloop.add_callback(self.changeValue,key,value,"subtableValueChanged")
     def valueChanged(self,table, key, value, isNew):
         self.ioloop.add_callback(self.changeValue,key,value,"valueChanged")
+        
     def changeValue(self, key, value, event):
-        '''
-            Sends a message to the website to change the value of the element
-            whose id=key to value
-        '''
+        #sends a message to the driverstation
         message={'key':key,
                  'value':value, 
                  'event':event}
         self.write_message(message, False)
     
-    def writeJSONStringToNetworkTable(self, message):#json String
-        #message=key|message
+    def writeJSONStringToNetworkTable(self, message):#message is a dictionary
+
         key=message['key']
         newMessage=message["value"]
         print('key-',key,',message-',newMessage)
         self.sd.putString(key, newMessage)
+        
     def writeStringToNetworkTable(self, key,message):#key is a string, message is a string
-        #message=key|message
+
         print('key-',key,',message-',message)
         self.sd.putString(key, message)
 
-    def getStringValue(self, message):
-        key=message['key']
-        value=self.sd.getString(message['key'])
-        print(value,'-read, from key-',key)
-        message['value']=value
-        message['event']='read'
-        sendmsg=json.dumps(message)
-        self.write_message(sendmsg, False)
-    
-    
 
+    
 def init_networktables(ipaddr):
     
     print("Connecting to networktables at %s" % ipaddr)
     NetworkTable.setIPAddress(ipaddr)
     NetworkTable.setClientMode()
     NetworkTable.initialize()
-    
     print("Networktables Initialized")
 
 
