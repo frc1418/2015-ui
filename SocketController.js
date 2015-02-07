@@ -1,102 +1,105 @@
-//socketController should handle all of the websocket Code,
-
 var keyStore={
-}
-var testSettingsObject={
-	"names":[1,2,3],
-	"values":["a","b","c"]
-}
-function writeSettings(divName){
-	//writes settings UI elements from file, to UI
-	var div=d3.select(divName);//at the moment, all of the id's should be ".settingsBox"
-
-/*	THIS SHOULD BE CORRECT, PUT BACK IN WHEN IT CAN WRITE DATA
-	var jsonStr=keyStore[document.title+"Vals"];		//get the array of stuff to display, title of document+"Vals"
-	//each entity within titleVals should be a JSON object that have arrays for names and values
-	var parsedData=JSON.parse(jsonStr);//parsedData is our dataset
-*/
-	var jsonStr=JSON.stringify(testSettingsObject);//testing, delete when done	
-	console.log(jsonStr);
-var parsedData=JSON.parse(jsonStr);
-
-	div.selectAll("div")		//selecting all the divs within our div
-	.data(parsedData["names"])
-	.enter()
-	.append("span")
-	.text(function(d,i){
-		return parsedData["names"][i];
-	})
-	.append("form")				//appending submitForms for each data
-	.append("input")			//appending input forms in the submit forms
-	.attr("type","text")
-	.attr("value",function(d,i){			//setting values
-		return parsedData["values"][i];
-	})
-	.attr("id",function(d,i){				//setting id's
-		return parsedData["names"][i];
-	});
-
+	//keyStore is the object that stores all of the data
 }
 
-$(document).ready(function(){
 
-	writeSettings(".settingsBox");
-	
-	var retrievedData=localStorage.getItem("keyStore");
-	var data=JSON.parse(retrievedData);
-	if(data==null){
-		console.log("read from localhost == null");
-	}
-	else{
-	keyStore=data;}
-	console.log(keyStore);
-});
+var showLogs=false;
+function logConsole(message){
+	if(showLogs==true){
+	console.log(message);}
 
+}
+waitForSocketConnection=function(sock,callback){
+	//Callback to make sure it waits for finished connection before it sends messages
+	setTimeout(
+				function(){
+						if (sock.readyState === 1) {
+								if(callback !== undefined){
+										callback();
+								}
+								return;
+						} else {
+					waitForSocketConnection(sock,callback);
+						}
+				}, 5);
+}
+var socket;
+var Socket={
+								//the socket object
+	setup:function (){
+				logConsole("setup Called");
+				var host = "ws://localhost:8888/ws";
+				socket = new WebSocket(host);
+				if (socket) {
+					socket.onopen = function() {
+					 console.log("keystore is",keyStore);
+					}
+					socket.onmessage = function(msg) {
+						var data = JSON.parse(msg.data);
+						var value = data['value'];
+						var key = data['key'];
+						var Event = data['event'];
+
+						console.log(key+" "+Event+" "+value);
+						if(Event=="valueChanged"){
+							keyStore[key]=value;
+							logConsole("Message Recieved-key"+key+"-"+value);
+						}
+						else if(Event=="Local"){
+							var val=keyStore["Local"];
+							val[key]=value;											//no longer stores in keyStore
+							localStorage.setItem("Local", val);	//re recording anything in local
+						}
+						else if(Event=='subtableValueChanged'){
+							console.log("subtable value changed, ",key," to ",value);
+							//put things inside keystore, figure out if there is anything special
+							//that needs to be done when a subtable value is changed
+								keyStore[key]=value;
+								logConsole("Message Recieved-key"+key+"-"+value);
+								//is the same as value changed for the time being. will probably be changed
+						}
+
+					}
+					socket.onclose = function() {
+						logConsole("Socket Closed");
+						setTimeout(function(){
+								Socket.setup();
+						}, 300);
+					}
+
+				} else {
+					logConsole("invalid socket");
+				}
+			},
+
+			getValue:function(key){
+				//checks keyStore for val of key
+				return keyStore[key];
+			},
+
+			sendMessage:function(msg) {//accepts a json strings
+				waitForSocketConnection(socket, function() {
+						socket.send(msg);
+				});
+		},
+		setValue:function(val){//val is a json object,
+			this.sendMessage(JSON.stringify(val));
+		},
+		setKeyValue:function(key,value,Event){//key,event, and value are strings,
+			var val={
+				"key":key,
+				"value":value,
+				"action":Event
+			}
+			this.sendMessage(JSON.stringify(val));
+		}
+}
 jQuery(function($) {
-	var socket;
 	if (!("WebSocket" in window)) {
 		alert("Your browser does not support web sockets");
 	} else {
-		setup();
-	}
-	function getValue(key){
-		//checks keyStore for val of key
-		return keyStore[key];
-	}
-	function setValue(val){//val is a json
-		socket.send(val);
-	}
-	function setup() {
 
-		console.log("setup Called");
-		var host = "ws://localhost:8888/ws";
-		socket = new WebSocket(host);
-
-		if (socket) {
-			socket.onopen = function() {
-				console.log(keyStore);
-			}
-			socket.onmessage = function(msg) {
-				var data = JSON.parse(msg.data);
-				var value = data['value'];
-				var key = data['key'];
-				var sendTo = "#" + key;
-				var event = data['event'];
-				keyStore[key]=value;
-				console.log("Message Recieved-key"+key+"-"+value);
-							
-				var val=JSON.stringify(keyStore);
-				localStorage.setItem("keyStore", val);
-			}
-			socket.onclose = function() {
-				console.log("socket Closed");
-				setTimeout(function(){
-				    setup();
-				}, 300);
-			}
-
-		} else {
-			console.log("invalid socket");
-		}
+		Socket.setup();
 	}
+
 });

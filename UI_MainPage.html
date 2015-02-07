@@ -11,10 +11,14 @@
 
 </head>
 <body>
+<script src="SocketController.js"></script>
 
 <ul class="nav nav-tabs" role="tablist">
   <li class="active"><a href="UI_MainPage.html">Drive</a></li>
-  <li><a href="UI_SettingsPage.html">Settings</a></li>
+  <li><a href="Aton.html">Aton</a></li>
+	<li><a href="Robot.html">Robot</a></li>
+	<li><a href="Camera.html">Camera</a></li>
+	<li><a href="thing.html">Things</a></li>
 </ul>
 
   	<div class="MainDivide" id="ForkliftControls">
@@ -59,6 +63,23 @@
 		<option>Strat. Wreck their sh*t</option>
 		</select>
   	</div>
-</body>
 
+
+			<script type="text/javascript">
+			$autoSelector=$("#AutoPathChoice");
+			$autoSelector.change(function(event) {
+				event.preventDefault();
+				//alert( $autoSelector.children(':selected').text());
+				var val=$autoSelector.find('option:selected').text();
+				//alert(val);
+				var sendVal={
+					key:"selected",
+					value:val,
+					action:"writeToSubtable",
+					tableName:"Autonomous Mode"
+				};
+				Socket.setValue(sendVal);
+			});
+			</script>
+</body>
 </html>
