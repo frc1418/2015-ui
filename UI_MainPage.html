@@ -53,9 +53,11 @@
 	<img class=“RoboPhoto" src="http://fc03.deviantart.net/fs71/f/2010/297/3/1/wall_e_icon_by_cyberwolf245-d31g2x6.gif"></img>
   	</div>
 		<div id="GameTimer">
-			<p><span id="timer" align:center></span> Left!</p>
-
+			<p id="Timetilldoom"><span id="timer" align:center></span> Left!</p>
+			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
 			<script>
+			function startTimer(){
+
 			var count=150;
 
 			var counter=setInterval(timer, 1000);
@@ -70,7 +72,8 @@
 
 			document.getElementById("timer").innerHTML=count + " secs";
 			}
-		}
+			}
+			}
 			</script>
 		</div>
   	<div class="MainDivide" id="AutoPathChoice">
