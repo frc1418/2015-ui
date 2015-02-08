@@ -127,7 +127,7 @@ def main():
     
     ])
     
-    print("Listening on http://localhost:%s" % options.port)
+    print("Listening on ws://localhost:%s/ws" % options.port)
     app.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()
 
