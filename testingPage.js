@@ -50,8 +50,9 @@ jQuery(function($) {
 				// it should in the future find the thing with the id ==key
 				// console.log(msg.data);
 				var data = JSON.parse(msg.data);
-				console.log(data);
+				logConsole(data);
 				var value = data['value'];
+
 				var key = data['key'];
 				var sendTo = data['sendTo'];
 				var event = data['event'];
@@ -67,8 +68,8 @@ jQuery(function($) {
 socket.onclose = function() {
 							console.log("socket Closed");
 							setTimeout(function(){
-																		setup();
-																		}, 2000);
+								setup();
+								}, 2000);
 							}
 
 		} else {

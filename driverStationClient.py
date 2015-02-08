@@ -12,39 +12,48 @@ from tornado.options import define, options, parse_command_line
 import logging
 import json
 import os.path
-
+from threading import RLock
 logging.basicConfig(level=logging.DEBUG)
 
+table_data_lock = RLock()
+tagged_tables = list()
 
-class EchoWebSocket(tornado.websocket.WebSocketHandler):
+
+class WebSocket(tornado.websocket.WebSocketHandler):
 
     #
     # WebSocket API
     #
 
+
     def check_origin(self, origin):
         return True
-
     def open(self):
-        print("New WebSocket open")
-        
+
         self.ioloop = IOLoop.current()
         self.sd = NetworkTable.getTable("SmartDashboard")
         self.sd.addTableListener(self.valueChanged, immediateNotify=True)
-        
-        
+        self.sd.addSubTableListener(self.subtableValueChanged);
+
     def on_message(self, message):
 
         data=json.loads(message)
-        
         actiontype=data["action"]
 
-        if actiontype=='read':
-            self.getStringValue(data)
+        if actiontype=="write":
+            self.writeJSONStringToNetworkTable(data)
+        elif actiontype=="writeToSubtable":
+            self.writeToSubtable(data)
+    def writeToSubtable(self,message):
 
-        elif actiontype=="write":
-            self.writeStringToNetworkTable(data)
-
+        key=message['key']
+        newMessage=message["value"]
+        tableName=message["tableName"]
+        subtable=self.sd.getSubTable(tableName)
+        print('SubtableWrite, key-',key,',message-',newMessage,',tableName ',tableName)
+        #subtable.putString(key, newMessage)
+        subtable.putString(key, newMessage)      #this line writes to subtable but breaks code
+        #self.sd.putString(key, newMessage)
     def on_close(self):
         print("WebSocket closed")
         self.sd.removeTableListener(self.valueChanged)
@@ -52,71 +61,74 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
     #
     # NetworkTables specific stuff
     #
-    
-    def valueChanged(self,table, key, value, isNew):
-        self.ioloop.add_callback(self.changeValue,key,value)
+    def watch_table(self,key):
+        print("Watching Table " + key)
+        with table_data_lock:
+            if key in tagged_tables:
+                return
+            new_table = self.sd.getTable(key)
+            new_table.addSubTableListener(self.subtableValueChanged)
+            new_table.addTableListener(self.valueChanged, True)
 
-    def changeValue(self, key, value):
-        '''
-            Sends a message to the website to change the value of the element
-            whose id=key to value
-        '''
-        
+    def subtableValueChanged(self,table, key, value, isNew):
+        if table.containsSubTable(key):
+            self.watch_table(value.path)
+        else:
+            self.ioloop.add_callback(self.changeValue,key,value,"subtableValueChanged")
+    def valueChanged(self,table, key, value, isNew):
+        self.ioloop.add_callback(self.changeValue,key,value,"valueChanged")
+
+    def changeValue(self, key, value, event):
+        #sends a message to the driverstation
         message={'key':key,
-                 'value':value, 
-                 'event':'valChanged'}
-        
+                 'value':value,
+                 'event':event}
         self.write_message(message, False)
-    
-    def writeStringToNetworkTable(self, message):
-        #message=key|message
+
+    def writeJSONStringToNetworkTable(self, message):#message is a dictionary
+
         key=message['key']
         newMessage=message["value"]
         print('key-',key,',message-',newMessage)
         self.sd.putString(key, newMessage)
 
-    def getStringValue(self, message):
-        key=message['key']
-        value=self.sd.getString(message['key'])
-        print(value,'-read, from key-',key)
-        message['value']=value
-        message['event']='read'
-        sendmsg=json.dumps(message)
-        self.write_message(sendmsg, False)
-    
-    
+    def writeStringToNetworkTable(self, key,message):#key is a string, message is a string
+
+        print('key-',key,',message-',message)
+        self.sd.putString(key, message)
+
+
 
 def init_networktables(ipaddr):
-    
+
     print("Connecting to networktables at %s" % ipaddr)
     NetworkTable.setIPAddress(ipaddr)
     NetworkTable.setClientMode()
     NetworkTable.initialize()
-    
     print("Networktables Initialized")
 
 
 class MyStaticFileHandler(tornado.web.StaticFileHandler):
-    
+
     # This is broken in tornado, disable it
     def check_etag_header(self):
         return False
 
 def main():
-    
+
     define("host", default='127.0.0.1', help="Hostname of robot", type=str)
     define("port", default=8888, help="run on the given port", type=int)
-    
+
     parse_command_line()
-    
+
     init_networktables(options.host)
-    
+
     app = tornado.web.Application([
-        (r'/ws', EchoWebSocket),
+        (r'/ws', WebSocket),
         (r"/(.*)", MyStaticFileHandler, {"path": os.path.dirname(__file__)}),
-    
+
     ])
-    
+
     print("Listening on http://localhost:%s" % options.port)
     app.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()
@@ -124,5 +136,5 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
+
 #connectToIP(ipadd)

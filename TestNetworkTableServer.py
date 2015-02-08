@@ -12,4 +12,3 @@ logging.basicConfig(level=logging.DEBUG)
 
 sd = NetworkTable.getTable("SmartDashboard")
 sd.putString('ServerMessage','Success!')
-
