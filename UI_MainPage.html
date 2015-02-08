@@ -23,15 +23,15 @@
 
   	<div class="MainDivide" id="ForkliftControls">
 			<br>
-   		<button class="ToteLiftLevels" onclick="ToteLiftLevels0()" id="ToteButton1" value="0">Tote Level 0</button>
-   		<button class="ToteLiftLevels" onclick="ToteLiftLevels1()" id="ToteButton2" value="1">Tote Level 1</button>
-   		<button class="ToteLiftLevels" onclick="ToteLiftLevels2()" id="ToteButton3" value="2">Tote Level 2</button>
-   		<button class="ToteLiftLevels" onclick="ToteLiftLevels3()" id="ToteButton4" value="3">Tote Level 3</button>
+   		<button class="ToteLiftLevels" id="ToteButton1" value="Tote0">Tote Level 0</button>
+   		<button class="ToteLiftLevels" id="ToteButton2" value="Tote1">Tote Level 1</button>
+   		<button class="ToteLiftLevels" id="ToteButton3" value="Tote2">Tote Level 2</button>
+   		<button class="ToteLiftLevels" id="ToteButton4" value="Tote3">Tote Level 3</button>
 			<br>
-   		<button class="BinsLiftLevels" onclick="BinsLiftLevels1()" id="BinButton1" value="4">Bin Level 0</button>
-   		<button class="BinsLiftLevels" onclick="BinsLiftLevels2()" id="BinButton2" value="5">Bin Level 1</button>
-    		<button id="ReverserSwitch" onclick="reverse()" value="6">Reverse Controls</button>
-    		<button id="AutoLiferSwitch" onclick="AutoLift()" value="7">Auto-Lift</button>
+   		<button class="BinsLiftLevels" id="BinsButton1" value="Bin1">Bin Level 0</button>
+   		<button class="BinsLiftLevels" id="BinsButton2" value="Bin2">Bin Level 1</button>
+    		<button id="ReverserSwitch" value="Reverser">Reverse Controls</button>
+    		<button id="AutoLifterSwitch" value="AutoLifter">Auto-Lift</button>
 				<button id="hit" value="8">hit</button>
 		<form id="myForm" onclick="Hit()" action="form_action.asp">
 		Robot Speed: <input type="text" name="robospeed" id="Robospeed1" value=""><br>
@@ -92,10 +92,23 @@
 				$('button').click(function() {
 
 					var ids = this.id;
-					var num = $("#"+ids).val();
-					test = num;
-					Socket.setKeyValues('#'+ids, "Lift", 'write');
-					console.log(test);
+					var num = ids[0]+ids[10];
+
+
+					var sendVal={
+						key:ids,
+						value:num,
+						action:"write",
+
+					};
+					var readyState = 1;
+					Socket.setKeyValue(sendVal);
+					console.log(ids+"  "+num);
+
+
+
+					//Socket.setKeyValues(ids, num, 'write');
+
 
 				})
 

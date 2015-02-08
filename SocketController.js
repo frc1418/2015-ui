@@ -1,4 +1,3 @@
-var test = "black";
 
 var keyStore={
 	//keyStore is the object that stores all of the data
