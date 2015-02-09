@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
 	<title>1418 DriverStation</title>
+
 			<script src="Resources/d3/d3.js"></script>
 			<script src="Resources/jquery-2.1.3.min.js"></script>
-            <link href="Resources/dist/css/bootstrap.min.css" rel="stylesheet">
-        	<script src="Resources/dist/js/bootstrap.min.js"></script>
-
+      <link href="Resources/dist/css/bootstrap.min.css" rel="stylesheet">
+      <script src="Resources/dist/js/bootstrap.min.js"></script>
+			<link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
 </head>
 <body>
 <script src="SocketController.js"></script>
@@ -30,11 +31,13 @@
 			<br>
    		<button class="BinsLiftLevels" id="BinButton1" onclick="binbuttonZero()">Bin Level 0</button>
    		<button class="BinsLiftLevels" id="BinButton2" onclick="binbuttonOne()">Bin Level 1</button>
-    		<button id="ReverserSwitch" onclick="reverse()">Reverse Controls</button>
-    		<button id="AutoLiferSwitch" onclick="AutoLift()">Auto-Lift</button>
+    	<button id="ReverserSwitch" onclick="reverse()">Reverse Controls</button>
+    	<button id="AutoLiferSwitch" onclick="AutoLift()">Auto-Lift</button>
+			<br>
 		<form id="myForm" action="form_action.asp">
 		Robot Speed 1: <input type="text" name="robospeed1" id="Robospeed1"><br>
 		Robot Speed 2: <input type="text" name=“robospeed2” id="Robospeed2"><br>
+
 			<br>
   		<input type="submit" value="Submit">
 		</form>
@@ -47,6 +50,30 @@
    	<img class=“RoboPhoto" src="http://fc03.deviantart.net/fs71/f/2010/297/3/1/wall_e_icon_by_cyberwolf245-d31g2x6.gif"></img>
 	<img class=“RoboPhoto" src="http://fc03.deviantart.net/fs71/f/2010/297/3/1/wall_e_icon_by_cyberwolf245-d31g2x6.gif"></img>
   	</div>
+		<div id="GameTimer">
+			<p id="Timetilldoom"><span id="timer" align:center></span> Left!</p>
+			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
+			<script>
+			function startTimer(){
+
+			var count=150;
+
+			var counter=setInterval(timer, 1000);
+			function timer(){
+			{
+				count=count-1;
+				if (count <= 0)
+				{
+					clearInterval(counter);
+			return;
+		}
+
+			document.getElementById("timer").innerHTML=count + " secs";
+			}
+			}
+			}
+			</script>
+		</div>
   	<div class="MainDivide" id="AutoPathChoice">
 		<br>
    	<select>
