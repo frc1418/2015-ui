@@ -94,6 +94,7 @@ var Socket={
 			this.sendMessage(JSON.stringify(val));
 		}
 }
+
 jQuery(function($) {
 	if (!("WebSocket" in window)) {
 		alert("Your browser does not support web sockets");
