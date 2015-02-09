@@ -8,6 +8,7 @@ import sys
 import time
 from networktables import NetworkTable
 from tornado.websocket import WebSocketHandler
+from tornado.websocket import WebSocketClosedError
 from tornado.options import define, options, parse_command_line
 import logging
 import json
@@ -83,7 +84,14 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         message={'key':key,
                  'value':value,
                  'event':event}
+<<<<<<< HEAD
         self.write_message(message, False)
+=======
+        try:
+            self.write_message(message, False)
+        except WebSocketClosedError:
+            print("websocket closed when attempting to changeValue")
+>>>>>>> FETCH_HEAD
 
     def writeJSONStringToNetworkTable(self, message):#message is a dictionary
 

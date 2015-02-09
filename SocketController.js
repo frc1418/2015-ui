@@ -105,6 +105,7 @@ jQuery(function($) {
 	var socket;
 	if (!("WebSocket" in window)) {
 		alert("Your browser does not support web sockets");
+<<<<<<< HEAD
 	}
 
 	else {
@@ -170,6 +171,10 @@ jQuery(function($) {
 			console.log("invalid socket");
 		}
 
+=======
+	} else {
+		Socket.setup();
+>>>>>>> FETCH_HEAD
 	}
 
 });
