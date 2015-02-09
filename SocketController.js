@@ -98,7 +98,6 @@ jQuery(function($) {
 	if (!("WebSocket" in window)) {
 		alert("Your browser does not support web sockets");
 	} else {
-
 		Socket.setup();
 	}
 
