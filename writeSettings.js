@@ -1,8 +1,8 @@
-
+var div;
 function writeSettingsFromLocal(divName,key){
 	//appends saved settings to a html element with name=divName,key is the dataset within local
 
-	var div=d3.select(divName);				//selecting the html element
+	 div=d3.select(divName);				//selecting the html element
 	var retrievedData;							//raw json String
 	var data;												//parsed json
 	var Local;
@@ -43,5 +43,5 @@ function writeSettings(data){		//takes an object with 2 arrays, names and values
 }
 
 $(document).ready(function(){											//on startup write settings
-	writeSettingsFromLocal(".settingsBox");
+	//writeSettingsFromLocal(".settingsBox");
 });
