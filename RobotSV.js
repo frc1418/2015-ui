@@ -1,8 +1,18 @@
 
-var jsonRectangles = [
-                      { "x_axis": 140, "y_axis": 190, "height": 10, "width":20, "color" : "purple" },
-                      {"x_axis": 140, "y_axis": 140, "height": 10, "width":20, "color" : "purple"},
-                      {"x_axis": 140, "y_axis": 90, "height": 10, "width":20, "color" : "purple"},
+
+var t1=keyStore.Tote Forklift|stack1;
+var t2=keyStore.Tote Forklift|stack2;
+var t3=keyStore.Tote Forklift|stack3;
+var t4=keyStore.Tote Forklift|stack4;
+var t5=keyStore.Tote Forklift|stack5;
+
+var jsonRectangles
+                      { "x_axis": 140, "y_axis": t1, "height": 10, "width":20, "color" : "purple" },
+                      {"x_axis": 140, "y_axis": t2, "height": 10, "width":20, "color" : "purple"},
+                      {"x_axis": 140, "y_axis": t3, "height": 10, "width":20, "color" : "purple"},
+                      { "x_axis": 140, "y_axis": t4, "height": 10, "width":20, "color" : "purple" },
+                      {"x_axis": 140, "y_axis": t5, "height": 10, "width":20, "color" : "purple"},
+                     
                       //{ "x_axis": 40, "y_axis": 220, "height": 20, "width":40, "color" : "red" },
                       // {"x_axis": 140, "y_axis": 220, "height": 20, "width":40, "color" : "green"},
                       { "x_axis": 70, "y_axis": 70, "height": 133, "width":80, "color" : "" }
@@ -42,13 +52,13 @@ var rectangleAttributes = rectangles
 var moveRect = rectangles
 .attr("class", "part")
 .attr("y", function (k) { return k.y_axis; })
-if(jsonRectangles.y_axis==89)
+for(var k=0;k<5;k++)
 {
-    for(var k=0;k<3;k++)
-    {
-        jsonRectangles[k].y_axis=(jsonRectangles[k].y_axis)-89;
-        
-    }
+if(jsonRectangles[k].y_axis==89)
+{
+    
+    jsonRectangles[k].setVisible=false;
+    
 }
 /*else if(prompt("what is the message"=="yes"))
 {
