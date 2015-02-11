@@ -8,7 +8,6 @@ var showLogs=false;
 function logConsole(message){
 	if(showLogs==true){
 	console.log(message);}
-
 }
 waitForSocketConnection=function(sock,callback){
 	//Callback to make sure it waits for finished connection before it sends messages
@@ -25,6 +24,25 @@ waitForSocketConnection=function(sock,callback){
 				}, 5);
 }
 var socket;
+
+function setKeyStore(id,value){
+	keyStore[id]=value;
+	var $obj=$("#"+id);
+	$obj.text(value+"");
+	$obj.val(value);
+}
+
+changeText =function (obj,val){
+	console.log("CHANGETEXT");
+	obj.text(val);
+}
+changeValue =function (obj,val){
+	console.log("CHANGEVALUE");
+
+	obj.val(val);
+}
+
+
 var Socket={
 								//the socket object
 	setup:function (){
@@ -41,10 +59,16 @@ var Socket={
 						var key = data['key'];
 						var Event = data['event'];
 
+
+						//changeRecieved(key,value);
+						logConsole("Message Recieved-key"+key+"-"+value);
+
 						console.log(key+" "+Event+" "+value);
 						if(Event=="valueChanged"){
-							keyStore[key]=value;
-							logConsole("Message Recieved-key"+key+"-"+value);
+							setKeyStore(key,value);
+
+							//whenever a value is recieved it should update the corresponding html element
+							//html elements attributes to be altered are generally .text or .value
 						}
 						else if(Event=="Local"){
 							var val=keyStore["Local"];
@@ -53,10 +77,8 @@ var Socket={
 						}
 						else if(Event=='subtableValueChanged'){
 							console.log("subtable value changed, ",key," to ",value);
-							//put things inside keystore, figure out if there is anything special
-							//that needs to be done when a subtable value is changed
-								keyStore[key]=value;
-								logConsole("Message Recieved-key"+key+"-"+value);
+							setKeyStore(key,value);
+
 								//is the same as value changed for the time being. will probably be changed
 						}
 
@@ -96,8 +118,11 @@ var Socket={
 		}
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> FETCH_HEAD
 jQuery(function($) {
 
 
