@@ -118,11 +118,10 @@ var Socket={
 		}
 }
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> FETCH_HEAD
+
+
 jQuery(function($) {
 
 
@@ -130,7 +129,7 @@ jQuery(function($) {
 	var socket;
 	if (!("WebSocket" in window)) {
 		alert("Your browser does not support web sockets");
-<<<<<<< HEAD
+
 	}
 
 	else {
@@ -192,14 +191,15 @@ jQuery(function($) {
 			}
 
 		}
-		else {
-			console.log("invalid socket");
-		}
+		jQuery(function($) {
+			var socket;
+			if (!("WebSocket" in window)) {
+				alert("Your browser does not support web sockets");
 
-=======
-	} else {
-		Socket.setup();
->>>>>>> FETCH_HEAD
-	}
+			}
+
+			else {
+				setup();
+			}
 
 });

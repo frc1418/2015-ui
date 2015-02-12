@@ -112,3 +112,17 @@ select {
   left:590px;
   right: 580px;
 }
+#dog
+{
+    position:relative;
+    top:0px;
+    right:-128px;
+    height:19px;
+}
+#do
+{
+    position:relative;
+    top:0px;
+    right:-185px;
+    height:19px;
+}
