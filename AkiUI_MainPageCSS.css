@@ -36,7 +36,8 @@
     margin:auto;
 }
 .settingsBox{
-  height: 250px;
+  overflow:scroll;
+  height: 450px;
  width: 550px;
    border: 1.5px solid black;
    display:block;
@@ -111,4 +112,18 @@ select {
   bottom: 290px;
   left:590px;
   right: 580px;
+}
+#dog
+{
+    position:relative;
+    top:0px;
+    right:-128px;
+    height:19px;
+}
+#do
+{
+    position:relative;
+    top:0px;
+    right:-185px;
+    height:19px;
 }

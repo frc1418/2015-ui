@@ -13,7 +13,6 @@
 </head>
 <body>
 <script src="SocketController.js"></script>
-
 <ul class="nav nav-tabs" role="tablist">
 	<li class="active"><a href="UI_MainPage.html">Drive</a></li>
 	<li><a href="Aton.html">Aton</a></li>
@@ -45,9 +44,11 @@
 			<img src=""></img>
 		</div>
 		<div class="MainDivide" id="RobotDiagram">
-		<img class=“RoboPhoto" src="http://fc03.deviantart.net/fs71/f/2010/297/3/1/wall_e_icon_by_cyberwolf245-d31g2x6.gif"></img>
-	<img class=“RoboPhoto" src="http://fc03.deviantart.net/fs71/f/2010/297/3/1/wall_e_icon_by_cyberwolf245-d31g2x6.gif"></img>
-		</div>
+            <img id=dog src="http://www.clker.com/cliparts/6/d/e/0/1194985595894889966arrow-left-red_benji_par_01.svg.thumb.png"></img>
+            <img id=do src="http://www.clker.com/cliparts/6/9/0/f/1194985598254428023arrow-right-red_benji_pa_01.svg.thumb.png"><img>
+
+
+        </div>
 		<div id="GameTimer">
 			<p id="Timetilldoom"><span id="timer" align:center></span> Left!</p>
 			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
@@ -77,7 +78,7 @@
 		<select id="AutoPathChoice">
 		</select>
 		</div>
-
+      
 			<script type="text/javascript">
 			try{
 			d3.selectAll("#AutoPathChoice")
@@ -96,6 +97,7 @@
 					}
 
 			$autoSelector=$("#AutoPathChoice");
+           
 			$autoSelector.change(function(event){
 				event.preventDefault();
 				//alert( $autoSelector.children(':selected').text());
@@ -109,6 +111,7 @@
 				};
 				Socket.setValue(sendVal);
 			});
-			</script>
+                </script>
+            <script src="RobotSV.js"></script>
 </body>
 </html>

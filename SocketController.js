@@ -7,7 +7,21 @@ var showLogs=false;
 function logConsole(message){
 	if(showLogs==true){
 	console.log(message);}
-
+}
+RegExp.escape = function(text) {
+	if (!arguments.callee.sRE) {
+		var specials = [
+			'/', '.', '*', '+', '?', '|',
+			'(', ')', '[', ']', '{', '}', '\\'
+		];
+		arguments.callee.sRE = new RegExp(
+			'(\\' + specials.join('|\\') + ')', 'g'
+		);
+	}
+	return text.replace(arguments.callee.sRE, '\\$1');
+}
+RegExp.unescape=function(text){
+	return text.replace(/"\\"/g,"")
 }
 waitForSocketConnection=function(sock,callback){
 	//Callback to make sure it waits for finished connection before it sends messages
@@ -24,6 +38,21 @@ waitForSocketConnection=function(sock,callback){
 				}, 5);
 }
 var socket;
+
+function setKeyStore(id,value){
+	keyStore[id]=value;
+	//try{
+	var $obj=$("#"+id);
+	$obj.text(value+"");
+	$obj.val(value);
+	/*}
+	catch(err){
+		console.log(id+" is not synced with a key");
+	}*/
+}
+
+
+
 var Socket={
 								//the socket object
 	setup:function (){
@@ -39,11 +68,22 @@ var Socket={
 						var value = data['value'];
 						var key = data['key'];
 						var Event = data['event'];
+						if((typeof key)=="string"){
 
-						console.log(key+" "+Event+" "+value);
+							/*
+						key=key.replace("|","~");
+						key=key.replace(/ /g,"?");*/
+						//key=escape(key);
+						key=RegExp.escape(key);
+					}
+
+
+						logConsole(key+" "+Event+" "+value);
 						if(Event=="valueChanged"){
-							keyStore[key]=value;
-							logConsole("Message Recieved-key"+key+"-"+value);
+							setKeyStore(key,value);
+
+							//whenever a value is recieved it should update the corresponding html element
+							//html elements attributes to be altered are generally .text or .value
 						}
 						else if(Event=="Local"){
 							var val=keyStore["Local"];
@@ -52,10 +92,8 @@ var Socket={
 						}
 						else if(Event=='subtableValueChanged'){
 							console.log("subtable value changed, ",key," to ",value);
-							//put things inside keystore, figure out if there is anything special
-							//that needs to be done when a subtable value is changed
-								keyStore[key]=value;
-								logConsole("Message Recieved-key"+key+"-"+value);
+							setKeyStore(key,value);
+
 								//is the same as value changed for the time being. will probably be changed
 						}
 
@@ -83,9 +121,24 @@ var Socket={
 				});
 		},
 		setValue:function(val){//val is a json object,
+
+			if((typeof val.key)=="string"){/*
+			val.key=val.key.replace("~","|");
+			key=key.replace("?",/ /g);*/
+			//val.key=unescape(val.key);
+			val.key=RegExp.unescape(val.key);
+		}
 			this.sendMessage(JSON.stringify(val));
 		},
 		setKeyValue:function(key,value,Event){//key,event, and value are strings,
+
+				if((typeof key)=="string"){
+					/*
+						key=key.replace("~","|");
+						key=key.replace("?",/ /g);*/
+						//val.key=unescape(val.key);
+						val.key=RegExp.unescape(val.key);
+				}
 			var val={
 				"key":key,
 				"value":value,
