@@ -1,10 +1,17 @@
 
 
-var t1=keyStore.Tote Forklift|stack1;
-var t2=keyStore.Tote Forklift|stack2;
-var t3=keyStore.Tote Forklift|stack3;
-var t4=keyStore.Tote Forklift|stack4;
-var t5=keyStore.Tote Forklift|stack5;
+var t1=190;
+var t2=140;
+var t3=90;
+var t4=200;
+var t5=200;
+
+t1=keyStore.Tote Forklift|stack1;
+t2=keyStore.Tote Forklift|stack2;
+t3=keyStore.Tote Forklift|stack3;
+
+t4=keyStore.Tote Forklift|stack4;
+ t5=keyStore.Tote Forklift|stack5;
 
 var jsonRectangles
                       { "x_axis": 140, "y_axis": t1, "height": 10, "width":20, "color" : "purple" },
@@ -59,6 +66,7 @@ if(jsonRectangles[k].y_axis==89)
     
     jsonRectangles[k].setVisible=false;
     
+}
 }
 /*else if(prompt("what is the message"=="yes"))
 {
