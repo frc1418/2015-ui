@@ -31,6 +31,17 @@
   </div>
     <script type="text/javascript" src="SocketController.js"></script>
     <script type="text/javascript" src="writeSettings.js"></script>
-
+    <script>
+    var arr=new Array();
+    arr.push(RegExp.escape("Tote Forklift"));
+    arr.push(RegExp.escape("Can Forklift"));
+    $(document).ready(
+    function(){
+      window.setTimeout(function(){
+        writeArray(arr,".settingsBox");
+      },1000);
+        }
+    );
+    </script>
   </body>
 </html>
