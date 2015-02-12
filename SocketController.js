@@ -77,8 +77,6 @@ var Socket={
 						key=RegExp.escape(key);
 					}
 
-						//changeRecieved(key,value);
-						logConsole("Message Recieved-key"+key+"-"+value);
 
 						logConsole(key+" "+Event+" "+value);
 						if(Event=="valueChanged"){
