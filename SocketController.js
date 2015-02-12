@@ -21,7 +21,7 @@ RegExp.escape = function(text) {
 	return text.replace(arguments.callee.sRE, '\\$1');
 }
 RegExp.unescape=function(text){
-	return text.replace(/"\\"/g,"")
+	return text.replace("\\","")
 }
 waitForSocketConnection=function(sock,callback){
 	//Callback to make sure it waits for finished connection before it sends messages
@@ -137,7 +137,7 @@ var Socket={
 						key=key.replace("~","|");
 						key=key.replace("?",/ /g);*/
 						//val.key=unescape(val.key);
-						val.key=RegExp.unescape(val.key);
+						key=RegExp.unescape(key);
 				}
 			var val={
 				"key":key,

@@ -20,17 +20,14 @@ function writeSettingsFromLocal(divName,key){
 	//D3 Starts Here
 	function setTuningVal(id){
 		d3.event.preventDefault();
-		console.log("#"+id);
-		var t=d3.select("#"+id);
-		var value=t.property("value");
-		console.log(t);
-		console.log("attempting send of ",id," ",value);
+		//var t=$("[id=\'"+id+"\']");
+		var docdiv=document.getElementById(id);
+		var t=$(docdiv);
+		var value=t.val();
 		Socket.setKeyValue(id,value,'write');
 	}
 function writeSettings(data,divname){		//takes an object with 2 arrays, names and values
 	try{
-		console.log(data," writing to ",divname);
-		console.log(data," with ",divname)
 		div=d3.select(divname);				//selecting the html element
 		div.selectAll("div")								//selecting all the divs within our div
 		.data(data["names"])
@@ -68,7 +65,7 @@ function writeArray(IdArray,divname){
 	//use an array of values to write tuning variables
 	//idArray is a array of delimiters to display
 	var end=IdArray.length;
-	
+
 		var data={};
 		data.names=new Array();
 		data.values=new Array();
