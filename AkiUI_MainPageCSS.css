@@ -36,7 +36,8 @@
     margin:auto;
 }
 .settingsBox{
-  height: 250px;
+  overflow:scroll;
+  height: 450px;
  width: 550px;
    border: 1.5px solid black;
    display:block;
