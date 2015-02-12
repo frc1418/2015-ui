@@ -84,10 +84,14 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         message={'key':key,
                  'value':value,
                  'event':event}
+<<<<<<< HEAD
+        self.write_message(message, False)
+=======
         try:
             self.write_message(message, False)
         except WebSocketClosedError:
             print("websocket closed when attempting to changeValue")
+>>>>>>> FETCH_HEAD
 
     def writeJSONStringToNetworkTable(self, message):#message is a dictionary
 

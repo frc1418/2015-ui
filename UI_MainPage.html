@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html  lang="en">
 <head>
+
 <meta charset="utf-8">
 <link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
 	<title>1418 DriverStation</title>
@@ -13,6 +14,7 @@
 </head>
 <body>
 <script src="SocketController.js"></script>
+
 <ul class="nav nav-tabs" role="tablist">
 	<li class="active"><a href="UI_MainPage.html">Drive</a></li>
 	<li><a href="Aton.html">Aton</a></li>
@@ -22,7 +24,8 @@
 </ul>
 
 		<div class="MainDivide" id="ForkliftControls">
-			<br>
+
+
 			<button class="ToteLiftLevels" id="ToteButton1" onclick="Socket.setKeyValue('liftTo',0,'write')">Tote Level 0</button>
 			<button class="ToteLiftLevels" id="ToteButton2" onclick="Socket.setKeyValue('liftTo',1,'write')" >Tote Level 1</button>
 			<button class="ToteLiftLevels" id="ToteButton3" onclick="Socket.setKeyValue('liftTo',2,'write')">Tote Level 2</button>
@@ -32,27 +35,37 @@
 			<button class="BinsLiftLevels" id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write')">Bin Level 1</button>
 			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot','pressed','write')">Reverse Controls</button>
 			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift','pressed','write')">Auto-Lift</button>
+
+
 			<br>
 		<form id="myForm" action="form_action.asp">
 		Robot Speed 1: <input type="text" name="robospeed1" id="Robospeed1"><br>
 		Robot Speed 2: <input type="text" name=“robospeed2” id="Robospeed2"><br>
+
+
+			<br>
+  		<input type="submit" value="Submit">
+
+
 			<input type="submit" value="Submit">
+
 		</form>
 
 		</div>
 		<div class="MainDivide" id="CameraBox">
 			<img src=""></img>
 		</div>
+		<canvas id="canvas" width="1000" height="1000"></canvas>
 		<div class="MainDivide" id="RobotDiagram">
-            <img id=dog src="http://www.clker.com/cliparts/6/d/e/0/1194985595894889966arrow-left-red_benji_par_01.svg.thumb.png"></img>
-            <img id=do src="http://www.clker.com/cliparts/6/9/0/f/1194985598254428023arrow-right-red_benji_pa_01.svg.thumb.png"><img>
 
 
-        </div>
+		</div>
 		<div id="GameTimer">
 			<p id="Timetilldoom"><span id="timer" align:center></span> Left!</p>
 			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
 			<script>
+
+
 			function startTimer(){
 
 			var count=150;
@@ -78,7 +91,7 @@
 		<select id="AutoPathChoice">
 		</select>
 		</div>
-      
+
 			<script type="text/javascript">
 			try{
 			d3.selectAll("#AutoPathChoice")
@@ -97,7 +110,6 @@
 					}
 
 			$autoSelector=$("#AutoPathChoice");
-           
 			$autoSelector.change(function(event){
 				event.preventDefault();
 				//alert( $autoSelector.children(':selected').text());
@@ -111,7 +123,64 @@
 				};
 				Socket.setValue(sendVal);
 			});
-                </script>
-            <script src="RobotSV.js"></script>
+
+
+			//buttons
+			$(document).ready(function() {
+				event.preventDefault();
+
+				$('button').click(function() {
+
+					var ids = this.id;
+					var num = ids[0]+ids[10];
+
+
+					var sendVal={
+						key:ids,
+						value:num,
+						action:"write",
+
+					};
+					var readyState = 1;
+					Socket.setKeyValue(sendVal);
+					console.log(ids+"  "+num);
+
+
+
+					//Socket.setKeyValues(ids, num, 'write');
+
+
+				})
+
+			});
+
+			var gero = 0;
+			function draw(x,y){
+
+					x=1000;
+					y=1000;
+
+					var canvas = document.getElementById('canvas');
+					var ctx = canvas.getContext('2d');
+					ctx.clearRect(0,0,1000,1000);
+
+					ctx.translate(420,420);
+					ctx.rotate(-0.1);
+					ctx.translate(-420,-420);
+
+					ctx.fillRect(350,350,140,140);
+					ctx.restore();
+
+					console.log(gero);
+
+					var loopTimer = setTimeout('draw('+x+','+y+')',20);
+
+}
+
+
+
+			draw(0,0);
+
+			</script>
 </body>
 </html>
