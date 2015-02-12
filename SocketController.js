@@ -8,6 +8,21 @@ function logConsole(message){
 	if(showLogs==true){
 	console.log(message);}
 }
+RegExp.escape = function(text) {
+	if (!arguments.callee.sRE) {
+		var specials = [
+			'/', '.', '*', '+', '?', '|',
+			'(', ')', '[', ']', '{', '}', '\\'
+		];
+		arguments.callee.sRE = new RegExp(
+			'(\\' + specials.join('|\\') + ')', 'g'
+		);
+	}
+	return text.replace(arguments.callee.sRE, '\\$1');
+}
+RegExp.unescape=function(text){
+	return text.replace(/"\\"/g,"")
+}
 waitForSocketConnection=function(sock,callback){
 	//Callback to make sure it waits for finished connection before it sends messages
 	setTimeout(
@@ -26,20 +41,16 @@ var socket;
 
 function setKeyStore(id,value){
 	keyStore[id]=value;
+	//try{
 	var $obj=$("#"+id);
 	$obj.text(value+"");
 	$obj.val(value);
+	/*}
+	catch(err){
+		console.log(id+" is not synced with a key");
+	}*/
 }
 
-changeText =function (obj,val){
-	console.log("CHANGETEXT");
-	obj.text(val);
-}
-changeValue =function (obj,val){
-	console.log("CHANGEVALUE");
-
-	obj.val(val);
-}
 
 
 var Socket={
@@ -57,12 +68,17 @@ var Socket={
 						var value = data['value'];
 						var key = data['key'];
 						var Event = data['event'];
+						if((typeof key)=="string"){
+
+							/*
+						key=key.replace("|","~");
+						key=key.replace(/ /g,"?");*/
+						//key=escape(key);
+						key=RegExp.escape(key);
+					}
 
 
-						//changeRecieved(key,value);
-						logConsole("Message Recieved-key"+key+"-"+value);
-
-						console.log(key+" "+Event+" "+value);
+						logConsole(key+" "+Event+" "+value);
 						if(Event=="valueChanged"){
 							setKeyStore(key,value);
 
@@ -105,9 +121,24 @@ var Socket={
 				});
 		},
 		setValue:function(val){//val is a json object,
+
+			if((typeof val.key)=="string"){/*
+			val.key=val.key.replace("~","|");
+			key=key.replace("?",/ /g);*/
+			//val.key=unescape(val.key);
+			val.key=RegExp.unescape(val.key);
+		}
 			this.sendMessage(JSON.stringify(val));
 		},
 		setKeyValue:function(key,value,Event){//key,event, and value are strings,
+
+				if((typeof key)=="string"){
+					/*
+						key=key.replace("~","|");
+						key=key.replace("?",/ /g);*/
+						//val.key=unescape(val.key);
+						val.key=RegExp.unescape(val.key);
+				}
 			var val={
 				"key":key,
 				"value":value,
