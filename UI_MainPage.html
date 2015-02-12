@@ -73,19 +73,29 @@
 			}
 			</script>
 		</div>
-		<div class="MainDivide" id="AutoPathChoice">
+		<div class="MainDivide" id="AutoBox">
 		<br>
-		<select>
-		<option>Strat. Alpha</option>
-		<option>Strat. Beta</option>
-		<option>Strat. Gamma</option>
-		<option>Strat. Delta</option>
-		<option>Strat. Epsilon</option>
-		<option>Strat. Wreck their sh*t</option>
+		<select id="AutoPathChoice">
 		</select>
 		</div>
       
 			<script type="text/javascript">
+			try{
+			d3.selectAll("#AutoPathChoice")
+				.enter()
+				.append("option")
+				.text
+				.text(function(d,i){
+					return keystore.option["names"][i];
+				})
+				.attr("value",function(d,i){						//setting values
+					return keystore.option["values"][i];
+				})
+			}
+					catch(err){
+						console.log("Aki's d3 dun goofed");
+					}
+
 			$autoSelector=$("#AutoPathChoice");
            
 			$autoSelector.change(function(event){
