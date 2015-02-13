@@ -26,7 +26,6 @@ class WebSocket(tornado.websocket.WebSocketHandler):
     # WebSocket API
     #
 
-
     def check_origin(self, origin):
         return True
     def open(self):
@@ -40,12 +39,15 @@ class WebSocket(tornado.websocket.WebSocketHandler):
 
         data=json.loads(message)
         actiontype=data["action"]
-        if actiontype=="writeNum":
-            self.writeNumberToNetworkTable(data)
-        elif actiontype=="write":
-            self.writeJSONStringToNetworkTable(data)
-        elif actiontype=="writeBoo":
-            self.writeBooleanToNetworkTable(data)
+        
+        
+        if 'isNum' in data:
+            newMessage=float(data['value'])
+            print('newMessage is type ',type(newMessage))
+            data['value']=newMessage
+            
+        if actiontype=="write":
+            self.writeToNetworkTable(data)
         elif actiontype=="writeToSubtable":
             self.writeToSubtable(data)
     def writeToSubtable(self,message):
@@ -53,17 +55,11 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         key=message['key']
         newMessage=message["value"]
         tableName=message["tableName"]
+        
         subtable=self.sd.getSubTable(tableName)
-<<<<<<< HEAD
-        
-        subtable.putString(key, newMessage)      #this line writes to subtable but breaks code
-        
-=======
-        print('SubtableWrite, key-',key,',message-',newMessage,',tableName ',tableName)
-        #subtable.putString(key, newMessage)
+
         subtable.putValue(key, newMessage)      #this line writes to subtable but breaks code
-        #self.sd.putString(key, newMessage)
->>>>>>> FETCH_HEAD
+
     def on_close(self):
         print("WebSocket closed")
         self.sd.removeTableListener(self.valueChanged)
@@ -98,33 +94,18 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         except WebSocketClosedError:
             print("websocket closed when attempting to changeValue")
 
-    def writeJSONStringToNetworkTable(self, message):#message is a dictionary
+    def writeToNetworkTable(self, message):#message is a dictionary
 
         key=message['key']
         newMessage=message["value"]
-        print('key-',key,',message-',newMessage)
-<<<<<<< HEAD
-        self.sd.putString(key, newMessage)
-    def writeNumberToNetworkTable(self, message):#message is a dictionary
+        print('key-',key,',message-',newMessage,' type is ', type(newMessage))
 
-        key=message['key']
-        newMessage=message["value"]
-        newMessage=float(newMessage)
-        print('Number key-',key,',message-',newMessage)
-        self.sd.putNumber(key, newMessage)
-    def writeBooleanToNetworkTable(self, message):#message is a dictionary
-
-        key=message['key']
-        newMessage=message["value"]
-        print('Boolean key-',key,',message-',newMessage)
-        self.sd.putBoolean(key, newMessage)
-=======
         self.sd.putValue(key, newMessage)
->>>>>>> FETCH_HEAD
+
 
     def writeStringToNetworkTable(self, key,message):#key is a string, message is a string
 
-        print('key-',key,',message-',message)
+        print('key-',key,',message-',message,' type is ', type(newMessage))
         self.sd.putValue(key, message)
 
 
