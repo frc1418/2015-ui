@@ -21,17 +21,17 @@
     left: 10px;
 
 }
-#AutoPathChoice{
+#AutoBox{
     position: fixed;
     bottom: 20px;
     right: 10px;
 }
 #GameTimer{
     position: fixed;
-    top: 300px;
-    bottom: 270px;
-    left:520px;
-    right: 520px;
+    top: 100px;
+    bottom: 370px;
+    left:560px;
+    right: 560px;
     border: 1.5px solid black;
     margin:auto;
 }
@@ -99,8 +99,8 @@ select {
 	  width:100px;
     margin:auto;
     position: fixed;
-    top: 310px;
-    bottom: 260px;
+    top: 110px;
+    bottom: 360px;
     left:520px;
     right: 520px;
   	display:inline-block;
@@ -108,8 +108,8 @@ select {
 #Timetilldoom{
 
   position: fixed;
-  top: 305px;
-  bottom: 290px;
+  top: 105px;
+  bottom: 390px;
   left:590px;
   right: 580px;
 }
