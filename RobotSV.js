@@ -3,30 +3,41 @@
 var t1=190;
 var t2=140;
 var t3=90;
-var t4=200;
-var t5=200;
+var t4=230;
+var t5=270;
+var t6=180;
+/*var tF1=RegExp.escape("Tote Forklift|stack1");
+var tF2=RegExp.escape("Tote Forklift|stack2");
+var tF3=RegExp.escape("Tote Forklift|stack3");
+var tF4=RegExp.escape("Tote Forklift|stack4");
+var tF5=RegExp.escape("Tote Forklift|stack5");
+var tF6=RegExp.escape("Tote Forklift|stack5");
 
-t1=keyStore.Tote Forklift|stack1;
-t2=keyStore.Tote Forklift|stack2;
-t3=keyStore.Tote Forklift|stack3;
 
-t4=keyStore.Tote Forklift|stack4;
- t5=keyStore.Tote Forklift|stack5;
+keyStore[tF1]=190;
+keyStore[tF2]=150;
+keyStore[tF3]=90;
+keyStore[tF4]=230;
+keyStore[tF5]=270;
+keyStore[tF6]=180;
 
-var jsonRectangles
-                      { "x_axis": 140, "y_axis": t1, "height": 10, "width":20, "color" : "purple" },
+
+var t1=keyStore[tF1];
+var t2=keyStore[tF2];
+var t3=keyStore[tF3];
+var t4=keyStore[tF4];
+var t5=keyStore[tF5];
+var t6=keyStore[tF6];*/
+
+var jsonRectangles=[
+                      {"x_axis": 140, "y_axis": t1, "height": 10, "width":20, "color" : "purple"},
                       {"x_axis": 140, "y_axis": t2, "height": 10, "width":20, "color" : "purple"},
                       {"x_axis": 140, "y_axis": t3, "height": 10, "width":20, "color" : "purple"},
-                      { "x_axis": 140, "y_axis": t4, "height": 10, "width":20, "color" : "purple" },
+                      {"x_axis": 140, "y_axis": t4, "height": 10, "width":20, "color" : "purple"},
                       {"x_axis": 140, "y_axis": t5, "height": 10, "width":20, "color" : "purple"},
-                     
-                      //{ "x_axis": 40, "y_axis": 220, "height": 20, "width":40, "color" : "red" },
-                      // {"x_axis": 140, "y_axis": 220, "height": 20, "width":40, "color" : "green"},
-                      { "x_axis": 70, "y_axis": 70, "height": 133, "width":80, "color" : "" }
-                      //{ "x_axis": 40, "y_axis": 220, "height": 20, "width":40, "color" : "red" }
-                      //{"x_axis": 140, "y_axis": 220, "height": 20, "width":40, "color" : "green"}];
-                      
-                      ];
+                      {"x_axis": 50, "y_axis": t6, "height": 15, "width":25, "color" : "orange"},
+                      {"x_axis": 70, "y_axis": 70, "height": 133, "width":80, "color": ""}];
+
 var max_x = 0;
 var max_y = 0;
 //This code makes the SVG responsive to
@@ -48,7 +59,7 @@ var rectangles = svgContainer.selectAll("rect")
 .data(jsonRectangles)
 .enter()
 .append("rect");
-//Note each rectangle get class=box attribute for CSS styling
+
 var rectangleAttributes = rectangles
 .attr("class", "box")
 .attr("x", function (d) { return d.x_axis; })
@@ -56,15 +67,17 @@ var rectangleAttributes = rectangles
 .attr("height", function (d) { return d.height; })
 .attr("width", function (d) { return d.width; })
 .style("fill", function(d) { return d.color; });
-var moveRect = rectangles
-.attr("class", "part")
-.attr("y", function (k) { return k.y_axis; })
-for(var k=0;k<5;k++)
+//Note each rectangle get class=box attribute for CSS styling
+
+
+/*for(var k=0;k<6;k++)
 {
-if(jsonRectangles[k].y_axis==89)
+if(jsonRectangles[k].y_axis>190||jsonRectangles[k].y_axis<90)
 {
-    
-    jsonRectangles[k].setVisible=false;
+    var moveRect = rectangles
+    .attr("class", "part")
+    .style("visibility", function(d) { return d.visibitity; });
+    //jsonRectangles[k].setVisible=false;
     
 }
 }
