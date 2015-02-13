@@ -1,12 +1,12 @@
 
 
-var t1=190;
+/*var t1=190;
 var t2=140;
 var t3=90;
 var t4=230;
 var t5=270;
 var t6=180;
-/*var tF1=RegExp.escape("Tote Forklift|stack1");
+*/var tF1=RegExp.escape("Tote Forklift|stack1");
 var tF2=RegExp.escape("Tote Forklift|stack2");
 var tF3=RegExp.escape("Tote Forklift|stack3");
 var tF4=RegExp.escape("Tote Forklift|stack4");
@@ -27,7 +27,7 @@ var t2=keyStore[tF2];
 var t3=keyStore[tF3];
 var t4=keyStore[tF4];
 var t5=keyStore[tF5];
-var t6=keyStore[tF6];*/
+var t6=keyStore[tF6];//*/
 
 var jsonRectangles=[
                       {"x_axis": 140, "y_axis": t1, "height": 10, "width":20, "color" : "purple"},
