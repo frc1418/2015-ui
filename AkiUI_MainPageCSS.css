@@ -130,17 +130,17 @@ select {
 #circle
 {
 
-    position:fixed;
+    position:relative;
     height:20px;
-    right:750px;
-    top:510px;
+    right:-175px;
+    top:-45px;
 }
 #circle1
 {
-    position:fixed;
+    position:relative;
     height:20px;
-    right:800px;
-    top:510px;
+    right:-95px;
+    top:-45px;
 }
 .part{
     visibility:hidden;
