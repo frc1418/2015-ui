@@ -26,7 +26,6 @@ class WebSocket(tornado.websocket.WebSocketHandler):
     # WebSocket API
     #
 
-
     def check_origin(self, origin):
         return True
     def open(self):
@@ -40,9 +39,15 @@ class WebSocket(tornado.websocket.WebSocketHandler):
 
         data=json.loads(message)
         actiontype=data["action"]
-
+        
+        
+        if 'isNum' in data:
+            newMessage=float(data['value'])
+            print('newMessage is type ',type(newMessage))
+            data['value']=newMessage
+            
         if actiontype=="write":
-            self.writeJSONStringToNetworkTable(data)
+            self.writeToNetworkTable(data)
         elif actiontype=="writeToSubtable":
             self.writeToSubtable(data)
     def writeToSubtable(self,message):
@@ -50,11 +55,11 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         key=message['key']
         newMessage=message["value"]
         tableName=message["tableName"]
+        
         subtable=self.sd.getSubTable(tableName)
-        print('SubtableWrite, key-',key,',message-',newMessage,',tableName ',tableName)
-        #subtable.putString(key, newMessage)
+
         subtable.putValue(key, newMessage)      #this line writes to subtable but breaks code
-        #self.sd.putString(key, newMessage)
+
     def on_close(self):
         print("WebSocket closed")
         self.sd.removeTableListener(self.valueChanged)
@@ -89,16 +94,18 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         except WebSocketClosedError:
             print("websocket closed when attempting to changeValue")
 
-    def writeJSONStringToNetworkTable(self, message):#message is a dictionary
+    def writeToNetworkTable(self, message):#message is a dictionary
 
         key=message['key']
         newMessage=message["value"]
-        print('key-',key,',message-',newMessage)
+        print('key-',key,',message-',newMessage,' type is ', type(newMessage))
+
         self.sd.putValue(key, newMessage)
+
 
     def writeStringToNetworkTable(self, key,message):#key is a string, message is a string
 
-        print('key-',key,',message-',message)
+        print('key-',key,',message-',message,' type is ', type(newMessage))
         self.sd.putValue(key, message)
 
 

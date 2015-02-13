@@ -33,11 +33,6 @@
 			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot','pressed','write')">Reverse Controls</button>
 			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift','pressed','write')">Auto-Lift</button>
 			<br>
-		<form id="myForm" action="form_action.asp">
-		Robot Speed 1: <input type="text" name="robospeed1" id="Robospeed1"><br>
-		Robot Speed 2: <input type="text" name=“robospeed2” id="Robospeed2"><br>
-			<input type="submit" value="Submit">
-		</form>
 
 		</div>
 		<div class="MainDivide" id="CameraBox">
@@ -80,37 +75,43 @@
 		</div>
 
 			<script type="text/javascript">
-			try{
-			d3.selectAll("#AutoPathChoice")
+			$(document).ready(
+				function(){
+					window.setTimeout(function(){
+						fillAutonomousBox("#AutoPathChoice","options");
+					},300);
+
+
+					var	$autoSelector=$("#AutoPathChoice");
+					$autoSelector.change(function(event){
+						event.preventDefault();
+						//alert( $autoSelector.children(':selected').text());
+						var val=$autoSelector.find('option:selected').text();
+						//alert(val);
+						var sendVal={
+							key:"selected",
+							value:val,
+							action:"writeToSubtable",
+							tableName:"Autonomous Mode"
+						};
+						Socket.setValue(sendVal);
+					});
+
+				}
+			);
+			function fillAutonomousBox(key,arrayId,defaultVal){
+
+
+			d3.select(key)
+				.selectAll("select")
+				.data(keyStore[arrayId])
 				.enter()
 				.append("option")
-				.text
 				.text(function(d,i){
-					return keystore.option["names"][i];
-				})
-				.attr("value",function(d,i){						//setting values
-					return keystore.option["values"][i];
-				})
+					return keyStore[arrayId][i];
+				});
+				$(key).val(keyStore["selected"]);
 			}
-					catch(err){
-						console.log("Aki's d3 dun goofed");
-					}
-
-			$autoSelector=$("#AutoPathChoice");
-
-			$autoSelector.change(function(event){
-				event.preventDefault();
-				//alert( $autoSelector.children(':selected').text());
-				var val=$autoSelector.find('option:selected').text();
-				//alert(val);
-				var sendVal={
-					key:"selected",
-					value:val,
-					action:"writeToSubtable",
-					tableName:"Autonomous Mode"
-				};
-				Socket.setValue(sendVal);
-			});
                 </script>
             <script src="RobotSV.js"></script>
 </body>
