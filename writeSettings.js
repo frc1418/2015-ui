@@ -89,8 +89,8 @@ function writeArray(IdArray,divname){
 						}
 					}
 				}
-}
-writeSettings(data,divname);
+	}
+	writeSettings(data,divname);
 }
 
 $(document).ready(function(){											//on startup write settings
