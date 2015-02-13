@@ -62,7 +62,7 @@ var Socket={
 				if (socket) {
 					socket.onopen = function() {
 					 console.log("keystore is",keyStore);
-						keyStore["selected"]=keyStore["default"];
+						//keyStore["selected"]=keyStore["default"];
 					}
 					socket.onmessage = function(msg) {
 						var data = JSON.parse(msg.data);

@@ -49,22 +49,16 @@
 			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
 			<script>
 			function startTimer(){
-
-			var count=150;
-
-			var counter=setInterval(timer, 1000);
-			function timer(){
-			{
-				count=count-1;
-				if (count <= 0)
-				{
-					clearInterval(counter);
-			return;
-		}
-
-			document.getElementById("timer").innerHTML=count + " secs";
-			}
-			}
+				var count=150;
+				var counter=setInterval(timer, 1000);
+				function timer(){
+					count=count-1;
+					if (count <= 0){
+						clearInterval(counter);
+						return;
+					}
+					document.getElementById("timer").innerHTML=count + " secs";
+				}
 			}
 			</script>
 		</div>
@@ -110,7 +104,12 @@
 				.text(function(d,i){
 					return keyStore[arrayId][i];
 				});
-				$(key).val(keyStore["selected"]);
+				if(!('selected' in keyStore)||keyStore['selected']==undefined){
+					$(key).val(keyStore["default"]);
+				}
+				else{
+					$(key).val(keyStore["selected"]);
+				}
 			}
                 </script>
             <script src="RobotSV.js"></script>
