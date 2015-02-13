@@ -53,7 +53,7 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         subtable=self.sd.getSubTable(tableName)
         print('SubtableWrite, key-',key,',message-',newMessage,',tableName ',tableName)
         #subtable.putString(key, newMessage)
-        subtable.putString(key, newMessage)      #this line writes to subtable but breaks code
+        subtable.putValue(key, newMessage)      #this line writes to subtable but breaks code
         #self.sd.putString(key, newMessage)
     def on_close(self):
         print("WebSocket closed")
@@ -94,12 +94,12 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         key=message['key']
         newMessage=message["value"]
         print('key-',key,',message-',newMessage)
-        self.sd.putString(key, newMessage)
+        self.sd.putValue(key, newMessage)
 
     def writeStringToNetworkTable(self, key,message):#key is a string, message is a string
 
         print('key-',key,',message-',message)
-        self.sd.putString(key, message)
+        self.sd.putValue(key, message)
 
 
 
