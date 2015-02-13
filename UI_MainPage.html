@@ -30,8 +30,8 @@
 			<br>
 			<button class="BinsLiftLevels" id="BinButton1" onclick="Socket.setKeyValue('binTo',0,'write')">Bin Level 0</button>
 			<button class="BinsLiftLevels" id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write')">Bin Level 1</button>
-			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot','pressed','write')">Reverse Controls</button>
-			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift','pressed','write')">Auto-Lift</button>
+			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write')">Reverse Controls</button>
+			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write')">Auto-Lift</button>
 			<br>
 
 		</div>
@@ -49,22 +49,16 @@
 			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
 			<script>
 			function startTimer(){
-
-			var count=150;
-
-			var counter=setInterval(timer, 1000);
-			function timer(){
-			{
-				count=count-1;
-				if (count <= 0)
-				{
-					clearInterval(counter);
-			return;
-		}
-
-			document.getElementById("timer").innerHTML=count + " secs";
-			}
-			}
+				var count=150;
+				var counter=setInterval(timer, 1000);
+				function timer(){
+					count=count-1;
+					if (count <= 0){
+						clearInterval(counter);
+						return;
+					}
+					document.getElementById("timer").innerHTML=count + " secs";
+				}
 			}
 			</script>
 		</div>
@@ -110,7 +104,12 @@
 				.text(function(d,i){
 					return keyStore[arrayId][i];
 				});
-				$(key).val(keyStore["selected"]);
+				if(!('selected' in keyStore)||keyStore['selected']==undefined){
+					$(key).val(keyStore["default"]);
+				}
+				else{
+					$(key).val(keyStore["selected"]);
+				}
 			}
                 </script>
             <script src="RobotSV.js"></script>
