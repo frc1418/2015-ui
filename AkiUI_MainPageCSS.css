@@ -127,3 +127,21 @@ select {
     right:-185px;
     height:19px;
 }
+#circle
+{
+
+    position:fixed;
+    height:20px;
+    right:750px;
+    top:510px;
+}
+#circle1
+{
+    position:fixed;
+    height:20px;
+    right:800px;
+    top:510px;
+}
+.part{
+    visibility:hidden;
+}
