@@ -40,9 +40,12 @@ class WebSocket(tornado.websocket.WebSocketHandler):
 
         data=json.loads(message)
         actiontype=data["action"]
-
-        if actiontype=="write":
+        if actiontype=="writeNum":
+            self.writeNumberToNetworkTable(data)
+        elif actiontype=="write":
             self.writeJSONStringToNetworkTable(data)
+        elif actiontype=="writeBoo":
+            self.writeBooleanToNetworkTable(data)
         elif actiontype=="writeToSubtable":
             self.writeToSubtable(data)
     def writeToSubtable(self,message):
@@ -51,10 +54,9 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         newMessage=message["value"]
         tableName=message["tableName"]
         subtable=self.sd.getSubTable(tableName)
-        print('SubtableWrite, key-',key,',message-',newMessage,',tableName ',tableName)
-        #subtable.putString(key, newMessage)
+        
         subtable.putString(key, newMessage)      #this line writes to subtable but breaks code
-        #self.sd.putString(key, newMessage)
+        
     def on_close(self):
         print("WebSocket closed")
         self.sd.removeTableListener(self.valueChanged)
@@ -95,6 +97,19 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         newMessage=message["value"]
         print('key-',key,',message-',newMessage)
         self.sd.putString(key, newMessage)
+    def writeNumberToNetworkTable(self, message):#message is a dictionary
+
+        key=message['key']
+        newMessage=message["value"]
+        newMessage=float(newMessage)
+        print('Number key-',key,',message-',newMessage)
+        self.sd.putNumber(key, newMessage)
+    def writeBooleanToNetworkTable(self, message):#message is a dictionary
+
+        key=message['key']
+        newMessage=message["value"]
+        print('Boolean key-',key,',message-',newMessage)
+        self.sd.putBoolean(key, newMessage)
 
     def writeStringToNetworkTable(self, key,message):#key is a string, message is a string
 
