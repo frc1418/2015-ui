@@ -26,18 +26,17 @@
 			<button class="ToteLiftLevels" id="ToteButton1" onclick="Socket.setKeyValue('liftTo',0,'write')">Tote Level 0</button>
 			<button class="ToteLiftLevels" id="ToteButton2" onclick="Socket.setKeyValue('liftTo',1,'write')" >Tote Level 1</button>
 			<button class="ToteLiftLevels" id="ToteButton3" onclick="Socket.setKeyValue('liftTo',2,'write')">Tote Level 2</button>
-			<button class="ToteLiftLevels" id="ToteButton4" onclick="Socket.setKeyValue('liftTo',3,'write')">Tote Level 3</button>
+			<button class="ToteLiftLevels" id="ToteButton4" onclick="Socket.setKeyValue('liftTo',3,'write')">Tote Max</button>
+
+			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write')">Reverse Controls</button>
 			<br>
 			<button class="BinsLiftLevels" id="BinButton1" onclick="Socket.setKeyValue('binTo',0,'write')">Bin Level 0</button>
 			<button class="BinsLiftLevels" id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write')">Bin Level 1</button>
-			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot','pressed','write')">Reverse Controls</button>
-			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift','pressed','write')">Auto-Lift</button>
+			<button class="BinsLiftLevels" id="BinButton3" onclick="Socket.setKeyValue('binTo',2,'write')">Bin Level 2</button>
+			<button class="BinsLiftLevels" id="BinButton4" onclick="Socket.setKeyValue('binTo',3,'write')">Bin Max</button>
+			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write')">Auto-Lift</button>
 			<br>
-		<form id="myForm" action="form_action.asp">
-		Robot Speed 1: <input type="text" name="robospeed1" id="Robospeed1"><br>
-		Robot Speed 2: <input type="text" name=“robospeed2” id="Robospeed2"><br>
-			<input type="submit" value="Submit">
-		</form>
+			<br>
 
 		</div>
 		<div class="MainDivide" id="CameraBox">
@@ -54,22 +53,16 @@
 			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
 			<script>
 			function startTimer(){
-
-			var count=150;
-
-			var counter=setInterval(timer, 1000);
-			function timer(){
-			{
-				count=count-1;
-				if (count <= 0)
-				{
-					clearInterval(counter);
-			return;
-		}
-
-			document.getElementById("timer").innerHTML=count + " secs";
-			}
-			}
+				var count=150;
+				var counter=setInterval(timer, 1000);
+				function timer(){
+					count=count-1;
+					if (count <= 0){
+						clearInterval(counter);
+						return;
+					}
+					document.getElementById("timer").innerHTML=count + " secs";
+				}
 			}
 			</script>
 		</div>
@@ -80,37 +73,48 @@
 		</div>
 
 			<script type="text/javascript">
-			try{
-			d3.selectAll("#AutoPathChoice")
+			$(document).ready(
+				function(){
+					window.setTimeout(function(){
+						fillAutonomousBox("#AutoPathChoice","options");
+					},300);
+
+
+					var	$autoSelector=$("#AutoPathChoice");
+					$autoSelector.change(function(event){
+						event.preventDefault();
+						//alert( $autoSelector.children(':selected').text());
+						var val=$autoSelector.find('option:selected').text();
+						//alert(val);
+						var sendVal={
+							key:"selected",
+							value:val,
+							action:"writeToSubtable",
+							tableName:"Autonomous Mode"
+						};
+						Socket.setValue(sendVal);
+					});
+
+				}
+			);
+			function fillAutonomousBox(key,arrayId,defaultVal){
+
+
+			d3.select(key)
+				.selectAll("select")
+				.data(keyStore[arrayId])
 				.enter()
 				.append("option")
-				.text
 				.text(function(d,i){
-					return keystore.option["names"][i];
-				})
-				.attr("value",function(d,i){						//setting values
-					return keystore.option["values"][i];
-				})
+					return keyStore[arrayId][i];
+				});
+				if(!('selected' in keyStore)||keyStore['selected']==undefined){
+					$(key).val(keyStore["default"]);
+				}
+				else{
+					$(key).val(keyStore["selected"]);
+				}
 			}
-					catch(err){
-						console.log("Aki's d3 dun goofed");
-					}
-
-			$autoSelector=$("#AutoPathChoice");
-
-			$autoSelector.change(function(event){
-				event.preventDefault();
-				//alert( $autoSelector.children(':selected').text());
-				var val=$autoSelector.find('option:selected').text();
-				//alert(val);
-				var sendVal={
-					key:"selected",
-					value:val,
-					action:"writeToSubtable",
-					tableName:"Autonomous Mode"
-				};
-				Socket.setValue(sendVal);
-			});
                 </script>
             <script src="RobotSV.js"></script>
 </body>

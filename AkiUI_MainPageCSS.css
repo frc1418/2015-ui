@@ -6,7 +6,7 @@
 }
 #ForkliftControls{
     position: fixed;
-    top: 50px;
+    top: 40px;
     left: 10px;
 }
 #CameraBox{
@@ -56,7 +56,7 @@
 }
 
 button {
-   	height:70px;
+   	height:60px;
 	  width:75px;
     margin:5px;
   	display:inline-block;
@@ -64,7 +64,7 @@ button {
 
 . {
 	height: 20px;
-	width: 100px;
+	width: 90px;
 	border: none;
   	display:block;
 }
