@@ -54,9 +54,11 @@
 		</div>
 		<div class="MainDivide" id="CameraBox">
 			<img src=""></img>
+
 		</div>
-		<canvas id="canvas" width="1000" height="10000"></canvas>
+
 		<div class="MainDivide" id="RobotDiagram">
+			<p><div class="topDown"></div></p>
 
 
 		</div>
@@ -145,62 +147,35 @@
 			});
 
 			//rotating squar
-			var uiSquare = 180;
-			var geroSenser = 180;
+			var uiTopVeiw = 0;
+			var geroSenser = 0;
 			function draw(x,y){
-					x=1000;
-					y=1000;
-					var canvas = document.getElementById('canvas');
-					var ctx = canvas.getContext('2d');
-					ctx.clearRect(0,0,1000,1000);
-					//dealing with zero
-					//right
-					if (uiSquare<=90 && geroSenser>=270) {
-						ctx.translate(425,525);
-						ctx.rotate(-0.0175);
-						ctx.translate(-425,-525);
-						if (uiSquare>0) {
-							uiSquare = uiSquare - 1;
-						}
-						else if (uiSquare<=0) {
-							uiSquare = 360;
-						}
-					}
-					//left
-					else if (uiSquare>=270 && geroSenser<=90) {
-						ctx.translate(425,525);
-						ctx.rotate(0.0175);
-						ctx.translate(-425,-525);
-						if (uiSquare<360) {
-							uiSquare = uiSquare + 1;
-						}
-						else if (uiSquare<=360) {
-							uiSquare = 0;
-						}
-					}
-					//right
-					else if (uiSquare<geroSenser) {
 
-						ctx.translate(425,525);
-						ctx.rotate(.0175);
-						ctx.translate(-425,-525);
-						uiSquare = uiSquare + 1;
+				if (geroSenser>uiTopVeiw) {
+						var x = 0;
+						x++;
 
-					}
-					//left
-					else if (uiSquare>geroSenser) {
+						$("p").css("transform", "rotate("+x+"deg);");
 
-						ctx.translate(425,525);
-						ctx.rotate(-0.0175);
-						ctx.translate(-425,-525);
-						uiSquare = uiSquare - 1;
 
-					}
-					ctx.fillRect(350,450,140,140);
-					ctx.restore();
-					var loopTimer = setTimeout('draw('+x+','+y+')',0);
+						//transform.rotate = "rotate("+x+"deg)";
+						//return;
+
+						$('.topDown').addClass('topDown rotate');
+
+
+						uiTopVeiw+=1;
+
+				}
+
+
+
+				var loopTimer = setTimeout('draw('+x+','+y+')',0);
+
+
+
 }
-			draw(0,0);
+			draw();
 			</script>
 			<script src="RobotSV.js"></script>
 </body>
