@@ -1,37 +1,52 @@
 .MainDivide{
- 	height: 250px;
-	width: 550px;
+ 	height: 40vh;
+	width: 40vw;
   	border: 1.5px solid black;
   	display:block;
 }
+ul{
+    height:6.5vh;
+    width:100vw;
+
+}
+li{
+    height:6.5vh;
+    width:5.5vw;
+    font-size:2.2vmin;
+}
+#ThisTab{
+    height:6.5vh;
+    width:5.5vw;
+    font-size:2.2vmin;
+
+}
 #ForkliftControls{
     position: fixed;
-    top: 40px;
-    left: 10px;
+    top: 8vh;
+    left: 1vw;
 }
 #CameraBox{
     position: fixed;
-    top: 50px;
-    right: 10px;
-
+    top: 8vh;
+    right: 1vw;
 }
 #RobotDiagram{
     position: fixed;
-    bottom: 20px;
-    left: 10px;
+    bottom: 1vh;
+    left: 1vw;
 
 }
 #AutoBox{
     position: fixed;
-    bottom: 20px;
-    right: 10px;
+    bottom: 1vh;
+    right: 1vw;
 }
 #GameTimer{
     position: fixed;
-    top: 100px;
-    bottom: 370px;
-    left:560px;
-    right: 560px;
+    top: 10vh;
+    bottom: 57vh;
+    left:41vw;
+    right: 41vw;
     border: 1.5px solid black;
     margin:auto;
 }
@@ -49,19 +64,42 @@
     position: fixed;
     bottom: 20px;
     right: 10px;
-
+}
+#SubmitRobospeed{
+    position: fixed;
+    top:40vh;
+    left:21vw;
+    height:4vh;
+    width:7vw;
+}
+#myForm{
+  font-size:2.25vmin;
+}
+#Robospeed1{
+  position: fixed;
+  top:38vh;
+  left:9vw;
+  height:4vh;
+  width:11.5vw;
+}
+#Robospeed2{
+  position: fixed;
+  top:42vh;
+  left:9vw;
+  height:4vh;
+  width:11.5vw;
 }
 * {
 
 }
 
 button {
-   	height:60px;
-	  width:75px;
-    margin:5px;
-  	display:inline-block;
+   	height:13vh;
+	  width:7vw;
+    margin:0.5vmin;
+  	display:inline;
+    font-size:2vmin;
 }
-
 . {
 	height: 20px;
 	width: 90px;
@@ -69,10 +107,10 @@ button {
   	display:block;
 }
 select {
-	height:210px;
-	width: 540px;
-	border: 10px none;
-	margin:auto;
+	height:38vh;
+	width: 39vw;
+	border: 1vmin none;
+	margin:1vmin;
   	display:inline-block;
 	font-size:50px;
 
@@ -95,23 +133,23 @@ select {
   display:inline-block;
 }
 #TimerButton{
-   	height:20px;
-	  width:100px;
+   	height:4vh;
+	  width:7vw;
     margin:auto;
     position: fixed;
-    top: 110px;
-    bottom: 360px;
-    left:520px;
-    right: 520px;
+    top: 10vh;
+    bottom: 36vh;
+    left:42vw;
+    right: 42vw;
   	display:inline-block;
 }
 #Timetilldoom{
 
   position: fixed;
-  top: 105px;
-  bottom: 390px;
-  left:590px;
-  right: 580px;
+  top: 25vh;
+  bottom: 50vh;
+  left:46.5vw;
+  right: 46.5vw;
 }
 #dog
 {
