@@ -55,7 +55,7 @@
 		<div class="MainDivide" id="CameraBox">
 			<img src=""></img>
 		</div>
-		<canvas id="canvas" width="1000" height="1000"></canvas>
+		<canvas id="canvas" width="1000" height="10000"></canvas>
 		<div class="MainDivide" id="RobotDiagram">
 
 
@@ -133,7 +133,7 @@
 					};
 					var readyState = 1;
 					Socket.setKeyValue(sendVal);
-					console.log(ids+"  "+num);
+
 
 
 
@@ -144,33 +144,64 @@
 
 			});
 
-			var gero = 0;
+			//rotating squar
+			var uiSquare = 180;
+			var geroSenser = 180;
 			function draw(x,y){
-
 					x=1000;
 					y=1000;
-
 					var canvas = document.getElementById('canvas');
 					var ctx = canvas.getContext('2d');
 					ctx.clearRect(0,0,1000,1000);
+					//dealing with zero
+					//right
+					if (uiSquare<=90 && geroSenser>=270) {
+						ctx.translate(425,525);
+						ctx.rotate(-0.0175);
+						ctx.translate(-425,-525);
+						if (uiSquare>0) {
+							uiSquare = uiSquare - 1;
+						}
+						else if (uiSquare<=0) {
+							uiSquare = 360;
+						}
+					}
+					//left
+					else if (uiSquare>=270 && geroSenser<=90) {
+						ctx.translate(425,525);
+						ctx.rotate(0.0175);
+						ctx.translate(-425,-525);
+						if (uiSquare<360) {
+							uiSquare = uiSquare + 1;
+						}
+						else if (uiSquare<=360) {
+							uiSquare = 0;
+						}
+					}
+					//right
+					else if (uiSquare<geroSenser) {
 
-					ctx.translate(420,420);
-					ctx.rotate(-0.1);
-					ctx.translate(-420,-420);
+						ctx.translate(425,525);
+						ctx.rotate(.0175);
+						ctx.translate(-425,-525);
+						uiSquare = uiSquare + 1;
 
-					ctx.fillRect(350,350,140,140);
+					}
+					//left
+					else if (uiSquare>geroSenser) {
+
+						ctx.translate(425,525);
+						ctx.rotate(-0.0175);
+						ctx.translate(-425,-525);
+						uiSquare = uiSquare - 1;
+
+					}
+					ctx.fillRect(350,450,140,140);
 					ctx.restore();
-
-					console.log(gero);
-
-					var loopTimer = setTimeout('draw('+x+','+y+')',20);
-
+					var loopTimer = setTimeout('draw('+x+','+y+')',0);
 }
-
-
-
 			draw(0,0);
-
 			</script>
+			<script src="RobotSV.js"></script>
 </body>
 </html>
