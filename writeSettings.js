@@ -23,14 +23,25 @@ function writeSettingsFromLocal(divName,key){
 		//var t=$("[id=\'"+id+"\']");
 		var docdiv=document.getElementById(id);
 		var t=$(docdiv);
+		var type=t.attr('returnType');
 		var value=t.val();
+		console.log('TYPE IS ',type);
+		if(type=='String'){
+			value=String(value);
+		}
+		else if(type=='number'){
+			value=Number(value);
+		}
+
+		//id=id.substring(id.indexOf('|'));
 		var Message={
+			//'key':RegExp.unescape(id),
 			'key':id,
 			'value':value,
 			'isNum':true,
 			'action':'write'
 		}
-		Socket.setValue(Message);
+		Socket.setValue(Message,true);
 	}
 function writeSettings(data,divname){		//takes an object with 2 arrays, names and values
 	try{
@@ -54,6 +65,9 @@ function writeSettings(data,divname){		//takes an object with 2 arrays, names an
 		})
 		.append("input")										//appending input forms in the submit forms
 		.attr("type","text")
+		.attr('returnType',function(d,i){
+			return typeof(data['values'][i]);
+		})
 		.attr("value",function(d,i){						//setting values
 			return data["values"][i];
 		})
