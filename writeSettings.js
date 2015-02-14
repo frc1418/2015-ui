@@ -24,7 +24,13 @@ function writeSettingsFromLocal(divName,key){
 		var docdiv=document.getElementById(id);
 		var t=$(docdiv);
 		var value=t.val();
-		Socket.setKeyValue(id,value,'write');
+		var Message={
+			'key':id,
+			'value':value,
+			'isNum':true,
+			'action':'write'
+		}
+		Socket.setValue(Message);
 	}
 function writeSettings(data,divname){		//takes an object with 2 arrays, names and values
 	try{
@@ -83,8 +89,8 @@ function writeArray(IdArray,divname){
 						}
 					}
 				}
-}
-writeSettings(data,divname);
+	}
+	writeSettings(data,divname);
 }
 
 $(document).ready(function(){											//on startup write settings

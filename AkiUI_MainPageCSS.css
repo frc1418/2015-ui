@@ -94,16 +94,15 @@ li{
 }
 
 button {
-   	height:14vh;
-	  width:7.5vw;
+   	height:13vh;
+	  width:7vw;
     margin:0.5vmin;
   	display:inline;
     font-size:2vmin;
 }
-
 . {
 	height: 20px;
-	width: 100px;
+	width: 90px;
 	border: none;
   	display:block;
 }
@@ -165,4 +164,22 @@ select {
     top:0px;
     right:-185px;
     height:19px;
+}
+#circle
+{
+
+    position:relative;
+    height:20px;
+    right:-175px;
+    top:-45px;
+}
+#circle1
+{
+    position:relative;
+    height:20px;
+    right:-95px;
+    top:-45px;
+}
+.part{
+    visibility:hidden;
 }
