@@ -14,7 +14,7 @@
 <body>
 <script src="SocketController.js"></script>
 <ul class="nav nav-tabs" role="tablist">
-	<li class="active"><a href="UI_MainPage.html">Drive</a></li>
+	<li class="active" id="ThisTab"><a href="UI_MainPage.html">Drive</a></li>
 	<li><a href="Aton.html">Aton</a></li>
 	<li><a href="Robot.html">Robot</a></li>
 	<li><a href="Camera.html">Camera</a></li>
@@ -37,7 +37,6 @@
 			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto-Lift</button>
 			<br>
 			<br>
-
 		</div>
 		<div class="MainDivide" id="CameraBox">
 			<img src=""></img>
@@ -67,7 +66,6 @@
 			</script>
 		</div>
 		<div class="MainDivide" id="AutoBox">
-		<br>
 		<select id="AutoPathChoice">
 		</select>
 		</div>
