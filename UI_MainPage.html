@@ -14,7 +14,7 @@
 <body>
 <script src="SocketController.js"></script>
 <ul class="nav nav-tabs" role="tablist">
-	<li class="active"><a href="UI_MainPage.html">Drive</a></li>
+	<li class="active" id="ThisTab"><a href="UI_MainPage.html">Drive</a></li>
 	<li><a href="Aton.html">Aton</a></li>
 	<li><a href="Robot.html">Robot</a></li>
 	<li><a href="Camera.html">Camera</a></li>
@@ -22,7 +22,6 @@
 </ul>
 
 		<div class="MainDivide" id="ForkliftControls">
-			<br>
 			<button class="ToteLiftLevels" id="ToteButton1" onclick="Socket.setKeyValue('liftTo',0,'write')">Tote Level 0</button>
 			<button class="ToteLiftLevels" id="ToteButton2" onclick="Socket.setKeyValue('liftTo',1,'write')" >Tote Level 1</button>
 			<button class="ToteLiftLevels" id="ToteButton3" onclick="Socket.setKeyValue('liftTo',2,'write')">Tote Level 2</button>
@@ -30,13 +29,13 @@
 			<br>
 			<button class="BinsLiftLevels" id="BinButton1" onclick="Socket.setKeyValue('binTo',0,'write')">Bin Level 0</button>
 			<button class="BinsLiftLevels" id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write')">Bin Level 1</button>
-			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot','pressed','write')">Reverse Controls</button>
+			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot','pressed','write')">Reverse</button>
 			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift','pressed','write')">Auto-Lift</button>
 			<br>
 		<form id="myForm" action="form_action.asp">
 		Robot Speed 1: <input type="text" name="robospeed1" id="Robospeed1"><br>
 		Robot Speed 2: <input type="text" name=“robospeed2” id="Robospeed2"><br>
-			<input type="submit" value="Submit">
+			<input id="SubmitRobospeed" type="submit" value="Submit">
 		</form>
 
 		</div>
@@ -74,7 +73,6 @@
 			</script>
 		</div>
 		<div class="MainDivide" id="AutoBox">
-		<br>
 		<select id="AutoPathChoice">
 		</select>
 		</div>
