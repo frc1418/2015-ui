@@ -36,20 +36,14 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         self.sd.addSubTableListener(self.subtableValueChanged);
 
     def on_message(self, message):
-
         data=json.loads(message)
-        actiontype=data["action"]
-        
-        
-        if 'isNum' in data:
-            newMessage=float(data['value'])
-            print('newMessage is type ',type(newMessage))
-            data['value']=newMessage
-            
-        if actiontype=="write":
-            self.writeToNetworkTable(data)
-        elif actiontype=="writeToSubtable":
-            self.writeToSubtable(data)
+        #print(data)
+        key = data['key']
+        val = data['value']
+       
+        print('key-',key,',val-',val,' type is ', type(val))
+
+        self.nt.putValue(key, val)
     def writeToSubtable(self,message):
 
         key=message['key']
