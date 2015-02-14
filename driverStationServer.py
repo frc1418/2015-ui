@@ -84,14 +84,14 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         message={'key':key,
                  'value':value,
                  'event':event}
-<<<<<<< HEAD
+
         self.write_message(message, False)
-=======
+
         try:
             self.write_message(message, False)
         except WebSocketClosedError:
             print("websocket closed when attempting to changeValue")
->>>>>>> FETCH_HEAD
+
 
     def writeJSONStringToNetworkTable(self, message):#message is a dictionary
 
@@ -136,7 +136,7 @@ def main():
         (r"/(.*)", MyStaticFileHandler, {"path": os.path.dirname(__file__)}),
 
     ])
-    
+
     print("Listening on ws://localhost:%s/ws" % options.port)
     app.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()
