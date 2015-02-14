@@ -35,6 +35,7 @@ class WebSocket(tornado.websocket.WebSocketHandler):
 
     def on_message(self, message):
         data=json.loads(message)
+
         
         key = message['key']
         val = message['value']
