@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html  lang="en">
 <head>
+
 <meta charset="utf-8">
 <link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
 	<title>1418 DriverStation</title>
@@ -13,6 +14,7 @@
 </head>
 <body>
 <script src="SocketController.js"></script>
+
 <ul class="nav nav-tabs" role="tablist">
 	<li class="active" id="ThisTab"><a href="UI_MainPage.html">Drive</a></li>
 	<li><a href="Aton.html">Aton</a></li>
@@ -39,16 +41,17 @@
 			<button class="BinsLiftLevels" id="BinButton6" onclick="Socket.setKeyValue('binTo',2048,'write',true)">Bin Lvl Max</button>
 			<button class="BinsLiftLevels" id="BinButton7" onclick="Socket.setKeyValue('binTo',7000,'write',true)">Bin 7000</button>
 			<br>
+
 		</div>
 		<div class="MainDivide" id="ButtonBox2">
 
 			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write',true)">Reverse Controls</button>
 			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto  Lifter</button>
 			<img src=""></img>
-		</div>
-		<div class="MainDivide" id="RobotDiagram">
 
-			<p><div id="topView" class="topDown" alt="top"></div></p>
+		</div>
+
+		<div class="MainDivide" id="RobotDiagram">
 
 
             <img id=dog src="http://www.clker.com/cliparts/6/d/e/0/1194985595894889966arrow-left-red_benji_par_01.svg.thumb.png"></img>
@@ -56,35 +59,41 @@
             <img id=circle src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/wheel.png"></img>
             <img id=circle1 src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/wheel.png"></img>
         </div>
-				<div id="GameTimer">
+		<div id="GameTimer">
 			<p id="Timetilldoom"><span id="timer" align:center></span></p>
-	<button id="TimerButton" onclick="startTimer()">Start Timer</button>
-	<script>
-	function startTimer(){
-		var count=150;
-		var counter=setInterval(timer, 1000);
-		function timer(){
-			count=count-1;
-				if (count <= -1){
-				clearInterval(counter);
-				return;
-			}
-		document.getElementById("timer").innerHTML=count + " secs  Left!";
-				if (count == 0){
+			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
+			<script>
 
-				document.getElementById("timer").innerHTML="Game Over!";
+
+			function startTimer(){
+				var count=150;
+				var counter=setInterval(timer, 1000);
+				function timer(){
+					count=count-1;
+					if (count <= -1){
+						clearInterval(counter);
 						return;
 					}
-		}
-	}
-	</script>
+					document.getElementById("timer").innerHTML=count + " secs  Left!";
+					if (count == 0){
+
+						document.getElementById("timer").innerHTML="Game Over!";
+						return;
+					}
+				}
+			}
+			</script>
 		</div>
 		<div class="MainDivide" id="AutoBox">
 		<select id="AutoPathChoice">
 		</select>
 		</div>
 
+
+
 			<script type="text/javascript">
+
+
 			$(document).ready(
 				function(){
 					window.setTimeout(function(){
@@ -114,7 +123,7 @@
 			function fillAutonomousBox(key,arrayId,defaultVal){
 
 				console.log(keyStore);
-			d3.select(key)
+				d3.select(key)
 				.selectAll("select")
 				.data(keyStore[arrayId+'options'])
 				.enter()
@@ -130,8 +139,9 @@
 					$(key).val(keyStore[arrayId+'selected' ]);
 				}
 			}
-                </script>
+               </script>
             <script src="RobotSV.js"></script>
-						<script src='topDownRobot.js'></script>
+            <script src="topDownRobot.js"></script>
+
 </body>
 </html>

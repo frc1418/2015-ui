@@ -36,7 +36,6 @@ class WebSocket(tornado.websocket.WebSocketHandler):
     def on_message(self, message):
         data=json.loads(message)
 
-        print(message)
         key = data['key']
         val = data['value']
        
@@ -98,6 +97,7 @@ def main():
     
     print("Listening on http://localhost:%s/" % options.port)
     print("- Websocket API at ws://localhost:%s/ws" % options.port)
+
     app.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()
 

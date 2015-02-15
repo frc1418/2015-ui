@@ -42,12 +42,7 @@ var socket;
 function setKeyStore(id,value){
 	var writeVal;
 	if((typeof id)=="string"){
-								/*
-			key=key.replace("|","~");
-			key=key.replace(/ /g,"?");*/
-			//key=escape(key);
-			//var tempId=id;
-
+							
 			id=RegExp.escape(id);
 			//while(true){
 				var nextIndex=id.indexOf('|');
@@ -56,9 +51,6 @@ function setKeyStore(id,value){
 					keyStore[id]=value;
 				}
 				else{
-					//var tempId=id.substring(0,nextIndex-1);
-					//id=RegExp.escape(id.substring(nextIndex));
-					//console.log('id is ',id,' temp id is ',tempId);
 					keyStore[id]=value;
 				}
 			//}
@@ -83,7 +75,7 @@ var Socket={
 				socket = new WebSocket(host);
 				if (socket) {
 					socket.onopen = function() {
-					 console.log("keystore is",keyStore);
+					console.log("keystore is",keyStore);
 						//keyStore["selected"]=keyStore["default"];
 					}
 					socket.onmessage = function(msg) {
