@@ -56,23 +56,28 @@
             <img id=circle src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/wheel.png"></img>
             <img id=circle1 src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/wheel.png"></img>
         </div>
-		<div id="GameTimer">
-			<p id="Timetilldoom"><span id="timer" align:center></span> Left!</p>
-			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
-			<script>
-			function startTimer(){
-				var count=150;
-				var counter=setInterval(timer, 1000);
-				function timer(){
-					count=count-1;
-					if (count <= 0){
-						clearInterval(counter);
+				<div id="GameTimer">
+			<p id="Timetilldoom"><span id="timer" align:center></span></p>
+	<button id="TimerButton" onclick="startTimer()">Start Timer</button>
+	<script>
+	function startTimer(){
+		var count=150;
+		var counter=setInterval(timer, 1000);
+		function timer(){
+			count=count-1;
+				if (count <= -1){
+				clearInterval(counter);
+				return;
+			}
+		document.getElementById("timer").innerHTML=count + " secs  Left!";
+				if (count == 0){
+
+				document.getElementById("timer").innerHTML="Game Over!";
 						return;
 					}
-					document.getElementById("timer").innerHTML=count + " secs";
-				}
-			}
-			</script>
+		}
+	}
+	</script>
 		</div>
 		<div class="MainDivide" id="AutoBox">
 		<select id="AutoPathChoice">
