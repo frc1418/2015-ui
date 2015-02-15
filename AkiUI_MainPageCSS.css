@@ -24,13 +24,13 @@ li{
     position: fixed;
     top: 8vh;
     left: 1vw;
-    width: 60vw;
+    width: 58vw;
 }
 #ButtonBox2{
     position: fixed;
     top: 8vh;
     right: 1vw;
- 	  width: 20vw;
+ 	  width: 22vw;
 }
 #RobotDiagram{
     position: fixed;
@@ -45,10 +45,10 @@ li{
 }
 #GameTimer{
     position: fixed;
-    top: 10vh;
-    bottom: 57vh;
-    left:61vw;
-    right: 21vw;
+    top: 8vh;
+    bottom: 59vh;
+    left:59vw;
+    right: 23vw;
     border: 1.5px solid black;
     margin:auto;
 }
@@ -139,19 +139,21 @@ select {
 	  width:10vw;
     margin:auto;
     position: fixed;
-    top: 10vh;
-    bottom: 36vh;
-    left:62vw;
-    right: 22vw;
+    top: 6vh;
+    bottom: 40vh;
+    left:60vw;
+    right: 24vw;
   	display:inline-block;
+    font-size:1.25vmax;
 }
 #Timetilldoom{
 
   position: fixed;
-  top: 25vh;
-  bottom: 50vh;
-  left:66.5vw;
-  right: 26.5vw;
+  top: 22vh;
+  bottom: 53vh;
+  left:63vw;
+  right: 27vw;
+  font-size: 1.5vmax;
 }
 #dog
 {

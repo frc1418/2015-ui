@@ -53,7 +53,7 @@
             <img id=circle1 src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/wheel.png"></img>
         </div>
 		<div id="GameTimer">
-			<p id="Timetilldoom"><span id="timer" align:center></span> Left!</p>
+			<p id="Timetilldoom"><span id="timer" align:center></span></p>
 			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
 			<script>
 			function startTimer(){
@@ -61,11 +61,16 @@
 				var counter=setInterval(timer, 1000);
 				function timer(){
 					count=count-1;
-					if (count <= 0){
+					if (count <= -1){
 						clearInterval(counter);
 						return;
 					}
-					document.getElementById("timer").innerHTML=count + " secs";
+					document.getElementById("timer").innerHTML=count + " secs  Left!";
+					if (count == 0){
+
+						document.getElementById("timer").innerHTML="Game Over!";
+						return;
+					}
 				}
 			}
 			</script>
