@@ -4,12 +4,12 @@
   	border: 1.5px solid black;
   	display:block;
 }
-ul{
+.nav{
     height:6.5vh;
     width:100vw;
 
 }
-li{
+.Tabs{
     height:6.5vh;
     width:5.5vw;
     font-size:2.2vmin;
@@ -43,14 +43,52 @@ li{
     bottom: 1vh;
     right: 1vw;
 }
+#Checklist{
+    position: fixed;
+    top:80vh;
+    bottom: 2vh;
+    left:41vw;
+    right: 41vw;
+    border: 1.5px solid black;
+    margin:auto;
+    height: 20vh;
+    width: 18vw;
+    font-size:1.5vmax;
+}
+#GyroStuff{
+    position: fixed;
+    top:60vh;
+    bottom: 22vh;
+    left:41vw;
+    right: 41vw;
+    border: 1.5px solid black;
+    margin:auto;
+    height: 20vh;
+    width: 18vw;
+    font-size:1.5vmax;
+
+}
 #GameTimer{
     position: fixed;
     top: 8vh;
-    bottom: 59vh;
+    bottom: 72vh;
     left:59vw;
     right: 23vw;
     border: 1.5px solid black;
     margin:auto;
+}
+#SpareBox{
+    position: fixed;
+    top: 28vh;
+    bottom: 52vh;
+    left:59vw;
+    right: 23vw;
+    border: 1.5px solid black;
+    margin:auto;
+    height: 20vh;
+    width: 18vw;
+    font-size:1.5vmax;
+
 }
 .settingsBox{
   overflow:scroll;
@@ -140,7 +178,7 @@ select {
     margin:auto;
     position: fixed;
     top: 6vh;
-    bottom: 40vh;
+    bottom: 60vh;
     left:60vw;
     right: 24vw;
   	display:inline-block;
@@ -149,8 +187,8 @@ select {
 #Timetilldoom{
 
   position: fixed;
-  top: 22vh;
-  bottom: 53vh;
+  top: 12vh;
+  bottom: 63vh;
   left:63vw;
   right: 27vw;
   font-size: 1.5vmax;
@@ -203,6 +241,6 @@ select {
 .topDown { background-image: url(topDownImage.png);
    background-repeat: no-repeat;
    background-position: center;
-   width: 20vw; 
+   width: 20vw;
    height: 20vh; }
 .rotate { -webkit-transform: rotate(0deg); }
