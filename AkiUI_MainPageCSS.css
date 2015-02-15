@@ -54,18 +54,20 @@ li{
 }
 .settingsBox{
   overflow:scroll;
-  height: 450px;
- width: 550px;
+  height: 400px;
+ width: 750px;
    border: 1.5px solid black;
    display:block;
-   position: fixed;
-   top: 50px;
+   position: relative;
+   top: 20px;
    left: 10px;
+   float:left;
 }
 #settingsBox{
     position: fixed;
     bottom: 20px;
     right: 10px;
+    float:left;
 }
 #SubmitRobospeed{
     position: fixed;
@@ -109,8 +111,8 @@ button {
   	display:block;
 }
 select {
-	height:38vh;
-	width: 39vw;
+	height:26vh;
+	width: 35vw;
 	border: 1vmin none;
 	margin:1vmin;
   	display:inline-block;
@@ -203,6 +205,6 @@ select {
 .topDown { background-image: url(topDownImage.png);
    background-repeat: no-repeat;
    background-position: center;
-   width: 20vw; 
+   width: 20vw;
    height: 20vh; }
 .rotate { -webkit-transform: rotate(0deg); }

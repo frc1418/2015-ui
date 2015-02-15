@@ -25,15 +25,19 @@
 
 </ul>
 
+<div>
+		<select id="AutoPathChoice" >
+		</select>
 
-	<div class="settingsBox">
-
-		<br>
 			<select>
 				<option>Starting left</option>
 				<option>Strating middle</option>
 				<option>Strating right</option>
 			</select>
+	</div>
+			<br>
+	<div class="settingsBox">
+
 		</div>
 
 
@@ -44,10 +48,73 @@
 		$(document).ready(
 		function(){
 			window.setTimeout(function(){
-				//writeArray(arr,".settingsBox");
+
+							var arrayId=RegExp.escape('/SmartDashboard/Autonomous Mode/');
+							var selectedAutonomousMode='None';
+
+
+							if(!(arrayId+'selected' in keyStore)||
+							keyStore[arrayId+'selected']==undefined){
+								selectedAutonomousMode=keyStore[arrayId+'default'];
+							}
+							else{
+								selectedAutonomousMode=keyStore[arrayId+'selected' ];
+							}
+							console.log(selectedAutonomousMode);
+							//var arr={};
+							arr.push(selectedAutonomousMode);
+
+				fillAutonomousBox("#AutoPathChoice",RegExp.escape('/SmartDashboard/Autonomous Mode/'));
+				writeArray(arr,".settingsBox");
 			},300);
 				}
 		);
+
+
+
+
+
+
+							var	$autoSelector=$('#AutoPathChoice');
+							$autoSelector.change(function(event){
+								event.preventDefault();
+								//alert( $autoSelector.children(':selected').text());
+								var val=$autoSelector.find('option:selected').text();
+								//alert(val);
+								var sendVal={
+									key://RegExp.escape(
+										'/SmartDashboard/Autonomous Mode/selected'//)
+										,
+									value:val,
+									action:"writeToSubtable",
+									tableName:"Autonomous Mode"
+								};
+								Socket.setValue(sendVal);
+							});
+
+
+
+					function fillAutonomousBox(key,arrayId,defaultVal){
+
+						console.log(keyStore);
+						d3.select(key)
+						.selectAll("select")
+						.data(keyStore[arrayId+'options'])
+						.enter()
+						.append("option")
+						.text(function(d,i){
+							return keyStore[arrayId+'options'][i];
+						});
+						if(!(arrayId+'selected' in keyStore)||
+						keyStore[arrayId+'selected']==undefined){
+							$(key).val(keyStore[arrayId+'default']);
+						}
+						else{
+							$(key).val(keyStore[arrayId+'selected' ]);
+						}
+					}
+
+
 		</script>
 	</body>
 </html>
