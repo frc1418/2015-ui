@@ -184,4 +184,17 @@ select {
 }
 .part{
     visibility:hidden;
+.topDown
+{
+  background-image: url(topDownImage.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20vw;
+  height: 20vh;
+
+}
+.rotate {
+   transform: rotate(0deg);
+
+
 }
