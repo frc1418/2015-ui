@@ -21,7 +21,7 @@ RegExp.escape = function(text) {
 	return text.replace(arguments.callee.sRE, '\\$1');
 }
 RegExp.unescape=function(text){
-	return text.replace("\\","")
+	return text.replace(/\\/g,"")
 }
 waitForSocketConnection=function(sock,callback){
 	//Callback to make sure it waits for finished connection before it sends messages
@@ -40,10 +40,24 @@ waitForSocketConnection=function(sock,callback){
 var socket;
 
 function setKeyStore(id,value){
-	keyStore[id]=value;
+	var writeVal;
+	if((typeof id)=="string"){
+							
+			id=RegExp.escape(id);
+			//while(true){
+				var nextIndex=id.indexOf('|');
+				if(nextIndex==-1){
+					//id=id.subString(nextIndex);
+					keyStore[id]=value;
+				}
+				else{
+					keyStore[id]=value;
+				}
+			//}
+	}
 	//try{
 	var $obj=$("#"+id);
-	$obj.text(value+"");
+	$obj.text(value);
 	$obj.val(value);
 	/*}
 	catch(err){
@@ -61,7 +75,7 @@ var Socket={
 				socket = new WebSocket(host);
 				if (socket) {
 					socket.onopen = function() {
-					 console.log("keystore is",keyStore);
+					console.log("keystore is",keyStore);
 						//keyStore["selected"]=keyStore["default"];
 					}
 					socket.onmessage = function(msg) {
@@ -69,14 +83,9 @@ var Socket={
 						var value = data['value'];
 						var key = data['key'];
 						var Event = data['event'];
-						if((typeof key)=="string"){
 
-							/*
-						key=key.replace("|","~");
-						key=key.replace(/ /g,"?");*/
-						//key=escape(key);
-						key=RegExp.escape(key);
-					}
+						console.log(key+" "+Event+" "+value);
+
 
 
 						logConsole(key+" "+Event+" "+value);
@@ -121,9 +130,9 @@ var Socket={
 						socket.send(msg);
 				});
 		},
-		setValue:function(val){//val is a json object,
+		setValue:function(val,doEscape){//val is a json object,
 
-			if((typeof val.key)=="string"){/*
+			if((typeof val.key)=="string" && doEscape==true){/*
 			val.key=val.key.replace("~","|");
 			key=key.replace("?",/ /g);*/
 			//val.key=unescape(val.key);
@@ -131,7 +140,8 @@ var Socket={
 		}
 			this.sendMessage(JSON.stringify(val));
 		},
-		setKeyValue:function(key,value,Event){//key,event, and value are strings,
+		setKeyValue:function(key,value,Event,addExtendedPath){
+			//if addExtended path ==true, add escaped(smartDashboard) to key
 
 				if((typeof key)=="string"){
 					/*
@@ -139,6 +149,17 @@ var Socket={
 						key=key.replace("?",/ /g);*/
 						//val.key=unescape(val.key);
 						key=RegExp.unescape(key);
+						try{
+						if( typeof(addExtendedPath)=='string'){
+							key=addExtendedPath+key;
+						}
+						else if(addExtendedPath==true){
+								key='/SmartDashboard/'+key;
+						}
+					}
+					catch(err){
+						console.log('no extendedPath, is ok');
+					}
 				}
 			var val={
 				"key":key,

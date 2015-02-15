@@ -72,7 +72,9 @@ socket.onclose = function() {
 								}, 2000);
 							}
 
-		} else {
+		} 
+
+		else {
 			console.log("invalid socket");
 		}
 	}

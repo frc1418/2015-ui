@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html  lang="en">
 <head>
+
 <meta charset="utf-8">
 <link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
 	<title>1418 DriverStation</title>
@@ -13,8 +14,9 @@
 </head>
 <body>
 <script src="SocketController.js"></script>
+
 <ul class="nav nav-tabs" role="tablist">
-	<li class="active"><a href="UI_MainPage.html">Drive</a></li>
+	<li class="active" id="ThisTab"><a href="UI_MainPage.html">Drive</a></li>
 	<li><a href="Aton.html">Aton</a></li>
 	<li><a href="Robot.html">Robot</a></li>
 	<li><a href="Camera.html">Camera</a></li>
@@ -23,60 +25,79 @@
 
 		<div class="MainDivide" id="ForkliftControls">
 			<br>
-			<button class="ToteLiftLevels" id="ToteButton1" onclick="Socket.setKeyValue('liftTo',0,'write')">Tote Level 0</button>
-			<button class="ToteLiftLevels" id="ToteButton2" onclick="Socket.setKeyValue('liftTo',1,'write')" >Tote Level 1</button>
-			<button class="ToteLiftLevels" id="ToteButton3" onclick="Socket.setKeyValue('liftTo',2,'write')">Tote Level 2</button>
-			<button class="ToteLiftLevels" id="ToteButton4" onclick="Socket.setKeyValue('liftTo',3,'write')">Tote Max</button>
-
-			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write')">Reverse Controls</button>
+			<button class="ToteLiftLevels" id="ToteButton1" onclick="Socket.setKeyValue('liftTo',0,'write',true)">Tote Level 0</button>
+			<button class="ToteLiftLevels" id="ToteButton2" onclick="Socket.setKeyValue('liftTo',1,'write',true)" >Tote Level 1</button>
+			<button class="ToteLiftLevels" id="ToteButton3" onclick="Socket.setKeyValue('liftTo',2,'write',true)">Tote Level 2</button>
+			<button class="ToteLiftLevels" id="ToteButton4" onclick="Socket.setKeyValue('liftTo',3,'write',true)">Tote Level 3</button>
+			<button class="ToteLiftLevels" id="ToteButton5" onclick="Socket.setKeyValue('liftTo',4,'write',true)">Tote Level 4</button>
+			<button class="ToteLiftLevels" id="ToteButton6" onclick="Socket.setKeyValue('liftTo',2048,'write',true)">Tote Max</button>
+			<button class="ToteLiftLevels" id="ToteButton7" onclick="Socket.setKeyValue('liftTo',7000,'write',true)">Tote ????</button>
 			<br>
-			<button class="BinsLiftLevels" id="BinButton1" onclick="Socket.setKeyValue('binTo',0,'write')">Bin Level 0</button>
-			<button class="BinsLiftLevels" id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write')">Bin Level 1</button>
-			<button class="BinsLiftLevels" id="BinButton3" onclick="Socket.setKeyValue('binTo',2,'write')">Bin Level 2</button>
-			<button class="BinsLiftLevels" id="BinButton4" onclick="Socket.setKeyValue('binTo',3,'write')">Bin Max</button>
-			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write')">Auto-Lift</button>
-			<br>
+			<button class="BinsLiftLevels" id="BinButton1" onclick="Socket.setKeyValue('binTo',0,'write',true)">Bin Level 0</button>
+			<button class="BinsLiftLevels" id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write',true)">Bin Level 1</button>
+			<button class="BinsLiftLevels" id="BinButton3" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 2</button>
+			<button class="BinsLiftLevels" id="BinButton4" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 3</button>
+			<button class="BinsLiftLevels" id="BinButton5" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 4</button>
+			<button class="BinsLiftLevels" id="BinButton6" onclick="Socket.setKeyValue('binTo',2048,'write',true)">Bin Lvl Max</button>
+			<button class="BinsLiftLevels" id="BinButton7" onclick="Socket.setKeyValue('binTo',7000,'write',true)">Bin 7000</button>
 			<br>
 
 		</div>
-		<div class="MainDivide" id="CameraBox">
+		<div class="MainDivide" id="ButtonBox2">
+
+			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write',true)">Reverse Controls</button>
+			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto  Lifter</button>
 			<img src=""></img>
+
 		</div>
+
 		<div class="MainDivide" id="RobotDiagram">
+
+
             <img id=dog src="http://www.clker.com/cliparts/6/d/e/0/1194985595894889966arrow-left-red_benji_par_01.svg.thumb.png"></img>
             <img id=do src="http://www.clker.com/cliparts/6/9/0/f/1194985598254428023arrow-right-red_benji_pa_01.svg.thumb.png"></img>
             <img id=circle src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/wheel.png"></img>
             <img id=circle1 src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/wheel.png"></img>
         </div>
 		<div id="GameTimer">
-			<p id="Timetilldoom"><span id="timer" align:center></span> Left!</p>
+			<p id="Timetilldoom"><span id="timer" align:center></span></p>
 			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
 			<script>
+
+
 			function startTimer(){
 				var count=150;
 				var counter=setInterval(timer, 1000);
 				function timer(){
 					count=count-1;
-					if (count <= 0){
+					if (count <= -1){
 						clearInterval(counter);
 						return;
 					}
-					document.getElementById("timer").innerHTML=count + " secs";
+					document.getElementById("timer").innerHTML=count + " secs  Left!";
+					if (count == 0){
+
+						document.getElementById("timer").innerHTML="Game Over!";
+						return;
+					}
 				}
 			}
 			</script>
 		</div>
 		<div class="MainDivide" id="AutoBox">
-		<br>
 		<select id="AutoPathChoice">
 		</select>
 		</div>
 
+
+
 			<script type="text/javascript">
+
+
 			$(document).ready(
 				function(){
 					window.setTimeout(function(){
-						fillAutonomousBox("#AutoPathChoice","options");
+						fillAutonomousBox("#AutoPathChoice",RegExp.escape('/SmartDashboard/Autonomous Mode/'));
 					},300);
 
 
@@ -87,7 +108,9 @@
 						var val=$autoSelector.find('option:selected').text();
 						//alert(val);
 						var sendVal={
-							key:"selected",
+							key://RegExp.escape(
+								'/SmartDashboard/Autonomous Mode/selected'//)
+								,
 							value:val,
 							action:"writeToSubtable",
 							tableName:"Autonomous Mode"
@@ -99,23 +122,26 @@
 			);
 			function fillAutonomousBox(key,arrayId,defaultVal){
 
-
-			d3.select(key)
+				console.log(keyStore);
+				d3.select(key)
 				.selectAll("select")
-				.data(keyStore[arrayId])
+				.data(keyStore[arrayId+'options'])
 				.enter()
 				.append("option")
 				.text(function(d,i){
-					return keyStore[arrayId][i];
+					return keyStore[arrayId+'options'][i];
 				});
-				if(!('selected' in keyStore)||keyStore['selected']==undefined){
-					$(key).val(keyStore["default"]);
+				if(!(arrayId+'selected' in keyStore)||
+				keyStore[arrayId+'selected']==undefined){
+					$(key).val(keyStore[arrayId+'default']);
 				}
 				else{
-					$(key).val(keyStore["selected"]);
+					$(key).val(keyStore[arrayId+'selected' ]);
 				}
 			}
-                </script>
+               </script>
             <script src="RobotSV.js"></script>
+            <script src="topDownRobot.js"></script>
+
 </body>
 </html>
