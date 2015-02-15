@@ -58,7 +58,7 @@
 		</div>
 
 		<div class="MainDivide" id="RobotDiagram">
-			<p><div class="topDown"></div></p>
+			<p><div id="topView" class="topDown" alt="top"></div></p>
 
 
 		</div>
@@ -136,46 +136,35 @@
 					var readyState = 1;
 					Socket.setKeyValue(sendVal);
 
-
-
-
-					//Socket.setKeyValues(ids, num, 'write');
-
-
 				})
 
 			});
 
-			//rotating squar
-			var uiTopVeiw = 0;
-			var geroSenser = 0;
-			function draw(x,y){
-
-				if (geroSenser>uiTopVeiw) {
-						var x = 0;
-						x++;
-
-						$("p").css("transform", "rotate("+x+"deg);");
+			//rotating image
+			var looper;
+			var degrees = 0;
+			var geroSpot = 0;
+			var uiTopView = 0;
+			function rotateAnimation(el,speed){
+					var elem = document.getElementById(el);
 
 
-						//transform.rotate = "rotate("+x+"deg)";
-						//return;
-
-						$('.topDown').addClass('topDown rotate');
-
-
-						uiTopVeiw+=1;
-
-				}
+					if (uiTopView<geroSpot) {
+					elem.style.transform = "rotate("+degrees+"deg)";
+					uiTopView = uiTopView + 1;
+					degrees++;
+						}
 
 
 
-				var loopTimer = setTimeout('draw('+x+','+y+')',0);
+
+					looper = setTimeout('rotateAnimation(\''+el+'\','+speed+')',speed);
 
 
+				
+			}
 
-}
-			draw();
+			rotateAnimation("topView",0);
 			</script>
 			<script src="RobotSV.js"></script>
 </body>
