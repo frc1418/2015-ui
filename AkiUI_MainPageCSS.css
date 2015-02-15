@@ -24,11 +24,13 @@ li{
     position: fixed;
     top: 8vh;
     left: 1vw;
+    width: 60vw;
 }
-#CameraBox{
+#ButtonBox2{
     position: fixed;
     top: 8vh;
     right: 1vw;
+ 	  width: 20vw;
 }
 #RobotDiagram{
     position: fixed;
@@ -45,8 +47,8 @@ li{
     position: fixed;
     top: 10vh;
     bottom: 57vh;
-    left:41vw;
-    right: 41vw;
+    left:61vw;
+    right: 21vw;
     border: 1.5px solid black;
     margin:auto;
 }
@@ -133,14 +135,14 @@ select {
   display:inline-block;
 }
 #TimerButton{
-   	height:4vh;
-	  width:7vw;
+   	height:6vh;
+	  width:10vw;
     margin:auto;
     position: fixed;
     top: 10vh;
     bottom: 36vh;
-    left:42vw;
-    right: 42vw;
+    left:62vw;
+    right: 22vw;
   	display:inline-block;
 }
 #Timetilldoom{
@@ -148,8 +150,8 @@ select {
   position: fixed;
   top: 25vh;
   bottom: 50vh;
-  left:46.5vw;
-  right: 46.5vw;
+  left:66.5vw;
+  right: 26.5vw;
 }
 #dog
 {
