@@ -3,7 +3,7 @@ var keyStore={
 }
 
 
-var showLogs=false;
+var showLogs=true;
 function logConsole(message){
 	if(showLogs==true){
 	console.log(message);}
@@ -42,7 +42,7 @@ var socket;
 function setKeyStore(id,value){
 	var writeVal;
 	if((typeof id)=="string"){
-							
+
 			id=RegExp.escape(id);
 			//while(true){
 				var nextIndex=id.indexOf('|');
@@ -84,7 +84,7 @@ var Socket={
 						var key = data['key'];
 						var Event = data['event'];
 
-						console.log(key+" "+Event+" "+value);
+						logConsole(key+" "+Event+" "+value);
 
 
 
