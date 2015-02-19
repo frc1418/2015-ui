@@ -38,7 +38,7 @@ class WebSocket(tornado.websocket.WebSocketHandler):
 
         key = data['key']
         val = data['value']
-       
+        print('key-',key,' val-',val)
         print('key-',key,',val-',val,' type is ', type(val))
 
         self.nt.putValue(key, val)
