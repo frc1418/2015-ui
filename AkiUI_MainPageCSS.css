@@ -156,6 +156,16 @@ select {
 
 }
 
+.Atonpageselect {
+  height:38vh;
+  width: 39vw;
+  border: 1vmin none;
+  margin:1vmin;
+    display:inline-block;
+  font-size:50px;
+
+}
+
 .RoboPhoto {
 	height: 80px;
 	width: 800px;
@@ -166,6 +176,7 @@ select {
   width:10px;
   margin:auto;
 }
+
 #Settings{
   height: 250px;
   width: 550px;
