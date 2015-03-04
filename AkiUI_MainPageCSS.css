@@ -106,6 +106,7 @@
 }
 .settingsBox{
   overflow:scroll;
+<<<<<<< HEAD
   height: 45vh;
   width: 40vw;
   border: 5px inset grey;
@@ -115,6 +116,8 @@
   top: 7.5vh;
   left: 1vw;
 
+=======
+>>>>>>> parent of 92d3213... settingsbox tweak
 }
 #settingsBox{
     position: fixed;
