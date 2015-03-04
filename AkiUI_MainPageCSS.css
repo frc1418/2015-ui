@@ -10,7 +10,7 @@
 }
 .nav{
     height:6.5vh;
-    width:100vw;
+    width:110vw;
 
 }
 .UIPage{
@@ -20,7 +20,7 @@
 }
 .Tabs{
     height:6.5vh;
-    width:5.5vw;
+    width:6.5vw;
     font-size:2.2vmin;
     color:white;
 }
@@ -119,6 +119,7 @@
     position: fixed;
     bottom: 20px;
     right: 10px;
+    float:left;
 }
 #SubmitRobospeed{
     position: fixed;
@@ -162,8 +163,8 @@ button {
   	display:block;
 }
 select {
-	height:38vh;
-	width: 39vw;
+	height:26vh;
+	width: 35vw;
 	border: 1vmin none;
 	margin:1vmin;
   	display:inline-block;

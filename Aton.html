@@ -21,13 +21,16 @@
   <li class="active"><a href="Aton.html">Aton</a></li>
 	<li><a href="Robot.html">Robot</a></li>
 	<li><a href="Camera.html">Camera</a></li>
-	<li><a href="thing.html">Things</a></li>
+	<li><a href="UI_Settings.html">UI Settings</a></li>
 
 </ul>
 
-
+<div>
+		<select id="AutoPathChoice" >
+		</select>
+	</div>
+			<br>
 	<div class="settingsBox">
-
 		<br>
 			<select class="Atonpageselect">
 				<option>Starting left</option>
@@ -35,19 +38,90 @@
 				<option>Strating right</option>
 			</select>
 		</div>
-
+	</div>
 
 		<script type="text/javascript" src="SocketController.js"></script>
 		<script type="text/javascript" src="writeSettings.js"></script>
 		<script>
-		var arr=new Array();
+//var arr=new Array();
+		function findSelectedMode(){
+								var	arr=new Array();
+										var arrayId=RegExp.escape('/SmartDashboard/Autonomous Mode/');
+										var selectedAutonomousMode;
+
+
+										if(!(arrayId+'selected' in keyStore)||
+										keyStore[arrayId+'selected']==undefined){
+											selectedAutonomousMode=keyStore[arrayId+'default'];
+										}
+										else{
+											selectedAutonomousMode=keyStore[arrayId+'selected' ];
+										}
+										console.log(selectedAutonomousMode);
+										//var arr={};
+										arr.push(selectedAutonomousMode);
+										return arr;
+		}
 		$(document).ready(
 		function(){
 			window.setTimeout(function(){
-				//writeArray(arr,".settingsBox");
+				var arr=	findSelectedMode();
+
+				fillAutonomousBox("#AutoPathChoice",RegExp.escape('/SmartDashboard/Autonomous Mode/'));
+				writeArray(arr,".settingsBox");
 			},300);
 				}
 		);
+
+
+
+
+
+
+							var	$autoSelector=$('#AutoPathChoice');
+							$autoSelector.change(function(event){
+								//event.preventDefault();
+								//var arr=	findSelectedMode();
+								//writeArray(arr,".settingsBox");
+
+								//alert( $autoSelector.children(':selected').text());
+								var val=$autoSelector.find('option:selected').text();
+								//alert(val);
+								var sendVal={
+									key://RegExp.escape(
+										'/SmartDashboard/Autonomous Mode/selected'//)
+										,
+									value:val,
+									action:"writeToSubtable",
+									tableName:"Autonomous Mode"
+								};
+								Socket.setValue(sendVal);
+								location.reload();
+							});
+
+
+
+					function fillAutonomousBox(key,arrayId,defaultVal){
+
+						console.log(keyStore);
+						d3.select(key)
+						.selectAll("select")
+						.data(keyStore[arrayId+'options'])
+						.enter()
+						.append("option")
+						.text(function(d,i){
+							return keyStore[arrayId+'options'][i];
+						});
+						if(!(arrayId+'selected' in keyStore)||
+						keyStore[arrayId+'selected']==undefined){
+							$(key).val(keyStore[arrayId+'default']);
+						}
+						else{
+							$(key).val(keyStore[arrayId+'selected' ]);
+						}
+					}
+
+
 		</script>
 	</body>
 </html>

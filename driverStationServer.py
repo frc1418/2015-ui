@@ -38,7 +38,7 @@ class WebSocket(tornado.websocket.WebSocketHandler):
 
         key = data['key']
         val = data['value']
-       
+        print('key-',key,' val-',val)
         print('key-',key,',val-',val,' type is ', type(val))
 
         self.nt.putValue(key, val)
@@ -79,6 +79,11 @@ class MyStaticFileHandler(tornado.web.StaticFileHandler):
     # This is broken in tornado, disable it
     def check_etag_header(self):
         return False
+    
+    def set_extra_headers(self, path):
+        # Disable caching
+        self.set_header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+
 
 def main():
 
