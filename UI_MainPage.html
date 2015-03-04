@@ -12,7 +12,7 @@
 			<script src="Resources/dist/js/bootstrap.min.js"></script>
 			<link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
 </head>
-<body class="UIPage">
+<body>
 <script src="SocketController.js"></script>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,7 +60,7 @@
             <img id=circle1 src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/wheel.png"></img>
         </div>
 		<div id="GameTimer">
-			<p class="Timers"id="Timetilldoom"><span id="timer" align:center></span></p>
+			<p id="Timetilldoom"><span id="timer" align:center></span></p>
 			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
 			<script>
 
@@ -86,14 +86,14 @@
 		</div>
 		<div class="MainDivide" id="SpareBox">
 		</div>
-		<div class="MainDivide, Timers" id="Checklist">
+		<div class="MainDivide" id="Checklist">
 			<p>Remember to:</p>
 			<ul>
 				<li>RESET robot!</li>
 			</ul>
 		</div>
 		<div class="MainDivide" id="GyroStuff">
-			<p class="Timers">Gyro:<span id="GyroNumero"></span></p>
+			<p>Gyro:<span id="GyroNumero"></span></p>
 			<script>
 			var gyroField=$('#GyroNumero')
 			gyroField.text(keyStore[RegExp.escape("/SmartDashboard/"+'gyroAngle')]);

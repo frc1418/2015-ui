@@ -1,35 +1,23 @@
 .MainDivide{
  	height: 40vh;
 	width: 40vw;
-  border: 5px inset gray;
-  border-radius: 2vmin;
-  display:block;
-}
-.Timers{
-  color:white;
+  	border: 1.5px solid black;
+  	display:block;
 }
 .nav{
     height:6.5vh;
     width:100vw;
 
 }
-.UIPage{
-    background-image:url("RobotUIBackground.png");
-    background-size:100vw 100vh;
-    background-repeat: no-repeat;
-}
 .Tabs{
     height:6.5vh;
     width:5.5vw;
     font-size:2.2vmin;
-    color:white;
 }
 #ThisTab{
     height:6.5vh;
     width:5.5vw;
     font-size:2.2vmin;
-    color:black;
-    background-color:;
 
 }
 #ForkliftControls{
@@ -66,7 +54,6 @@
     height: 20vh;
     width: 18vw;
     font-size:1.5vmax;
-
 }
 #GyroStuff{
     position: fixed;
@@ -87,8 +74,7 @@
     bottom: 72vh;
     left:59vw;
     right: 23vw;
-    border: 5px inset gray;
-    border-radius: 2vmin;
+    border: 1.5px solid black;
     margin:auto;
 }
 #SpareBox{
@@ -107,13 +93,12 @@
 .settingsBox{
   overflow:scroll;
   height: 45vh;
-  width: 40vw;
-  border: 5px inset grey;
-  border-radius: 2vmin;
-  display:block;
-  position: fixed;
-  top: 7.5vh;
-  left: 1vw;
+ width: 40vw;
+   border: 1.5px solid black;
+   display:block;
+   position: fixed;
+   top: 7.5vh;
+   left: 1vw;
 }
 #settingsBox{
     position: fixed;
