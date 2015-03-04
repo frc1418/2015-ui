@@ -1,23 +1,35 @@
 .MainDivide{
  	height: 40vh;
 	width: 40vw;
-  	border: 1.5px solid black;
-  	display:block;
+  border: 5px inset gray;
+  border-radius: 2vmin;
+  display:block;
+}
+.Timers{
+  color:white;
 }
 .nav{
     height:6.5vh;
     width:110vw;
 
 }
+.UIPage{
+    background-image:url("RobotUIBackground.png");
+    background-size:100vw 100vh;
+    background-repeat: no-repeat;
+}
 .Tabs{
     height:6.5vh;
     width:6.5vw;
     font-size:2.2vmin;
+    color:white;
 }
 #ThisTab{
     height:6.5vh;
     width:5.5vw;
     font-size:2.2vmin;
+    color:black;
+    background-color:;
 
 }
 #ForkliftControls{
@@ -54,6 +66,7 @@
     height: 20vh;
     width: 18vw;
     font-size:1.5vmax;
+
 }
 #GyroStuff{
     position: fixed;
@@ -74,7 +87,8 @@
     bottom: 72vh;
     left:59vw;
     right: 23vw;
-    border: 1.5px solid black;
+    border: 5px inset gray;
+    border-radius: 2vmin;
     margin:auto;
 }
 #SpareBox{
@@ -92,14 +106,14 @@
 }
 .settingsBox{
   overflow:scroll;
-  height: 400px;
- width: 750px;
-   border: 1.5px solid black;
-   display:block;
-   position: relative;
-   top: 20px;
-   left: 10px;
-   float:left;
+  height: 45vh;
+  width: 40vw;
+  border: 5px inset grey;
+  border-radius: 2vmin;
+  display:block;
+  position: fixed;
+  top: 7.5vh;
+  left: 1vw;
 }
 #settingsBox{
     position: fixed;
@@ -158,6 +172,16 @@ select {
 
 }
 
+.Atonpageselect {
+  height:38vh;
+  width: 39vw;
+  border: 1vmin none;
+  margin:1vmin;
+    display:inline-block;
+  font-size:50px;
+
+}
+
 .RoboPhoto {
 	height: 80px;
 	width: 800px;
@@ -168,6 +192,7 @@ select {
   width:10px;
   margin:auto;
 }
+
 #Settings{
   height: 250px;
   width: 550px;
