@@ -92,13 +92,13 @@
 }
 .settingsBox{
   overflow:scroll;
-  height: 45vh;
- width: 40vw;
+  height: 450px;
+ width: 550px;
    border: 1.5px solid black;
    display:block;
    position: fixed;
-   top: 7.5vh;
-   left: 1vw;
+   top: 50px;
+   left: 10px;
 }
 #settingsBox{
     position: fixed;
