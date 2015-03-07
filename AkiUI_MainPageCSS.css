@@ -12,7 +12,11 @@
     height:6.5vh;
     width:110vw;
 }
-
+div{
+  border: 5px inset gray;
+  border-radius: 2vmin;
+  display:block;
+}
 .UIPage{
     /*background-image:url("RobotUIBackground.png");*/
     background-color: #EBF8FF;
@@ -51,6 +55,12 @@
     left: 1vw;
 
 }
+#AutoPathHolder{
+    position: fixed;
+    top: 25vh;
+    right: 6vw;
+ 	  width: 37vw;
+}
 #AutoBox{
     position: fixed;
     bottom: 1vh;
@@ -62,7 +72,9 @@
     bottom: 2vh;
     left:41vw;
     right: 41vw;
-    border: 1.5px solid black;
+    border: 5px inset gray;
+    border-radius: 2vmin;
+    display:block;
     margin:auto;
     height: 20vh;
     width: 18vw;
@@ -75,7 +87,9 @@
     bottom: 22vh;
     left:41vw;
     right: 41vw;
-    border: 1.5px solid black;
+    border: 5px inset gray;
+    border-radius: 2vmin;
+    display:block;
     margin:auto;
     height: 20vh;
     width: 18vw;
@@ -98,7 +112,9 @@
     bottom: 52vh;
     left:59vw;
     right: 23vw;
-    border: 1.5px solid black;
+    border: 5px inset gray;
+    border-radius: 2vmin;
+    display:block;
     margin:auto;
     height: 20vh;
     width: 18vw;
