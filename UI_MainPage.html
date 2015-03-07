@@ -12,15 +12,13 @@
 			<script src="Resources/dist/js/bootstrap.min.js"></script>
 			<link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
 </head>
-<body>
+<body class="UIPage">
 <script src="SocketController.js"></script>
 
 <ul class="nav nav-tabs" role="tablist">
 	<li class="Tabs active" id="ThisTab"><a href="UI_MainPage.html">Drive</a></li>
 	<li class="Tabs"><a href="Aton.html">Aton</a></li>
 	<li class="Tabs"><a href="Robot.html">Robot</a></li>
-	<li class="Tabs"><a href="Camera.html">Camera</a></li>
-	<li class="Tabs" style="width:8vw"><a href="UI_Settings.html">UI Settings</a></li>
 </ul>
 
 		<div class="MainDivide" id="ForkliftControls">
@@ -60,7 +58,7 @@
             <img id=circle1 src="Resources/wheel.png"></img>
         </div>
 		<div id="GameTimer">
-			<p id="Timetilldoom"><span id="timer" align:center></span></p>
+			<p class="Timers"id="Timetilldoom"><span id="timer" align:center></span></p>
 			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
 			<script>
 
@@ -86,15 +84,18 @@
 		</div>
 		<div class="MainDivide" id="SpareBox">
 		</div>
-		<div class="MainDivide" id="Checklist">
+		<div class="MainDivide, Timers" id="Checklist">
 			<p>Remember to:</p>
 			<ul>
 				<li>RESET robot!</li>
 			</ul>
 		</div>
 		<div class="MainDivide" id="GyroStuff">
-			<p>Gyro:<span id="/SmartDashboard/gyroAngle"></span></p>
-
+			<p class="Timers">Gyro:<span id="GyroNumero"></span></p>
+			<script>
+			var gyroField=$('#GyroNumero')
+			gyroField.text(keyStore[RegExp.escape("/SmartDashboard/"+'gyroAngle')]);
+			</script>
 		</div>
 		<div class="MainDivide" id="AutoBox">
 		<select id="AutoPathChoice">
