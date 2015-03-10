@@ -12,6 +12,18 @@
     height:6.5vh;
     width:110vw;
 }
+.AlloftheLevels{
+   	height: 38vh;
+  	width: 10vw;
+    display:inline-block;
+    border:1px;
+}
+.Robotimg{
+   	height: 38vh;
+  	width: 18vw;
+    display:inline-block;
+    border:1px;
+}
 div{
   border: 5px inset gray;
   border-radius: 2vmin;
