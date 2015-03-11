@@ -12,6 +12,18 @@
     height:6.5vh;
     width:110vw;
 }
+.AlloftheLevels{
+   	height: 38vh;
+  	width: 10vw;
+    display:inline-block;
+    border:1px;
+}
+.Robotimg{
+   	height: 38vh;
+  	width: 18vw;
+    display:inline-block;
+    border:1px;
+}
 div{
   border: 5px inset gray;
   border-radius: 2vmin;
@@ -26,13 +38,13 @@ div{
 .Tabs{
     height:6.5vh;
     width:6.5vw;
-    font-size:2.2vmin;
+    font-size:2.5vmin;
     color:black;
 }
 #ThisTab{
     height:6.5vh;
     width:5.5vw;
-    font-size:2.2vmin;
+    font-size:2.5vmin;
     color:black;
     background-color:;
 
@@ -78,7 +90,7 @@ div{
     margin:auto;
     height: 20vh;
     width: 18vw;
-    font-size:1.5vmax;
+    font-size:2.7vmin;
 
 }
 #GyroStuff{
@@ -93,7 +105,7 @@ div{
     margin:auto;
     height: 20vh;
     width: 18vw;
-    font-size:1.5vmax;
+    font-size:2.7vmin;
 
 }
 #GameTimer{
@@ -118,7 +130,7 @@ div{
     margin:auto;
     height: 20vh;
     width: 18vw;
-    font-size:1.5vmax;
+    font-size:2.7vmin;
 
 }
 .settingsBox{
@@ -171,7 +183,7 @@ button {
 	  width:7vw;
     margin:0.5vmin;
   	display:inline;
-    font-size:1.5vmax;
+    font-size:2.5vmin;
 }
 . {
 	height: 20px;
@@ -226,7 +238,7 @@ select {
     left:60vw;
     right: 24vw;
   	display:inline-block;
-    font-size:1.25vmax;
+    font-size:2.5vmin;
 }
 #Timetilldoom{
 
@@ -235,7 +247,7 @@ select {
   bottom: 63vh;
   left:63vw;
   right: 27vw;
-  font-size: 1.5vmax;
+  font-size: 2.5vmin;
 }
 #dog
 {
