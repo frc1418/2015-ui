@@ -13,26 +13,26 @@
 	<link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"></link>
 
 
-	<body>
+	<body class="UIPage">
 
 <ul class="nav nav-tabs" role="tablist">
 
   <li><a href="UI_MainPage.html">Drive</a></li>
   <li class="active"><a href="Aton.html">Aton</a></li>
 	<li><a href="Robot.html">Robot</a></li>
-	<li><a href="Camera.html">Camera</a></li>
-	<li><a href="UI_Settings.html">UI Settings</a></li>
 
 </ul>
 
-<div>
-		<select id="AutoPathChoice" >
+<div id="AutoPathHolder">
+		<select id="AutoPathChoice">
 		</select>
-	</div>
+		<button class="BinsLiftLevels" id="BinButton7" onclick="Socket.setKeyValue('binTo',7000,'write',true)">Bin 7000</button>
+</div>
 			<br>
 	<div class="settingsBox">
-	</div>
 
+		</div>
+	</div>
 
 		<script type="text/javascript" src="SocketController.js"></script>
 		<script type="text/javascript" src="writeSettings.js"></script>

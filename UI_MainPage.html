@@ -12,15 +12,13 @@
 			<script src="Resources/dist/js/bootstrap.min.js"></script>
 			<link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
 </head>
-<body>
+<body class="UIPage">
 <script src="SocketController.js"></script>
 
 <ul class="nav nav-tabs" role="tablist">
 	<li class="Tabs active" id="ThisTab"><a href="UI_MainPage.html">Drive</a></li>
 	<li class="Tabs"><a href="Aton.html">Aton</a></li>
 	<li class="Tabs"><a href="Robot.html">Robot</a></li>
-	<li class="Tabs"><a href="Camera.html">Camera</a></li>
-	<li class="Tabs" style="width:8vw"><a href="UI_Settings.html">UI Settings</a></li>
 </ul>
 
 		<div class="MainDivide" id="ForkliftControls">
@@ -31,7 +29,6 @@
 			<button class="ToteLiftLevels" id="ToteButton4" onclick="Socket.setKeyValue('liftTo',3,'write',true)">Tote Level 3</button>
 			<button class="ToteLiftLevels" id="ToteButton5" onclick="Socket.setKeyValue('liftTo',4,'write',true)">Tote Level 4</button>
 			<button class="ToteLiftLevels" id="ToteButton6" onclick="Socket.setKeyValue('liftTo',2048,'write',true)">Tote Max</button>
-			<button class="ToteLiftLevels" id="ToteButton7" onclick="Socket.setKeyValue('liftTo',7000,'write',true)">Tote ????</button>
 			<br>
 			<button class="BinsLiftLevels" id="BinButton1" onclick="Socket.setKeyValue('binTo',0,'write',true)">Bin Level 0</button>
 			<button class="BinsLiftLevels" id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write',true)">Bin Level 1</button>
@@ -39,34 +36,35 @@
 			<button class="BinsLiftLevels" id="BinButton4" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 3</button>
 			<button class="BinsLiftLevels" id="BinButton5" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 4</button>
 			<button class="BinsLiftLevels" id="BinButton6" onclick="Socket.setKeyValue('binTo',2048,'write',true)">Bin Lvl Max</button>
-			<button class="BinsLiftLevels" id="BinButton7" onclick="Socket.setKeyValue('binTo',7000,'write',true)">Bin 7000</button>
 			<br>
 
 		</div>
 		<div class="MainDivide" id="ButtonBox2">
-
-			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write',true)">Reverse Controls</button>
-			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto  Lifter</button>
 			<img src=""></img>
 
 		</div>
 
 		<div class="MainDivide" id="RobotDiagram">
 
-
-<<<<<<< Updated upstream
+						<div class="AlloftheLevels" id="AllofthemBins">
+						</div>
+						<div class="Robotimg">
+                            
             <img id=dog src="Resources/arrowleftred_benji_par_01.svg.thumb.png"></img>
             <img id=do src="Resources/arrowrightred_benji_pa_01.svg.thumb.png"></img>
             <img id=circle src="Resources/wheel.png"></img>
             <img id=circle1 src="Resources/wheel.png"></img>
-=======
+
             <img id=dog src="http://www.clker.com/cliparts/6/d/e/0/1194985595894889966arrow-left-red_benji_par_01.svg.thumb.png"></img>
             <img id=do src="http://www.clker.com/cliparts/6/9/0/f/1194985598254428023arrow-right-red_benji_pa_01.svg.thumb.png"></img>
             <img id=robotsv src="UIRobot1.png"></img>
->>>>>>> Stashed changes
+
+						</div>
+						<div class="AlloftheLevels" id="AllofthemTotes">
+						</div>
         </div>
 		<div id="GameTimer">
-			<p id="Timetilldoom"><span id="timer" align:center></span></p>
+			<p class="Timers"id="Timetilldoom"><span id="timer" align:center></span></p>
 			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
 			<script>
 
@@ -90,19 +88,23 @@
 			}
 			</script>
 		</div>
-		<div class="MainDivide" id="SpareBox">
-		</div>
-		<div class="MainDivide" id="Checklist">
+		<div class="MainDivide" id="SpareBox">		</div>
+		<div class="MainDivide, Timers" id="Checklist">
 			<p>Remember to:</p>
 			<ul>
 				<li>RESET robot!</li>
 			</ul>
 		</div>
 		<div class="MainDivide" id="GyroStuff">
-			<p>Gyro:<span id="/SmartDashboard/gyroAngle"></span></p>
-
+			<p class="Timers">Gyro:<span id="GyroNumero"></span></p>
+			<script>
+			var gyroField=$('#GyroNumero')
+			gyroField.text(keyStore[RegExp.escape("/SmartDashboard/"+'gyroAngle')]);
+			</script>
 		</div>
 		<div class="MainDivide" id="AutoBox">
+		<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write',true)">Reverse Controls</button>
+		<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto  Lifter</button>
 		<select id="AutoPathChoice">
 		</select>
 		</div>
