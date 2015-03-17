@@ -26,6 +26,13 @@
   display:none;
 
 }
+.SpecialButtons{
+ 	height:8vh;
+  width:16vw;
+  margin:0.5vmin;
+	display:inline;
+  font-size:4vmin;
+}
 .Robotimg{
    	height: 38vh;
   	width: 18vw;
@@ -67,7 +74,7 @@ div{
     position: fixed;
     top: 8vh;
     left: 1vw;
- 	  width: 22vw;
+ 	  width: 24vw;
 }
 #RobotDiagram{
     position: fixed;
@@ -84,6 +91,7 @@ div{
 }
 #AutoPathChoice{
     width: 32vw;
+    height:18.5vh;
 }
 #AutoBox{
     position: fixed;
@@ -196,7 +204,7 @@ button {
 	  width:10vw;
     margin:0.5vmin;
   	display:inline;
-    font-size:2.25vmin;
+    font-size:3vmin;
 }
 . {
 	height: 20px;
