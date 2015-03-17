@@ -18,6 +18,21 @@
     display:inline-block;
     border:1px;
 }
+.Hidden{
+ 	height: 0vh;
+	width: 0vw;
+  border: none;
+  border-radius: 0vmin;
+  display:none;
+
+}
+.SpecialButtons{
+ 	height:8vh;
+  width:16vw;
+  margin:0.5vmin;
+	display:inline;
+  font-size:4vmin;
+}
 .Robotimg{
    	height: 38vh;
   	width: 18vw;
@@ -58,13 +73,14 @@ div{
 #ButtonBox2{
     position: fixed;
     top: 8vh;
-    right: 1vw;
- 	  width: 22vw;
+    left: 1vw;
+ 	  width: 24vw;
 }
 #RobotDiagram{
     position: fixed;
-    bottom: 1vh;
-    left: 1vw;
+    top: 8vh;
+    left: 25vw;
+    height: 56vh;
 
 }
 #AutoPathHolder{
@@ -73,10 +89,15 @@ div{
     right: 6vw;
  	  width: 37vw;
 }
+#AutoPathChoice{
+    width: 32vw;
+    height:18.5vh;
+}
 #AutoBox{
     position: fixed;
-    bottom: 1vh;
+    top: 8vh;
     right: 1vw;
+    width: 34vw;
 }
 #Checklist{
     position: fixed;
@@ -179,11 +200,11 @@ div{
 }
 
 button {
-   	height:13vh;
-	  width:7vw;
+   	height:8vh;
+	  width:10vw;
     margin:0.5vmin;
   	display:inline;
-    font-size:2.5vmin;
+    font-size:3vmin;
 }
 . {
 	height: 20px;
@@ -267,16 +288,16 @@ select {
 {
 
     position:relative;
-    height:20px;
-    right:-175px;
-    top:-45px;
+    height:5vh;
+    right:0.5vw;
+    top:-0.5vh;
 }
 #circle1
 {
     position:relative;
-    height:20px;
-    right:-95px;
-    top:-45px;
+    height:5vh;
+    right:6.5vw;
+    top:-0.5vh;
 }
 .part{
     visibility:hidden;

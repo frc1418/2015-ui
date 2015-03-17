@@ -21,31 +21,22 @@
 	<li class="Tabs"><a href="Robot.html">Robot</a></li>
 </ul>
 
-		<div class="MainDivide" id="ForkliftControls">
+		<div class="MainDivide, Hidden" id="ForkliftControls">
 			<br>
-			<button class="ToteLiftLevels" id="ToteButton1" onclick="Socket.setKeyValue('liftTo',0,'write',true)">Tote Level 0</button>
-			<button class="ToteLiftLevels" id="ToteButton2" onclick="Socket.setKeyValue('liftTo',1,'write',true)" >Tote Level 1</button>
-			<button class="ToteLiftLevels" id="ToteButton3" onclick="Socket.setKeyValue('liftTo',2,'write',true)">Tote Level 2</button>
-			<button class="ToteLiftLevels" id="ToteButton4" onclick="Socket.setKeyValue('liftTo',3,'write',true)">Tote Level 3</button>
-			<button class="ToteLiftLevels" id="ToteButton5" onclick="Socket.setKeyValue('liftTo',4,'write',true)">Tote Level 4</button>
-			<button class="ToteLiftLevels" id="ToteButton6" onclick="Socket.setKeyValue('liftTo',2048,'write',true)">Tote Max</button>
-			<br>
-			<button class="BinsLiftLevels" id="BinButton1" onclick="Socket.setKeyValue('binTo',0,'write',true)">Bin Level 0</button>
-			<button class="BinsLiftLevels" id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write',true)">Bin Level 1</button>
-			<button class="BinsLiftLevels" id="BinButton3" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 2</button>
-			<button class="BinsLiftLevels" id="BinButton4" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 3</button>
-			<button class="BinsLiftLevels" id="BinButton5" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 4</button>
-			<button class="BinsLiftLevels" id="BinButton6" onclick="Socket.setKeyValue('binTo',2048,'write',true)">Bin Lvl Max</button>
-			<br>
-
+			<br><br>
 		</div>
 		<div class="MainDivide" id="ButtonBox2">
 			<img src=""></img>
-
 		</div>
 
 		<div class="MainDivide" id="RobotDiagram">
 						<div class="AlloftheLevels" id="AllofthemBins">
+							<button class="BinsLiftLevels" id="BinButton1" onclick="Socket.setKeyValue('binTo',0,'write',true)">Bin 0</button>
+							<button class="BinsLiftLevels" id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write',true)">Bin 1</button>
+							<button class="BinsLiftLevels" id="BinButton3" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin 2</button>
+							<button class="BinsLiftLevels" id="BinButton4" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin 3</button>
+							<button class="BinsLiftLevels" id="BinButton5" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin 4</button>
+							<button class="BinsLiftLevels" id="BinButton6" onclick="Socket.setKeyValue('binTo',2048,'write',true)">Bin Max</button>
 						</div>
 						<div class="Robotimg">
             <img id=dog src="Resources/arrowleftred_benji_par_01.svg.thumb.png"></img>
@@ -54,6 +45,12 @@
             <img id=circle1 src="Resources/wheel.png"></img>
 						</div>
 						<div class="AlloftheLevels" id="AllofthemTotes">
+							<button class="ToteLiftLevels" id="ToteButton1" onclick="Socket.setKeyValue('liftTo',0,'write',true)">Tote 0</button>
+							<button class="ToteLiftLevels" id="ToteButton2" onclick="Socket.setKeyValue('liftTo',1,'write',true)" >Tote 1</button>
+							<button class="ToteLiftLevels" id="ToteButton3" onclick="Socket.setKeyValue('liftTo',2,'write',true)">Tote 2</button>
+							<button class="ToteLiftLevels" id="ToteButton4" onclick="Socket.setKeyValue('liftTo',3,'write',true)">Tote 3</button>
+							<button class="ToteLiftLevels" id="ToteButton5" onclick="Socket.setKeyValue('liftTo',4,'write',true)">Tote 4</button>
+							<button class="ToteLiftLevels" id="ToteButton6" onclick="Socket.setKeyValue('liftTo',2048,'write',true)">Tote Max</button>
 						</div>
         </div>
 		<div id="GameTimer">
@@ -81,7 +78,7 @@
 			}
 			</script>
 		</div>
-		<div class="MainDivide" id="SpareBox">		</div>
+		<div class="MainDivide, Hidden" <!--id="SpareBox"-->>		</div>
 		<div class="MainDivide, Timers" id="Checklist">
 			<p>Remember to:</p>
 			<ul>
@@ -96,8 +93,8 @@
 			</script>
 		</div>
 		<div class="MainDivide" id="AutoBox">
-		<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write',true)">Reverse Controls</button>
-		<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto  Lifter</button>
+		<button class="SpecialButtons" id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write',true)">Reverse Controls</button>
+		<button class="SpecialButtons" id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto  Lifter</button>
 		<select id="AutoPathChoice">
 		</select>
 		</div>
