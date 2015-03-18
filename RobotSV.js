@@ -33,10 +33,10 @@ var jsonRectangles=[
                       {"x_axis": 140, "y_axis": t1, "height": 10, "width":20, "color" : "purple"},
                       {"x_axis": 140, "y_axis": t2, "height": 10, "width":20, "color" : "purple"},
                       {"x_axis": 140, "y_axis": t3, "height": 10, "width":20, "color" : "purple"},
-                      {"x_axis": 140, "y_axis": t4, "height": 10, "width":20, "color" : "purple"},
-                      {"x_axis": 140, "y_axis": t5, "height": 10, "width":20, "color" : "purple"},
-                      {"x_axis": 50, "y_axis": t6, "height": 15, "width":25, "color" : "orange"},
-                      {"x_axis": 70, "y_axis": 70, "height": 133, "width":80, "color": ""}];
+                      //{"x_axis": 140, "y_axis": t4, "height": 10, "width":20, "color" : "purple"},
+                      //{"x_axis": 140, "y_axis": t5, "height": 10, "width":20, "color" : "purple"},
+                    {"x_axis": 50, "y_axis": t6, "height": 15, "width":25, "color" : "orange"}];
+                      //{"x_axis": 70, "y_axis": 70, "height": 133, "width":80, "color": ""}];
 
 var max_x = 0;
 var max_y = 0;
