@@ -10,9 +10,11 @@
 			<script src="Resources/jquery-2.1.3.min.js"></script>
 			<link href="Resources/dist/css/bootstrap.min.css" rel="stylesheet">
 			<script src="Resources/dist/js/bootstrap.min.js"></script>
+			<script src="imgStreaming.js"></script>
 			<link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
 </head>
-<body class="UIPage">
+<body class="UIPage"  onload="createImageLayer()" >
+
 <script src="SocketController.js"></script>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -25,8 +27,11 @@
 			<br>
 			<br><br>
 		</div>
-		<div class="MainDivide" id="ButtonBox2">
-			<img src=""></img>
+		<div class="MainDivide" id="webcam" >
+			<!--<img src="/?action=stream" ></img>-->
+			<!--<img src="http://roborio-1418.local/?action=snapshot" />-->
+			<!--><img src="http://10.14.18.2/?action=snapshot" /><!-->
+
 		</div>
 
 		<div class="MainDivide" id="RobotDiagram">
@@ -53,45 +58,6 @@
 							<button class="ToteLiftLevels" id="ToteButton6" onclick="Socket.setKeyValue('liftTo',2048,'write',true)">Tote Max</button>
 						</div>
         </div>
-		<div id="GameTimer">
-			<p class="Timers"id="Timetilldoom"><span id="timer" align:center></span></p>
-			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
-			<script>
-
-
-			function startTimer(){
-				var count=150;
-				var counter=setInterval(timer, 1000);
-				function timer(){
-					count=count-1;
-					if (count <= -1){
-						clearInterval(counter);
-						return;
-					}
-					document.getElementById("timer").innerHTML=count + " secs  Left!";
-					if (count == 0){
-
-						document.getElementById("timer").innerHTML="Game Over!";
-						return;
-					}
-				}
-			}
-			</script>
-		</div>
-		<div class="MainDivide, Hidden" <!--id="SpareBox"-->>		</div>
-		<div class="MainDivide, Timers" id="Checklist">
-			<p>Remember to:</p>
-			<ul>
-				<li>RESET robot!</li>
-			</ul>
-		</div>
-		<div class="MainDivide" id="GyroStuff">
-			<p class="Timers">Gyro:<span id="GyroNumero"></span></p>
-			<script>
-			var gyroField=$('#GyroNumero')
-			gyroField.text(keyStore[RegExp.escape("/SmartDashboard/"+'gyroAngle')]);
-			</script>
-		</div>
 		<div class="MainDivide" id="AutoBox">
 		<button class="SpecialButtons" id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write',true)">Reverse Controls</button>
 		<button class="SpecialButtons" id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto  Lifter</button>

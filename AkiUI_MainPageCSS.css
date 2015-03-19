@@ -130,11 +130,12 @@ div{
 
 }
 #GameTimer{
-    position: fixed;
     top: 8vh;
     bottom: 72vh;
     left:59vw;
     right: 23vw;
+    height:50vh;
+    width:50vh;
     border: 5px inset gray;
     border-radius: 2vmin;
     margin:auto;
