@@ -10,9 +10,11 @@
 			<script src="Resources/jquery-2.1.3.min.js"></script>
 			<link href="Resources/dist/css/bootstrap.min.css" rel="stylesheet">
 			<script src="Resources/dist/js/bootstrap.min.js"></script>
+			<script src="imgStreaming.js"></script>
 			<link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
 </head>
-<body class="UIPage">
+<body class="UIPage"  onload="createImageLayer()" >
+
 <script src="SocketController.js"></script>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -21,83 +23,44 @@
 	<li class="Tabs"><a href="Robot.html">Robot</a></li>
 </ul>
 
-		<div class="MainDivide" id="ForkliftControls">
+		<div class="MainDivide, Hidden" id="ForkliftControls">
 			<br>
-			<button class="ToteLiftLevels" id="ToteButton1" onclick="Socket.setKeyValue('liftTo',0,'write',true)">Tote Level 0</button>
-			<button class="ToteLiftLevels" id="ToteButton2" onclick="Socket.setKeyValue('liftTo',1,'write',true)" >Tote Level 1</button>
-			<button class="ToteLiftLevels" id="ToteButton3" onclick="Socket.setKeyValue('liftTo',2,'write',true)">Tote Level 2</button>
-			<button class="ToteLiftLevels" id="ToteButton4" onclick="Socket.setKeyValue('liftTo',3,'write',true)">Tote Level 3</button>
-			<button class="ToteLiftLevels" id="ToteButton5" onclick="Socket.setKeyValue('liftTo',4,'write',true)">Tote Level 4</button>
-			<button class="ToteLiftLevels" id="ToteButton6" onclick="Socket.setKeyValue('liftTo',2048,'write',true)">Tote Max</button>
-			<button class="ToteLiftLevels" id="ToteButton7" onclick="Socket.setKeyValue('liftTo',7000,'write',true)">Tote ????</button>
-			<br>
-			<button class="BinsLiftLevels" id="BinButton1" onclick="Socket.setKeyValue('binTo',0,'write',true)">Bin Level 0</button>
-			<button class="BinsLiftLevels" id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write',true)">Bin Level 1</button>
-			<button class="BinsLiftLevels" id="BinButton3" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 2</button>
-			<button class="BinsLiftLevels" id="BinButton4" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 3</button>
-			<button class="BinsLiftLevels" id="BinButton5" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 4</button>
-			<button class="BinsLiftLevels" id="BinButton6" onclick="Socket.setKeyValue('binTo',2048,'write',true)">Bin Lvl Max</button>
-			<button class="BinsLiftLevels" id="BinButton7" onclick="Socket.setKeyValue('binTo',7000,'write',true)">Bin 7000</button>
-			<br>
-
+			<br><br>
 		</div>
-		<div class="MainDivide" id="ButtonBox2">
-
-			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write',true)">Reverse Controls</button>
-			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto  Lifter</button>
-			<img src=""></img>
+		<div class="MainDivide" id="webcam" >
+			<!--<img src="/?action=stream" ></img>-->
+			<!--<img src="http://roborio-1418.local/?action=snapshot" />-->
+			<!--><img src="http://10.14.18.2/?action=snapshot" /><!-->
 
 		</div>
 
 		<div class="MainDivide" id="RobotDiagram">
-
-
+						<div class="AlloftheLevels" id="AllofthemBins">
+							<button class="BinsLiftLevels" id="BinButton1" onclick="Socket.setKeyValue('binTo',0,'write',true)">Bin 0</button>
+							<button class="BinsLiftLevels" id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write',true)">Bin 1</button>
+							<button class="BinsLiftLevels" id="BinButton3" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin 2</button>
+							<button class="BinsLiftLevels" id="BinButton4" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin 3</button>
+							<button class="BinsLiftLevels" id="BinButton5" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin 4</button>
+							<button class="BinsLiftLevels" id="BinButton6" onclick="Socket.setKeyValue('binTo',2048,'write',true)">Bin Max</button>
+						</div>
+						<div class="Robotimg">
             <img id=dog src="Resources/arrowleftred_benji_par_01.svg.thumb.png"></img>
             <img id=do src="Resources/arrowrightred_benji_pa_01.svg.thumb.png"></img>
             <img id=circle src="Resources/wheel.png"></img>
             <img id=circle1 src="Resources/wheel.png"></img>
+						</div>
+						<div class="AlloftheLevels" id="AllofthemTotes">
+							<button class="ToteLiftLevels" id="ToteButton1" onclick="Socket.setKeyValue('liftTo',0,'write',true)">Tote 0</button>
+							<button class="ToteLiftLevels" id="ToteButton2" onclick="Socket.setKeyValue('liftTo',1,'write',true)" >Tote 1</button>
+							<button class="ToteLiftLevels" id="ToteButton3" onclick="Socket.setKeyValue('liftTo',2,'write',true)">Tote 2</button>
+							<button class="ToteLiftLevels" id="ToteButton4" onclick="Socket.setKeyValue('liftTo',3,'write',true)">Tote 3</button>
+							<button class="ToteLiftLevels" id="ToteButton5" onclick="Socket.setKeyValue('liftTo',4,'write',true)">Tote 4</button>
+							<button class="ToteLiftLevels" id="ToteButton6" onclick="Socket.setKeyValue('liftTo',2048,'write',true)">Tote Max</button>
+						</div>
         </div>
-		<div id="GameTimer">
-			<p class="Timers"id="Timetilldoom"><span id="timer" align:center></span></p>
-			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
-			<script>
-
-
-			function startTimer(){
-				var count=150;
-				var counter=setInterval(timer, 1000);
-				function timer(){
-					count=count-1;
-					if (count <= -1){
-						clearInterval(counter);
-						return;
-					}
-					document.getElementById("timer").innerHTML=count + " secs  Left!";
-					if (count == 0){
-
-						document.getElementById("timer").innerHTML="Game Over!";
-						return;
-					}
-				}
-			}
-			</script>
-		</div>
-		<div class="MainDivide" id="SpareBox">
-		</div>
-		<div class="MainDivide, Timers" id="Checklist">
-			<p>Remember to:</p>
-			<ul>
-				<li>RESET robot!</li>
-			</ul>
-		</div>
-		<div class="MainDivide" id="GyroStuff">
-			<p class="Timers">Gyro:<span id="GyroNumero"></span></p>
-			<script>
-			var gyroField=$('#GyroNumero')
-			gyroField.text(keyStore[RegExp.escape("/SmartDashboard/"+'gyroAngle')]);
-			</script>
-		</div>
 		<div class="MainDivide" id="AutoBox">
+		<button class="SpecialButtons" id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write',true)">Reverse Controls</button>
+		<button class="SpecialButtons" id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto  Lifter</button>
 		<select id="AutoPathChoice">
 		</select>
 		</div>

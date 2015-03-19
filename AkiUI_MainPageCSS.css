@@ -12,7 +12,38 @@
     height:6.5vh;
     width:110vw;
 }
+.AlloftheLevels{
+   	height: 38vh;
+  	width: 10vw;
+    display:inline-block;
+    border:1px;
+}
+.Hidden{
+ 	height: 0vh;
+	width: 0vw;
+  border: none;
+  border-radius: 0vmin;
+  display:none;
 
+}
+.SpecialButtons{
+ 	height:8vh;
+  width:16vw;
+  margin:0.5vmin;
+	display:inline;
+  font-size:4vmin;
+}
+.Robotimg{
+   	height: 38vh;
+  	width: 18vw;
+    display:inline-block;
+    border:1px;
+}
+div{
+  border: 5px inset gray;
+  border-radius: 2vmin;
+  display:block;
+}
 .UIPage{
     /*background-image:url("RobotUIBackground.png");*/
     background-color: #EBF8FF;
@@ -22,13 +53,13 @@
 .Tabs{
     height:6.5vh;
     width:6.5vw;
-    font-size:2.2vmin;
+    font-size:2.5vmin;
     color:black;
 }
 #ThisTab{
     height:6.5vh;
     width:5.5vw;
-    font-size:2.2vmin;
+    font-size:2.5vmin;
     color:black;
     background-color:;
 
@@ -42,19 +73,31 @@
 #ButtonBox2{
     position: fixed;
     top: 8vh;
-    right: 1vw;
- 	  width: 22vw;
+    left: 1vw;
+ 	  width: 24vw;
 }
 #RobotDiagram{
     position: fixed;
-    bottom: 1vh;
-    left: 1vw;
+    top: 8vh;
+    left: 25vw;
+    height: 56vh;
 
+}
+#AutoPathHolder{
+    position: fixed;
+    top: 25vh;
+    right: 6vw;
+ 	  width: 37vw;
+}
+#AutoPathChoice{
+    width: 32vw;
+    height:18.5vh;
 }
 #AutoBox{
     position: fixed;
-    bottom: 1vh;
+    top: 8vh;
     right: 1vw;
+    width: 34vw;
 }
 #Checklist{
     position: fixed;
@@ -62,11 +105,13 @@
     bottom: 2vh;
     left:41vw;
     right: 41vw;
-    border: 1.5px solid black;
+    border: 5px inset gray;
+    border-radius: 2vmin;
+    display:block;
     margin:auto;
     height: 20vh;
     width: 18vw;
-    font-size:1.5vmax;
+    font-size:2.7vmin;
 
 }
 #GyroStuff{
@@ -75,19 +120,22 @@
     bottom: 22vh;
     left:41vw;
     right: 41vw;
-    border: 1.5px solid black;
+    border: 5px inset gray;
+    border-radius: 2vmin;
+    display:block;
     margin:auto;
     height: 20vh;
     width: 18vw;
-    font-size:1.5vmax;
+    font-size:2.7vmin;
 
 }
 #GameTimer{
-    position: fixed;
     top: 8vh;
     bottom: 72vh;
     left:59vw;
     right: 23vw;
+    height:50vh;
+    width:50vh;
     border: 5px inset gray;
     border-radius: 2vmin;
     margin:auto;
@@ -98,11 +146,13 @@
     bottom: 52vh;
     left:59vw;
     right: 23vw;
-    border: 1.5px solid black;
+    border: 5px inset gray;
+    border-radius: 2vmin;
+    display:block;
     margin:auto;
     height: 20vh;
     width: 18vw;
-    font-size:1.5vmax;
+    font-size:2.7vmin;
 
 }
 .settingsBox{
@@ -151,11 +201,11 @@
 }
 
 button {
-   	height:13vh;
-	  width:7vw;
+   	height:8vh;
+	  width:10vw;
     margin:0.5vmin;
   	display:inline;
-    font-size:1.5vmax;
+    font-size:3vmin;
 }
 . {
 	height: 20px;
@@ -210,7 +260,7 @@ select {
     left:60vw;
     right: 24vw;
   	display:inline-block;
-    font-size:1.25vmax;
+    font-size:2.5vmin;
 }
 #Timetilldoom{
 
@@ -219,7 +269,7 @@ select {
   bottom: 63vh;
   left:63vw;
   right: 27vw;
-  font-size: 1.5vmax;
+  font-size: 2.5vmin;
 }
 #dog
 {
@@ -239,16 +289,16 @@ select {
 {
 
     position:relative;
-    height:20px;
-    right:-175px;
-    top:-45px;
+    height:5vh;
+    right:0.5vw;
+    top:-0.5vh;
 }
 #circle1
 {
     position:relative;
-    height:20px;
-    right:-95px;
-    top:-45px;
+    height:5vh;
+    right:6.5vw;
+    top:-0.5vh;
 }
 .part{
     visibility:hidden;
