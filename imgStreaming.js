@@ -1,4 +1,8 @@
 
+/* Copyright (C) 2007 Richard Atterer, richard©atterer.net
+	This program is free software; you can redistribute it and/or modify it
+	under the terms of the GNU General Public License, version 2. See the file
+	COPYING for details. */
 var imageNr = 0; // Serial number of current image
 var finished = new Array(); // References to img objects which have finished downloading
 var paused = false;
