@@ -82,6 +82,7 @@ function writeSettings(data,divname){		//takes an object with 2 arrays, names an
 	});
 
 			for(var b=0;b<data['divs'][a]['names'].length;b++){
+				
 				var docdiv=document.getElementById(data["divs"][a]['names'][b]+'FORM');
 				forms[a][b]=$(docdiv);
 				forms[a][b].submit(function(event){
@@ -109,8 +110,8 @@ function writeArray(IdArray,divname){
 		};
 		data['divs'].push(Div);
 		for (var property in keyStore){//for every key in keyStore
-			if (keyStore.hasOwnProperty(property)) {
-					var contains=property.indexOf(IdArray[a]);
+			if (keyStore.hasOwnProperty(property)) {			//if keystore contains the property
+					var contains=property.indexOf(IdArray[a]);//property contains the delimiter
 					if(contains!=-1){
 									data['divs'][a]['names'].push(property);
 									data['divs'][a]['values'].push(keyStore[property]);

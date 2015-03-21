@@ -104,7 +104,7 @@ var Socket={
 							setKeyStore(key,value);
 						}
 						else if(Event=='startup'){
-							imgUrl=value;
+							//imgUrl=value;
 						}
 					}
 					socket.onclose = function() {

@@ -32,7 +32,7 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         self.ioloop = IOLoop.current()
         self.nt = NetworkTable.getGlobalTable()
         NetworkTable.addGlobalListener(self.valueChanged, immediateNotify=True)
-        self.changeValue('startup', options.camUrl, 'startup')
+        self.nt.putValue('imgUrl', options.camUrl)
 
     def on_message(self, message):
         data=json.loads(message)

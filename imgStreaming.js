@@ -5,9 +5,11 @@
 var imageNr = 0; // Serial number of current image
 var finished = new Array(); // References to img objects which have finished downloading
 var paused = false;
-var imgUrl = "";//"http://10.14.18.2:8080";
-
+window.onload = function () {
+  createImageLayer();
+}
 function createImageLayer() {
+  console.log('img layer created');
   var img = new Image();
   img.style.position = "absolute";
   img.style.width="320px";
@@ -15,7 +17,7 @@ function createImageLayer() {
   img.style.zIndex = -1;
   img.onload = imageOnload;
   img.onclick = imageOnclick;
-  img.src = imgUrl + "/?action=snapshot&n=" + (++imageNr);
+  img.src = keyStore["imgUrl"] + "/?action=snapshot&n=" + (++imageNr);
   var webcam = document.getElementById("webcam");
   webcam.insertBefore(img, webcam.firstChild);
   console.log(img);
