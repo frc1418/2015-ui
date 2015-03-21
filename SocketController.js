@@ -3,7 +3,7 @@ var keyStore={
 }
 
 
-var showLogs=true;
+var showLogs=false;
 function logConsole(message){
 	if(showLogs==true){
 	console.log(message);}
