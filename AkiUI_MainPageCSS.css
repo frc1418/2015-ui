@@ -273,19 +273,19 @@ select {
 }
 #dog
 {
-    position:relative;
-    top:0px;
-    right:-128px;
+    position:fixed;
+    top:90vh;
+    left:10.5vw;
     height:19px;
 }
 #do
 {
-    position:relative;
-    top:0px;
-    right:-185px;
+    position:fixed;
+    top:90vh;
+    right:72.75vw;
     height:19px;
 }
-#circle
+#robotsv
 {
 
     position:relative;
@@ -295,11 +295,13 @@ select {
 }
 #circle1
 {
-    position:relative;
-    height:5vh;
-    right:6.5vw;
-    top:-0.5vh;
+    position:fixed;
+    top:64vh;
+    right:72.75vw;
+    width: 40wh;
+    height: 40vh;
 }
+
 .part{
     visibility:hidden;
 .topDown
@@ -311,6 +313,7 @@ select {
   height: 20vh;
 
 }
+
 .rotate {
    transform: rotate(0deg);
 

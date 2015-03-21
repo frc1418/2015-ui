@@ -96,6 +96,7 @@ def main():
 
     app = tornado.web.Application([
         (r'/ws', WebSocket),
+        (r"/()", MyStaticFileHandler, {"path": os.path.join(os.path.dirname(__file__), 'UI_MainPage.html')}),
         (r"/(.*)", MyStaticFileHandler, {"path": os.path.dirname(__file__)}),
 
     ])
