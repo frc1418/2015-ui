@@ -5,7 +5,7 @@
 var imageNr = 0; // Serial number of current image
 var finished = new Array(); // References to img objects which have finished downloading
 var paused = false;
-var imgUrl = "http://10.14.18.2:8080";
+var imgUrl = "";//"http://10.14.18.2:8080";
 
 function createImageLayer() {
   var img = new Image();
