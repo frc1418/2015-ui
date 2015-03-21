@@ -30,6 +30,7 @@
  	height:8vh;
   width:16vw;
   margin:0.5vmin;
+  margin-left: 15vmin;
 	display:inline;
   font-size:4vmin;
 }
@@ -70,17 +71,24 @@ div{
     left: 1vw;
     width: 58vw;
 }
-#ButtonBox2{
+#webcam{
     position: fixed;
     top: 8vh;
     left: 1vw;
- 	  width: 24vw;
+ 	  width: 27vw;
+    height: 56vh;
+}
+.webcam{
+    position: fixed;
+    top: 8vh;
+    left: 1vw;
 }
 #RobotDiagram{
     position: fixed;
     top: 8vh;
-    left: 25vw;
+    left: 28vw;
     height: 56vh;
+    width: vw;
 
 }
 #AutoPathHolder{
@@ -90,14 +98,15 @@ div{
  	  width: 37vw;
 }
 #AutoPathChoice{
-    width: 32vw;
+    width: 29vw;
     height:18.5vh;
 }
 #AutoBox{
     position: fixed;
-    top: 8vh;
+    top: 7vh;
     right: 1vw;
-    width: 34vw;
+    width: 31vw;
+    height: 56vh;
 }
 #Checklist{
     position: fixed;
