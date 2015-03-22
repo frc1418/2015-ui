@@ -36,13 +36,13 @@
 
 		<div class="MainDivide" id="RobotDiagram">
 
-						<div class="AlloftheLevels" id="AllofthemBins">
-						<button class="BinsLiftLevels" id="BinButton6" onclick="Socket.setKeyValue('binTo',2048,'write',true)">Bin Max</button>
-						<button class="BinsLiftLevels" id="BinButton5" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin 4</button>
-						<button class="BinsLiftLevels" id="BinButton4" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin 3</button>
-						<button class="BinsLiftLevels" id="BinButton3" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin 2</button>
-						<button class="BinsLiftLevels" id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write',true)">Bin 1</button>
-						<button class="BinsLiftLevels" id="BinButton1" onclick="Socket.setKeyValue('binTo',0,'write',true)">Bin 0</button>
+						<div class="AlloftheLevels BinsLiftLevels" id="AllofthemBins">
+						<button id="BinButton6" onclick="Socket.setKeyValue('binTo',2048,'write',true)">Bin Max</button>
+						<button id="BinButton5" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin 4</button>
+						<button id="BinButton4" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin 3</button>
+						<button id="BinButton3" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin 2</button>
+						<button id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write',true)">Bin 1</button>
+						<button class="buttonactive" id="BinButton1" onclick="Socket.setKeyValue('binTo',0,'write',true)">Bin 0</button>
 						</div>
 						<div class="Robotimg">
 
@@ -53,16 +53,16 @@
             <img id=robotsv src="UIRobot1.png"></img>
 
 						</div>
-						<div class="AlloftheLevels" id="AllofthemTotes">
-							<button class="ToteLiftLevels" id="ToteButton6" onclick="Socket.setKeyValue('liftTo',2048,'write',true)">Tote Max</button>
-							<button class="ToteLiftLevels" id="ToteButton5" onclick="Socket.setKeyValue('liftTo',4,'write',true)">Tote 4</button>
-							<button class="ToteLiftLevels" id="ToteButton4" onclick="Socket.setKeyValue('liftTo',3,'write',true)">Tote 3</button>
-							<button class="ToteLiftLevels" id="ToteButton3" onclick="Socket.setKeyValue('liftTo',2,'write',true)">Tote 2</button>
-							<button class="ToteLiftLevels" id="ToteButton2" onclick="Socket.setKeyValue('liftTo',1,'write',true)" >Tote 1</button>
-							<button class="ToteLiftLevels" id="ToteButton1" onclick="Socket.setKeyValue('liftTo',0,'write',true)">Tote 0</button>
+						<div class="AlloftheLevels ToteLiftLevels" id="AllofthemTotes">
+							<button id="ToteButton6" onclick="Socket.setKeyValue('liftTo',2048,'write',true)">Tote Max</button>
+							<button id="ToteButton5" onclick="Socket.setKeyValue('liftTo',4,'write',true)">Tote 4</button>
+							<button id="ToteButton4" onclick="Socket.setKeyValue('liftTo',3,'write',true)">Tote 3</button>
+							<button id="ToteButton3" onclick="Socket.setKeyValue('liftTo',2,'write',true)">Tote 2</button>
+							<button id="ToteButton2" onclick="Socket.setKeyValue('liftTo',1,'write',true)" >Tote 1</button>
+							<button class="buttonactive" id="ToteButton1" onclick="Socket.setKeyValue('liftTo',0,'write',true)">Tote 0</button>
 						</div>
         </div>
-		<div class="MainDivide" id="AutoBox"><br><br>
+		<div class="MainDivide" id="AutoBox"><br>
 		<button class="SpecialButtons" id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write',true)">Reverse Controls</button><br><br>
 		<button class="SpecialButtons" id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto  Lifter</button><br><br>
 		<select id="AutoPathChoice">
@@ -122,6 +122,25 @@
                </script>
             <script src="RobotSV.js"></script>
             <script src="topDownRobot.js"></script>
+
+						<script type="text/javascript">
+							$(document).ready(function() {
+							$("div.BinsLiftLevels button").click(function() {
+								$("div.BinsLiftLevels button").removeClass("buttonactive");
+								$(this).addClass("buttonactive");
+									});
+								});
+
+							</script>
+							<script type="text/javascript">
+								$(document).ready(function() {
+								$("div.ToteLiftLevels button").click(function() {
+									$("div.ToteLiftLevels button").removeClass("buttonactive");
+									$(this).addClass("buttonactive");
+										});
+									});
+
+								</script>
 
 </body>
 </html>

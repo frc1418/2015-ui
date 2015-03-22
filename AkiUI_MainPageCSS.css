@@ -6,11 +6,23 @@
   display:block;
 }
 .Timers{
-  color:black;
+    color:black;
 }
 .nav{
     height:6.5vh;
     width:110vw;
+}
+.buttonactive{
+    text-shadow:0 1px 0 #fff;
+    background-image:-webkit-linear-gradient(top,#fff 0,#e0e0e0 100%);
+    background-image:-o-linear-gradient(top,#fff 0,#111242 100%);
+    background-image:-webkit-gradient(linear,left top,left bottom,from(#fff),to(#e0e0e0));
+    background-image:linear-gradient(to bottom,#fff 0,#111242 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#111242', GradientType=0);
+    filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat:repeat-x;
+    border-color:#dbdbdb;
+    border-color:#ccc;
 }
 .AlloftheLevels{
    	height: 38vh;
@@ -30,7 +42,7 @@
  	height:8vh;
   width:16vw;
   margin:0.5vmin;
-  margin-left: 15vmin;
+  margin-left: 7vw;
 	display:inline;
   font-size:4vmin;
 }
