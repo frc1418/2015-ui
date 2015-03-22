@@ -3,7 +3,7 @@ var keyStore={
 }
 
 
-var showLogs=true;
+var showLogs=false;
 function logConsole(message){
 	if(showLogs==true){
 	console.log(message);}
@@ -101,12 +101,11 @@ var Socket={
 							localStorage.setItem("Local", val);	//re recording anything in local
 						}
 						else if(Event=='subtableValueChanged'){
-							console.log("subtable value changed, ",key," to ",value);
 							setKeyStore(key,value);
-
-								//is the same as value changed for the time being. will probably be changed
 						}
-
+						else if(Event=='startup'){
+							//imgUrl=value;
+						}
 					}
 					socket.onclose = function() {
 						logConsole("Socket Closed");

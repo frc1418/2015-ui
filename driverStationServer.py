@@ -32,6 +32,7 @@ class WebSocket(tornado.websocket.WebSocketHandler):
         self.ioloop = IOLoop.current()
         self.nt = NetworkTable.getGlobalTable()
         NetworkTable.addGlobalListener(self.valueChanged, immediateNotify=True)
+        self.nt.putValue('imgUrl', options.camUrl)
 
     def on_message(self, message):
         data=json.loads(message)
@@ -86,7 +87,7 @@ class MyStaticFileHandler(tornado.web.StaticFileHandler):
 
 
 def main():
-
+    define("camUrl", default="http://10.14.18.2:8080", help="url of the cam feed", type=str)
     define("host", default='127.0.0.1', help="Hostname of robot", type=str)
     define("port", default=8888, help="run on the given port", type=int)
 
@@ -96,8 +97,8 @@ def main():
 
     app = tornado.web.Application([
         (r'/ws', WebSocket),
+        (r"/()", MyStaticFileHandler, {"path": os.path.join(os.path.dirname(__file__), 'UI_MainPage.html')}),
         (r"/(.*)", MyStaticFileHandler, {"path": os.path.dirname(__file__)}),
-
     ])
     
     print("Listening on http://localhost:%s/" % options.port)

@@ -6,17 +6,45 @@
   display:block;
 }
 .Timers{
-  color:black;
+    color:black;
 }
 .nav{
     height:6.5vh;
     width:110vw;
+}
+.buttonactive{
+    text-shadow:0 1px 0 #fff;
+    background-image:-webkit-linear-gradient(top,#fff 0,#e0e0e0 100%);
+    background-image:-o-linear-gradient(top,#fff 0,#111242 100%);
+    background-image:-webkit-gradient(linear,left top,left bottom,from(#fff),to(#e0e0e0));
+    background-image:linear-gradient(to bottom,#fff 0,#111242 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#111242', GradientType=0);
+    filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat:repeat-x;
+    border-color:#dbdbdb;
+    border-color:#ccc;
 }
 .AlloftheLevels{
    	height: 38vh;
   	width: 10vw;
     display:inline-block;
     border:1px;
+}
+.Hidden{
+ 	height: 0vh;
+	width: 0vw;
+  border: none;
+  border-radius: 0vmin;
+  display:none;
+
+}
+.SpecialButtons{
+ 	height:8vh;
+  width:16vw;
+  margin:0.5vmin;
+  margin-left: 7vw;
+	display:inline;
+  font-size:4vmin;
 }
 .Robotimg{
    	height: 38vh;
@@ -55,16 +83,24 @@ div{
     left: 1vw;
     width: 58vw;
 }
-#ButtonBox2{
+#webcam{
     position: fixed;
     top: 8vh;
-    right: 1vw;
- 	  width: 22vw;
+    left: 1vw;
+ 	  width: 27vw;
+    height: 56vh;
+}
+.webcam{
+    position: fixed;
+    top: 8vh;
+    left: 1vw;
 }
 #RobotDiagram{
     position: fixed;
-    bottom: 1vh;
-    left: 1vw;
+    top: 8vh;
+    left: 28vw;
+    height: 56vh;
+    width: vw;
 
 }
 #AutoPathHolder{
@@ -73,10 +109,16 @@ div{
     right: 6vw;
  	  width: 37vw;
 }
+#AutoPathChoice{
+    width: 29vw;
+    height:18.5vh;
+}
 #AutoBox{
     position: fixed;
-    bottom: 1vh;
+    top: 7vh;
     right: 1vw;
+    width: 31vw;
+    height: 56vh;
 }
 #Checklist{
     position: fixed;
@@ -109,11 +151,12 @@ div{
 
 }
 #GameTimer{
-    position: fixed;
     top: 8vh;
     bottom: 72vh;
     left:59vw;
     right: 23vw;
+    height:50vh;
+    width:50vh;
     border: 5px inset gray;
     border-radius: 2vmin;
     margin:auto;
@@ -179,11 +222,11 @@ div{
 }
 
 button {
-   	height:13vh;
-	  width:7vw;
+   	height:8vh;
+	  width:10vw;
     margin:0.5vmin;
   	display:inline;
-    font-size:2.5vmin;
+    font-size:3vmin;
 }
 . {
 	height: 20px;
@@ -264,6 +307,14 @@ select {
     height:19px;
 }
 #robotsv
+{
+
+    position:relative;
+    height:5vh;
+    right:0.5vw;
+    top:-0.5vh;
+}
+#circle1
 {
     position:fixed;
     top:64vh;
