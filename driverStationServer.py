@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import json
 from os.path import dirname, join
 
 import tornado.web
@@ -24,10 +25,10 @@ class ConfigHandler(tornado.web.RequestHandler):
     '''Writes JSON that the HTML page can retrieve'''
     
     def get(self):
-        self.write({
+        self.write('var Config = ' + json.dumps({
             'frontcam': options.frontcam,
             'backcam': options.backcam
-        })
+        }) + ';')
         
 
 
@@ -54,7 +55,7 @@ def main():
     
     app = tornado.web.Application(
         get_handlers() + [
-            (r"/config.json", ConfigHandler),
+            (r"/config.js", ConfigHandler),
             (r"/()", NonCachingStaticFileHandler, {"path": join(dirname(__file__), 'UI_MainPage.html')}),
             (r"/(.*)", NonCachingStaticFileHandler, {"path": dirname(__file__)}),
         ]

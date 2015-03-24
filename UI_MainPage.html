@@ -13,8 +13,12 @@
 			<link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
 </head>
 <body class="UIPage" >
+<script src="/config.js"></script>
 <script src="/networktables/networktables.js"></script>
-<script src="imgStreaming.js"></script>
+
+<script src="RobotSV.js"></script>
+<script src="topDownRobot.js"></script>
+
 <ul class="nav nav-tabs" role="tablist">
 	<li class="Tabs active" id="ThisTab"><a href="UI_MainPage.html">Drive</a></li>
 	<li class="Tabs"><a href="Aton.html">Aton</a></li>
@@ -26,10 +30,7 @@
 			<br><br>
 		</div>
 		<div class="MainDivide" id="webcam" >
-			<!--<img class="webcam" src="/?action=stream" ></img>-->
-			<!--<img class="webcam" src="http://roborio-1418.local/?action=snapshot" />-->
-			<!--><img class="webcam" src="http://10.14.18.2/?action=snapshot" /><!-->
-
+			<!-- TODO: need placeholder image -->
 		</div>
 
 		<div class="MainDivide" id="RobotDiagram">
@@ -66,57 +67,90 @@
 		<select id="AutoPathChoice">
 		</select>
 		</div>
-			<script type="text/javascript">
-			//
-			//link is http://127.0.0.1:8888/UI_MainPage.html
-			//
-"use strict";
-	$(document).ready(
-			function(){
-				window.setTimeout(function(){
-				fillAutonomousBox("#AutoPathChoice",'/SmartDashboard/Autonomous Mode/');
-				},300);
-			}
-	);
-	function fillAutonomousBox(key,arrayId,defaultVal){
-		var data=NetworkTables.getValue(arrayId+'options');
-		d3.select(key)
-				.selectAll("select")
-				.data(data)
-				.enter()
-				.append("option")
-				.text(function(d,i){
-					return data[i];
-				});
-				if(!(NetworkTables.containsKey(arrayId+'selected'))||
-				NetworkTables.getValue(arrayId+'selected')==undefined){
-					$(key).val(NetworkTables.getValue(arrayId+'default'));
-				}
-				else{
-					$(key).val(NetworkTables.getValue(arrayId+'selected' ));
-				}
-			}
-			//could be inside $doc.onload()
-			var	$autoSelector=$("#AutoPathChoice");
-			$autoSelector.change(function(event){
-				event.preventDefault();
-				//alert( $autoSelector.children(':selected').text());
-				var val=$autoSelector.find('option:selected').text();
-				//alert(val);
-				NetworkTables.setValue('/SmartDashboard/Autonomous Mode/selected',val);
-			});
 
-			//});
+<script type="text/javascript">
+"use strict";
+
 
 $(document).ready(function(){
+		
+	window.setTimeout(function(){
+		fillAutonomousBox("#AutoPathChoice",'/SmartDashboard/Autonomous Mode/');
+	},300);
+	
+	$("div.ToteLiftLevels button").click(function() {
+		$("div.ToteLiftLevels button").removeClass("buttonactive");
+		$(this).addClass("buttonactive");
+	});
+			
+	$("div.BinsLiftLevels button").click(function() {
+		$("div.BinsLiftLevels button").removeClass("buttonactive");
+		$(this).addClass("buttonactive");
+	});
+		
+	// sets a function that will be called when the websocket connects/disconnects
+	NetworkTables.addWsConnectionListener(onNetworkTablesConnection, true);
 
+	// sets a function that will be called when the robot connects/disconnects
+	NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 
 	// sets a function that will be called when any NetworkTables key/value changes
 	NetworkTables.addGlobalListener(onValueChanged, true);
+		
 });
 
+function fillAutonomousBox(key,arrayId,defaultVal){
+	var data=NetworkTables.getValue(arrayId+'options');
+	d3.select(key)
+			.selectAll("select")
+			.data(data)
+			.enter()
+			.append("option")
+			.text(function(d,i){
+				return data[i];
+			});
+			if(!(NetworkTables.containsKey(arrayId+'selected'))||
+			NetworkTables.getValue(arrayId+'selected')==undefined){
+				$(key).val(NetworkTables.getValue(arrayId+'default'));
+			}
+			else{
+				$(key).val(NetworkTables.getValue(arrayId+'selected' ));
+			}
+		}
+		//could be inside $doc.onload()
+		var	$autoSelector=$("#AutoPathChoice");
+		$autoSelector.change(function(event){
+			event.preventDefault();
+			//alert( $autoSelector.children(':selected').text());
+			var val=$autoSelector.find('option:selected').text();
+			//alert(val);
+			NetworkTables.setValue('/SmartDashboard/Autonomous Mode/selected',val);
+		});
 
 
+// called when the robot connects/disconnects via networktables
+function onRobotConnection(connected) {
+	
+	// TODO: change some indicator
+	
+	console.log("Robot connected: " + connected);
+	
+	// make sure the camera stream isn't connected until the robot connects to us
+	if (connected) {
+		$('#webcam').prepend('<img id="frontwebcam" src="' + Config.frontcam + '/?action=stream" width="320" height="240" />');
+		//$('#webcam').prepend('<img id="backwebcam" src="' + Config.backcam + '/?action=stream" width="320" height="240" />');
+	} else {
+		// hide it, TODO: replace it with an error message
+		$('#frontwebcam').remove();
+		$('#backwebcam').remove();
+	}
+	
+}
+
+// called when the websocket connects/disconnects
+function onNetworkTablesConnection(connected) {
+	// TODO: change some indicator
+}
 
 function onValueChanged(key, value, isNew) {
 
@@ -125,35 +159,13 @@ function onValueChanged(key, value, isNew) {
 	// the key names aren't always valid HTML identifiers, so we use
 	// the NetworkTables.keyToId() function to convert them appropriately
 
-	if (isNew) {
-	} else {
 
-		// similarly, use keySelector to convert the key to a valid jQuery
-		// selector. This should work for class names also, not just for ids
-		$('#' + NetworkTables.keySelector(key)).text(value);
-	}
+	// similarly, use keySelector to convert the key to a valid jQuery
+	// selector. This should work for class names also, not just for ids
+	$('#' + NetworkTables.keySelector(key)).text(value);
 }
 
-               </script>
-            <script src="RobotSV.js"></script>
-            <script src="topDownRobot.js"></script>
-
-						<script type="text/javascript">
-							$(document).ready(function() {
-							$("div.BinsLiftLevels button").click(function() {
-								$("div.BinsLiftLevels button").removeClass("buttonactive");
-								$(this).addClass("buttonactive");
-									});
-								});
-
-								$(document).ready(function() {
-								$("div.ToteLiftLevels button").click(function() {
-									$("div.ToteLiftLevels button").removeClass("buttonactive");
-									$(this).addClass("buttonactive");
-										});
-									});
-
-								</script>
+</script>
 
 </body>
 </html>
