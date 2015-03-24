@@ -68,8 +68,9 @@
 						</div>
         </div>
 		<div class="MainDivide" id="AutoBox"><br>
-		<button class="SpecialButtons" id="ReverserSwitch" onclick="NetworkTables.setValue('SmartDashboard/reverseRobot',true)">Reverse Controls</button><br><br>
-		<button class="SpecialButtons" id="AutoLiferSwitch" onclick="NetworkTables.setValue('SmartDashboard/autoLift',true)">Auto  Lifter</button><br><br>
+		<button class="SpecialButtons" id="ReverserSwitch" onclick="NetworkTables.setValue('SmartDashboard/reverseRobot',true)">Reverse Controls</button>
+		<button class="SpecialButtons" id="AutoLiferSwitch" onclick="NetworkTables.setValue('SmartDashboard/autoLift',true)">Auto  Lifter</button>
+		<button class="SpecialButtons" id="Slo-MoSwitch" onclick=>Slow-Mo</button>
 		<select id="AutoPathChoice">
 		</select>
 		</div>
@@ -79,21 +80,21 @@
 
 
 $(document).ready(function(){
-		
+
 	window.setTimeout(function(){
 		fillAutonomousBox("#AutoPathChoice",'/SmartDashboard/Autonomous Mode/');
 	},300);
-	
+
 	$("div.ToteLiftLevels button").click(function() {
 		$("div.ToteLiftLevels button").removeClass("buttonactive");
 		$(this).addClass("buttonactive");
 	});
-			
+
 	$("div.BinsLiftLevels button").click(function() {
 		$("div.BinsLiftLevels button").removeClass("buttonactive");
 		$(this).addClass("buttonactive");
 	});
-		
+
 	// sets a function that will be called when the websocket connects/disconnects
 	NetworkTables.addWsConnectionListener(onNetworkTablesConnection, true);
 
@@ -102,7 +103,7 @@ $(document).ready(function(){
 
 	// sets a function that will be called when any NetworkTables key/value changes
 	NetworkTables.addGlobalListener(onValueChanged, true);
-		
+
 });
 
 function fillAutonomousBox(key,arrayId,defaultVal){
@@ -136,11 +137,11 @@ function fillAutonomousBox(key,arrayId,defaultVal){
 
 // called when the robot connects/disconnects via networktables
 function onRobotConnection(connected) {
-	
+
 	// TODO: change some indicator
-	
+
 	console.log("Robot connected: " + connected);
-	
+
 	// make sure the camera stream isn't connected until the robot connects to us
 	if (connected) {
 		$('#webcam').prepend('<img id="frontwebcam" src="' + Config.frontcam + '/?action=stream" width="320" height="240" />');
@@ -150,7 +151,7 @@ function onRobotConnection(connected) {
 		$('#frontwebcam').remove();
 		$('#backwebcam').remove();
 	}
-	
+
 }
 
 // called when the websocket connects/disconnects

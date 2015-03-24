@@ -42,7 +42,7 @@
  	height:8vh;
   width:16vw;
   margin:0.5vmin;
-  margin-left: 7vw;
+  margin-left: 5.25vw;
 	display:inline;
   font-size:4vmin;
 }
@@ -87,8 +87,16 @@ div{
     position: fixed;
     top: 8vh;
     left: 1vw;
- 	  width: 27vw;
-    height: 56vh;
+ 	  width: 24vw;
+    height: 91vh;
+}
+#AllofthemBins{
+    position: fixed;
+    left:26vw;
+}
+#AllofthemTotes{
+    position: fixed;
+    right:32vw;
 }
 .webcam{
     position: fixed;
@@ -98,9 +106,9 @@ div{
 #RobotDiagram{
     position: fixed;
     top: 8vh;
-    left: 28vw;
-    height: 56vh;
-    width: vw;
+    left: 25vw;
+    height: 91vh;
+    width: 46vw;
 
 }
 #AutoPathHolder{
@@ -110,15 +118,15 @@ div{
  	  width: 37vw;
 }
 #AutoPathChoice{
-    width: 29vw;
+    width: 26vw;
     height:18.5vh;
 }
 #AutoBox{
     position: fixed;
-    top: 7vh;
+    top: 8vh;
     right: 1vw;
-    width: 31vw;
-    height: 56vh;
+    width: 28vw;
+    height: 91vh;
 }
 #Checklist{
     position: fixed;
@@ -221,13 +229,21 @@ div{
 
 }
 
-button {
+.BinsLiftLevels button{
    	height:8vh;
-	  width:10vw;
+	  width:12vw;
     margin:0.5vmin;
   	display:inline;
-    font-size:3vmin;
+    font-size:4vmin;
 }
+.ToteLiftLevels button{
+   	height:8vh;
+	  width:12vw;
+    margin:0.5vmin;
+  	display:inline;
+    font-size:4vmin;
+}
+.
 . {
 	height: 20px;
 	width: 90px;
