@@ -27,7 +27,7 @@
 			<br>
 			<br><br>
 		</div>
-		<div class="MainDivide" id="webcam" >
+		<div class="MainDivide" id="webcam" ><br><br><br><br>
 			<!--<img class="webcam" src="/?action=stream" ></img>-->
 			<!--<img class="webcam" src="http://roborio-1418.local/?action=snapshot" />-->
 			<!--><img class="webcam" src="http://10.14.18.2/?action=snapshot" /><!-->
@@ -46,11 +46,11 @@
 						</div>
 						<div class="Robotimg">
 
-            <img id=dog src="Resources/arrowleftred_benji_par_01.svg.thumb.png"></img>
+							<!--<img id=dog src="Resources/arrowleftred_benji_par_01.svg.thumb.png"></img>
             <img id=do src="Resources/arrowrightred_benji_pa_01.svg.thumb.png"></img>
 						<!--<img id=circle src="Resources/wheel.png"></img>
             <img id=circle1 src="Resources/wheel.png"></img>-->
-            <img id=robotsv src="UIRobot1.png"></img>
+						<img id=robotsv src="UIRobot1.png"></img>
 
 						</div>
 						<div class="AlloftheLevels ToteLiftLevels" id="AllofthemTotes">
@@ -63,8 +63,9 @@
 						</div>
         </div>
 		<div class="MainDivide" id="AutoBox"><br>
-		<button class="SpecialButtons" id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write',true)">Reverse Controls</button><br><br>
-		<button class="SpecialButtons" id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto  Lifter</button><br><br>
+		<button class="SpecialButtons" id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write',true)">Reverse Controls</button>
+		<button class="SpecialButtons" id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto  Lifter</button>
+		<button class="SpecialButtons" id="Slo-MoSwitch" onclick=>Slow-Mo</button>
 		<select id="AutoPathChoice">
 		</select>
 		</div>
@@ -137,7 +138,6 @@
 									$(this).addClass("buttonactive");
 										});
 									});
-
 								</script>
 
 </body>
