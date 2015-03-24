@@ -38,13 +38,12 @@ waitForSocketConnection=function(sock,callback){
 				}, 5);
 }
 var socket;
-
+var onVarChange=[];	//array of functions to be attempted to be called when a netWorkTables is changed.
 function setKeyStore(id,value){
 	var writeVal;
 	if((typeof id)=="string"){
 
 			id=RegExp.escape(id);
-			//while(true){
 				var nextIndex=id.indexOf('|');
 				if(nextIndex==-1){
 					//id=id.subString(nextIndex);
@@ -53,16 +52,21 @@ function setKeyStore(id,value){
 				else{
 					keyStore[id]=value;
 				}
-			//}
-	}
-	//try{
+				try{
+						//var executeFunc=
+						onVarChange[id](value);
+						console.log(executeFunc);
+						executeFunc(value);
+						console.log('successful functionCall, id=',id);
+				}
+				catch(err){
+					//console.log('shit gone and goofed');
+				}
+			}
+
 	var $obj=$("#"+id);
 	$obj.text(value);
 	$obj.val(value);
-	/*}
-	catch(err){
-		console.log(id+" is not synced with a key");
-	}*/
 }
 
 
