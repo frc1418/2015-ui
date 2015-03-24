@@ -39,7 +39,7 @@
 
 }
 .SpecialButtons{
- 	height:8vh;
+ 	height:14vh;
   width:16vw;
   margin:0.5vmin;
   margin-left: 5.25vw;
@@ -119,7 +119,7 @@ div{
 }
 #AutoPathChoice{
     width: 26vw;
-    height:18.5vh;
+    height:31vh;
 }
 #AutoBox{
     position: fixed;
@@ -230,14 +230,14 @@ div{
 }
 
 .BinsLiftLevels button{
-   	height:8vh;
+   	height:13.75vh;
 	  width:12vw;
     margin:0.5vmin;
   	display:inline;
     font-size:4vmin;
 }
 .ToteLiftLevels button{
-   	height:8vh;
+   	height:13.75vh;
 	  width:12vw;
     margin:0.5vmin;
   	display:inline;
