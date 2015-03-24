@@ -6,28 +6,28 @@ var t3=90;
 var t4=230;
 var t5=270;
 var t6=180;
-*/var tF1=RegExp.escape("Tote Forklift|stack1");
-var tF2=RegExp.escape("Tote Forklift|stack2");
-var tF3=RegExp.escape("Tote Forklift|stack3");
-var tF4=RegExp.escape("Tote Forklift|stack4");
-var tF5=RegExp.escape("Tote Forklift|stack5");
-var tF6=RegExp.escape("Tote Forklift|stack5");
+*/var tF1="Tote Forklift|stack1";
+var tF2="Tote Forklift|stack2";
+var tF3="Tote Forklift|stack3";
+var tF4="Tote Forklift|stack4";
+var tF5="Tote Forklift|stack5";
+var tF6="Tote Forklift|stack5";
 
 
-keyStore[tF1]=190;
-keyStore[tF2]=150;
-keyStore[tF3]=90;
-keyStore[tF4]=230;
-keyStore[tF5]=270;
-keyStore[tF6]=180;
+NetworkTables.setValue(tF1,190);        //Should these be using networkTables values???
+NetworkTables.setValue(tF2,150);
+NetworkTables.setValue(tF3,90);
+NetworkTables.setValue(tF4,230);
+NetworkTables.setValue(tF5,270);
+NetworkTables.setValue(tF6,180);
 
 
-var t1=keyStore[tF1];
-var t2=keyStore[tF2];
-var t3=keyStore[tF3];
-var t4=keyStore[tF4];
-var t5=keyStore[tF5];
-var t6=keyStore[tF6];//*/
+var t1=NetworkTables.getValue(tF1);
+var t2=NetworkTables.getValue(tF2);
+var t3=NetworkTables.getValue(tF3);
+var t4=NetworkTables.getValue(tF4);
+var t5=NetworkTables.getValue(tF5);
+var t6=NetworkTables.getValue(tF6);//*/
 
 var jsonRectangles=[
                       {"x_axis": 140, "y_axis": t1, "height": 10, "width":20, "color" : "purple"},
@@ -46,7 +46,7 @@ for (var i = 0; i < jsonRectangles.length; i++) {
     var temp_x, temp_y;
     var temp_x = jsonRectangles[i].x_axis + jsonRectangles[i].width;
     var temp_y = jsonRectangles[i].y_axis + jsonRectangles[i].height;
-    
+
     if ( temp_x >= max_x ) { max_x = temp_x + 20; }
     if ( temp_y >= max_y ) { max_y = temp_y + 20; }
 }
@@ -78,7 +78,7 @@ if(jsonRectangles[k].y_axis>190||jsonRectangles[k].y_axis<90)
     .attr("class", "part")
     .style("visibility", function(d) { return d.visibitity; });
     //jsonRectangles[k].setVisible=false;
-    
+
 }
 }
 /*else if(prompt("what is the message"=="yes"))
@@ -88,5 +88,3 @@ if(jsonRectangles[k].y_axis>190||jsonRectangles[k].y_axis<90)
         for(var k=0;k<3;k++){
             jsonRectangles[k].y_axis=jsonRectangles[k].y_axis+1}}
 }*/
-
-
