@@ -9,16 +9,16 @@ Running the code
 Requirements
 ------------
 
-Make sure you have tornado installed:
+Make sure you have pynetworktables2 installed:
 
-	pip3 install tornado
+	pip3 install pynetworktables2js
 	
 Connect to a local simulation
 -----------------------------
 
 Run this command:
 
-	python3 driverStationClientV1.py
+	python3 driverStationServer.py
 	
 Connect to the robot
 --------------------
@@ -33,7 +33,7 @@ View the output
 
 Open a web browser (preferably Chrome), and go to:
 
-	http://localhost:8888/distanceSensorTest.html
+	http://localhost:8888/
 	
 You can replace the HTML file at the end of the URL with whatever you're
 trying to test.

@@ -6,28 +6,73 @@
   display:block;
 }
 .Timers{
-  color:white;
+    color:black;
 }
 .nav{
     height:6.5vh;
     width:110vw;
+}
+.buttonactive{
+    text-shadow:0 1px 0 #fff;
+    background-image:-webkit-linear-gradient(top,#fff 0,#e0e0e0 100%);
+    background-image:-o-linear-gradient(top,#fff 0,#111242 100%);
+    background-image:-webkit-gradient(linear,left top,left bottom,from(#fff),to(#e0e0e0));
+    background-image:linear-gradient(to bottom,#fff 0,#111242 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#111242', GradientType=0);
+    filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat:repeat-x;
+    border-color:#dbdbdb;
+    border-color:#ccc;
+}
+.AlloftheLevels{
+   	height: 38vh;
+  	width: 10vw;
+    display:inline-block;
+    border:1px;
+}
+.Hidden{
+ 	height: 0vh;
+	width: 0vw;
+  border: none;
+  border-radius: 0vmin;
+  display:none;
 
 }
+.SpecialButtons{
+ 	height:14vh;
+  width:16vw;
+  margin:0.5vmin;
+  margin-left: 5.25vw;
+	display:inline;
+  font-size:4vmin;
+}
+.Robotimg{
+   	height: 38vh;
+  	width: 18vw;
+    display:inline-block;
+    border:1px;
+}
+div{
+  border: 5px inset gray;
+  border-radius: 2vmin;
+  display:block;
+}
 .UIPage{
-    background-image:url("RobotUIBackground.png");
+    /*background-image:url("RobotUIBackground.png");*/
+    background-color: #EBF8FF;
     background-size:100vw 100vh;
     background-repeat: no-repeat;
 }
 .Tabs{
     height:6.5vh;
     width:6.5vw;
-    font-size:2.2vmin;
-    color:white;
+    font-size:2.5vmin;
+    color:black;
 }
 #ThisTab{
     height:6.5vh;
     width:5.5vw;
-    font-size:2.2vmin;
+    font-size:2.5vmin;
     color:black;
     background-color:;
 
@@ -38,22 +83,50 @@
     left: 1vw;
     width: 58vw;
 }
-#ButtonBox2{
+#webcam{
     position: fixed;
     top: 8vh;
-    right: 1vw;
- 	  width: 22vw;
+    left: 1vw;
+ 	  width: 24vw;
+    height: 91vh;
+}
+#AllofthemBins{
+    position: fixed;
+    left:26vw;
+}
+#AllofthemTotes{
+    position: fixed;
+    right:32vw;
+}
+.webcam{
+    position: fixed;
+    top: 8vh;
+    left: 1vw;
 }
 #RobotDiagram{
     position: fixed;
-    bottom: 1vh;
-    left: 1vw;
+    top: 8vh;
+    left: 25vw;
+    height: 91vh;
+    width: 46vw;
 
+}
+#AutoPathHolder{
+    position: fixed;
+    top: 25vh;
+    right: 6vw;
+ 	  width: 37vw;
+}
+#AutoPathChoice{
+    width: 26vw;
+    height:31vh;
 }
 #AutoBox{
     position: fixed;
-    bottom: 1vh;
+    top: 8vh;
     right: 1vw;
+    width: 28vw;
+    height: 91vh;
 }
 #Checklist{
     position: fixed;
@@ -61,11 +134,13 @@
     bottom: 2vh;
     left:41vw;
     right: 41vw;
-    border: 1.5px solid black;
+    border: 5px inset gray;
+    border-radius: 2vmin;
+    display:block;
     margin:auto;
     height: 20vh;
     width: 18vw;
-    font-size:1.5vmax;
+    font-size:2.7vmin;
 
 }
 #GyroStuff{
@@ -74,19 +149,22 @@
     bottom: 22vh;
     left:41vw;
     right: 41vw;
-    border: 1.5px solid black;
+    border: 5px inset gray;
+    border-radius: 2vmin;
+    display:block;
     margin:auto;
     height: 20vh;
     width: 18vw;
-    font-size:1.5vmax;
+    font-size:2.7vmin;
 
 }
 #GameTimer{
-    position: fixed;
     top: 8vh;
     bottom: 72vh;
     left:59vw;
     right: 23vw;
+    height:50vh;
+    width:50vh;
     border: 5px inset gray;
     border-radius: 2vmin;
     margin:auto;
@@ -97,17 +175,19 @@
     bottom: 52vh;
     left:59vw;
     right: 23vw;
-    border: 1.5px solid black;
+    border: 5px inset gray;
+    border-radius: 2vmin;
+    display:block;
     margin:auto;
     height: 20vh;
     width: 18vw;
-    font-size:1.5vmax;
+    font-size:2.7vmin;
 
 }
 .settingsBox{
   overflow:scroll;
-  height: 45vh;
-  width: 40vw;
+  height: 65vh;
+  width: 50vw;
   border: 5px inset grey;
   border-radius: 2vmin;
   display:block;
@@ -149,13 +229,21 @@
 
 }
 
-button {
-   	height:13vh;
-	  width:7vw;
+.BinsLiftLevels button{
+   	height:13.75vh;
+	  width:12vw;
     margin:0.5vmin;
   	display:inline;
-    font-size:1.5vmax;
+    font-size:4vmin;
 }
+.ToteLiftLevels button{
+   	height:13.75vh;
+	  width:12vw;
+    margin:0.5vmin;
+  	display:inline;
+    font-size:4vmin;
+}
+.
 . {
 	height: 20px;
 	width: 90px;
@@ -209,7 +297,7 @@ select {
     left:60vw;
     right: 24vw;
   	display:inline-block;
-    font-size:1.25vmax;
+    font-size:2.5vmin;
 }
 #Timetilldoom{
 
@@ -218,37 +306,80 @@ select {
   bottom: 63vh;
   left:63vw;
   right: 27vw;
-  font-size: 1.5vmax;
+  font-size: 2.5vmin;
 }
 #dog
 {
-    position:relative;
-    top:0px;
-    right:-128px;
+    position:fixed;
+    top:55vh;
+    left:40.5vw;
     height:19px;
 }
 #do
 {
-    position:relative;
-    top:0px;
-    right:-185px;
+    position:fixed;
+    top:55vh;
+    right:44.75vw;
     height:19px;
 }
-#circle
+#robotsv
 {
 
-    position:relative;
-    height:20px;
-    right:-175px;
-    top:-45px;
+    position:fixed;
+    height:70vh;
+    right:38.5vw;
+    top:5vh;
+
+}
+#binArm
+{
+    position:fixed;
+    height:15vh;
+    right:56.625vw;
+    top:50vh;
+}
+
+#toteArm1
+{
+    position:fixed;
+    height:100vh;
+    right:20.225vw;
+    top:5vh;
+    
+}
+#toteArm2
+{
+    position:fixed;
+    height:100vh;
+    right:20.225vw;
+    top:-5vh;
+    
+}
+#toteArm3
+{
+    position:fixed;
+    height:100vh;
+    right:20.225vw;
+    top:-15vh;
+    
+}
+#toteArm4
+{
+    position:fixed;
+    height:100vh;
+    right:20.225vw;
+    top:-25vh;
+    
 }
 #circle1
 {
-    position:relative;
-    height:20px;
-    right:-95px;
-    top:-45px;
+    position:fixed;
+    top:64vh;
+    right:72.75vw;
+    width: 40wh;
+    height: 40vh;
 }
+
 .part{
     visibility:hidden;
 .topDown
@@ -260,6 +391,7 @@ select {
   height: 20vh;
 
 }
+
 .rotate {
    transform: rotate(0deg);
 

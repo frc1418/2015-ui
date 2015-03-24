@@ -20,21 +20,19 @@
   <li><a href="UI_MainPage.html">Drive</a></li>
   <li><a href="Aton.html">Aton</a></li>
   <li class="active"><a href="Robot.html">Robot</a></li>
-  <li><a href="Camera.html">Camera</a></li>
-  <li><a href="thing.html">UI Settings</a></li>
 
 </ul>
 
 
   <div class="settingsBox">
   </div>
-    <script type="text/javascript" src="SocketController.js"></script>
+    <script type="text/javascript" src="/networktables/networktables.js"></script>
     <script type="text/javascript" src="writeSettings.js"></script>
     <script>
     var arr=new Array();
-    arr.push(RegExp.escape("Tote Forklift"));
-    arr.push(RegExp.escape("Can Forklift"));
-    arr.push(RegExp.escape('Align'));
+    arr.push(("Tote Forklift"));
+    arr.push(("Can Forklift"));
+    arr.push(('Align'));
     $(document).ready(
     function(){
       window.setTimeout(function(){

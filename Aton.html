@@ -20,42 +20,36 @@
   <li><a href="UI_MainPage.html">Drive</a></li>
   <li class="active"><a href="Aton.html">Aton</a></li>
 	<li><a href="Robot.html">Robot</a></li>
-	<li><a href="Camera.html">Camera</a></li>
-	<li><a href="UI_Settings.html">UI Settings</a></li>
 
 </ul>
 
-<div>
-		<select id="AutoPathChoice" >
+<div id="AutoPathHolder">
+		<select id="AutoPathChoice">
 		</select>
-	</div>
+		<button class="BinsLiftLevels" id="BinButton7" onclick="Socket.setKeyValue('binTo',7000,'write',true)">Bin 7000</button>
+</div>
 			<br>
 	<div class="settingsBox">
-		<br>
-			<select class="Atonpageselect">
-				<option>Starting left</option>
-				<option>Strating middle</option>
-				<option>Strating right</option>
-			</select>
+
 		</div>
 	</div>
 
-		<script type="text/javascript" src="SocketController.js"></script>
+		<script type="text/javascript" src="/networktables/networktables.js"></script>
 		<script type="text/javascript" src="writeSettings.js"></script>
 		<script>
 //var arr=new Array();
 		function findSelectedMode(){
 								var	arr=new Array();
-										var arrayId=RegExp.escape('/SmartDashboard/Autonomous Mode/');
+										var arrayId='/SmartDashboard/Autonomous Mode/';
 										var selectedAutonomousMode;
 
 
-										if(!(arrayId+'selected' in keyStore)||
-										keyStore[arrayId+'selected']==undefined){
-											selectedAutonomousMode=keyStore[arrayId+'default'];
+										if(!(NetworkTables.containsKey(arrayId+'selected'))||
+										NetworkTables.getValue(arrayId+'selected')==undefined){
+											selectedAutonomousMode=NetworkTables.getValue(arrayId+'default');
 										}
 										else{
-											selectedAutonomousMode=keyStore[arrayId+'selected' ];
+											selectedAutonomousMode=NetworkTables.getValue(arrayId+'selected');
 										}
 										console.log(selectedAutonomousMode);
 										//var arr={};
@@ -67,35 +61,17 @@
 			window.setTimeout(function(){
 				var arr=	findSelectedMode();
 
-				fillAutonomousBox("#AutoPathChoice",RegExp.escape('/SmartDashboard/Autonomous Mode/'));
+				fillAutonomousBox("#AutoPathChoice",'/SmartDashboard/Autonomous Mode/');
 				writeArray(arr,".settingsBox");
 			},300);
 				}
 		);
 
 
-
-
-
-
 							var	$autoSelector=$('#AutoPathChoice');
 							$autoSelector.change(function(event){
-								//event.preventDefault();
-								//var arr=	findSelectedMode();
-								//writeArray(arr,".settingsBox");
-
-								//alert( $autoSelector.children(':selected').text());
 								var val=$autoSelector.find('option:selected').text();
-								//alert(val);
-								var sendVal={
-									key://RegExp.escape(
-										'/SmartDashboard/Autonomous Mode/selected'//)
-										,
-									value:val,
-									action:"writeToSubtable",
-									tableName:"Autonomous Mode"
-								};
-								Socket.setValue(sendVal);
+								NetworkTables.setValue('/SmartDashboard/Autonomous Mode/selected',val);
 								location.reload();
 							});
 
@@ -103,21 +79,20 @@
 
 					function fillAutonomousBox(key,arrayId,defaultVal){
 
-						console.log(keyStore);
 						d3.select(key)
 						.selectAll("select")
-						.data(keyStore[arrayId+'options'])
+						.data(NetworkTables.getValue(arrayId+'options'))
 						.enter()
 						.append("option")
 						.text(function(d,i){
-							return keyStore[arrayId+'options'][i];
+							return NetworkTables.getValue(arrayId+'options')[i];
 						});
-						if(!(arrayId+'selected' in keyStore)||
-						keyStore[arrayId+'selected']==undefined){
-							$(key).val(keyStore[arrayId+'default']);
+						if(!(NetworkTables.containsKey(arrayId+'selected'))||
+						NetworkTables.getValue(arrayId+'selected')==undefined){
+							$(key).val(NetworkTables.getValue(arrayId+'default'));
 						}
 						else{
-							$(key).val(keyStore[arrayId+'selected' ]);
+							$(key).val(NetworkTables.getValue(arrayId+'selected' ));
 						}
 					}
 

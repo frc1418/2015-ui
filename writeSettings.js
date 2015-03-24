@@ -32,14 +32,7 @@ function writeSettingsFromLocal(divName,key){
 			value=Number(value);
 		}
 
-		var Message={
-			'key':id,
-			'value':value,
-			'isNum':true,
-			'action':'write'
-		}
-		console.log('id is ',id,' while key is ',Message.key);
-		Socket.setValue(Message,true);
+		NetworkTables.setValue(id,value);
 	}
 function writeSettings(data,divname){		//takes an object with 2 arrays, names and values
 	var div=d3.select(divname);				//selecting the html element
@@ -82,6 +75,7 @@ function writeSettings(data,divname){		//takes an object with 2 arrays, names an
 	});
 
 			for(var b=0;b<data['divs'][a]['names'].length;b++){
+
 				var docdiv=document.getElementById(data["divs"][a]['names'][b]+'FORM');
 				forms[a][b]=$(docdiv);
 				forms[a][b].submit(function(event){
@@ -93,30 +87,41 @@ function writeSettings(data,divname){		//takes an object with 2 arrays, names an
 			}
 	}
 }
-
+var tuningData={};
 function writeArray(IdArray,divname){
 	//use an array of values to write tuning variables
 	//idArray is a array of delimiters to display
 	var end=IdArray.length;
 
-		var data={};
-		data.divs=new Array();
+		tuningData.divs=new Array();
 	for(var a=0;a<end;a++){
 
 		var Div={
 			'names':new Array(),
 			'values':new Array()
 		};
-		data['divs'].push(Div);
-		for (var property in keyStore){//for every key in keyStore
-			if (keyStore.hasOwnProperty(property)) {
-					var contains=property.indexOf(IdArray[a]);
+		tuningData['divs'].push(Div);
+		for (var property in NetworkTables.ntCache){//for every key in keyStore
+			if (NetworkTables.containsKey(property)) {			//if keystore contains the property		//!!!!!!!! check this line ,was originally keyStore.has own property
+					var contains=property.indexOf(IdArray[a]);//property contains the delimiter
 					if(contains!=-1){
-									data['divs'][a]['names'].push(property);
-									data['divs'][a]['values'].push(keyStore[property]);
+									tuningData['divs'][a]['names'].push(property);
+									tuningData['divs'][a]['values'].push(NetworkTables.getValue(property));
 					}
 			}
 		}
 	}
-	writeSettings(data,divname);
+	console.log(tuningData,NetworkTables.ntCache);
+	writeSettings(tuningData,divname);
+}
+function AddGlobalListenerForTuning(IdArray){
+	var end=idArray.length;
+	NetworkTables.addGlobalListener(function(key,val){
+		for(var a=0;a<end;a++){
+			if(key.indexOf(IdArray[a])!=-1){
+				tuningData['divs'][a]['names'].push(property);
+				tuningData['divs'][a]['values'].push(NetworkTables.getValue(property));
+			}
+		}
+	},true);
 }

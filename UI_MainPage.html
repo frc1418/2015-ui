@@ -12,151 +12,167 @@
 			<script src="Resources/dist/js/bootstrap.min.js"></script>
 			<link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
 </head>
-<body class="UIPage">
-<script src="SocketController.js"></script>
+<body class="UIPage" >
+<script src="/config.js"></script>
+<script src="/networktables/networktables.js"></script>
+
+<script src="RobotSV.js"></script>
+<script src="topDownRobot.js"></script>
 
 <ul class="nav nav-tabs" role="tablist">
 	<li class="Tabs active" id="ThisTab"><a href="UI_MainPage.html">Drive</a></li>
 	<li class="Tabs"><a href="Aton.html">Aton</a></li>
 	<li class="Tabs"><a href="Robot.html">Robot</a></li>
-	<li class="Tabs"><a href="Camera.html">Camera</a></li>
-	<li class="Tabs" style="width:8vw"><a href="UI_Settings.html">UI Settings</a></li>
 </ul>
 
-		<div class="MainDivide" id="ForkliftControls">
+		<div class="MainDivide, Hidden" id="ForkliftControls">
 			<br>
-			<button class="ToteLiftLevels" id="ToteButton1" onclick="Socket.setKeyValue('liftTo',0,'write',true)">Tote Level 0</button>
-			<button class="ToteLiftLevels" id="ToteButton2" onclick="Socket.setKeyValue('liftTo',1,'write',true)" >Tote Level 1</button>
-			<button class="ToteLiftLevels" id="ToteButton3" onclick="Socket.setKeyValue('liftTo',2,'write',true)">Tote Level 2</button>
-			<button class="ToteLiftLevels" id="ToteButton4" onclick="Socket.setKeyValue('liftTo',3,'write',true)">Tote Level 3</button>
-			<button class="ToteLiftLevels" id="ToteButton5" onclick="Socket.setKeyValue('liftTo',4,'write',true)">Tote Level 4</button>
-			<button class="ToteLiftLevels" id="ToteButton6" onclick="Socket.setKeyValue('liftTo',2048,'write',true)">Tote Max</button>
-			<button class="ToteLiftLevels" id="ToteButton7" onclick="Socket.setKeyValue('liftTo',7000,'write',true)">Tote ????</button>
-			<br>
-			<button class="BinsLiftLevels" id="BinButton1" onclick="Socket.setKeyValue('binTo',0,'write',true)">Bin Level 0</button>
-			<button class="BinsLiftLevels" id="BinButton2" onclick="Socket.setKeyValue('binTo',1,'write',true)">Bin Level 1</button>
-			<button class="BinsLiftLevels" id="BinButton3" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 2</button>
-			<button class="BinsLiftLevels" id="BinButton4" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 3</button>
-			<button class="BinsLiftLevels" id="BinButton5" onclick="Socket.setKeyValue('binTo',2,'write',true)">Bin Level 4</button>
-			<button class="BinsLiftLevels" id="BinButton6" onclick="Socket.setKeyValue('binTo',2048,'write',true)">Bin Lvl Max</button>
-			<button class="BinsLiftLevels" id="BinButton7" onclick="Socket.setKeyValue('binTo',7000,'write',true)">Bin 7000</button>
-			<br>
-
+			<br><br>
 		</div>
-		<div class="MainDivide" id="ButtonBox2">
-
-			<button id="ReverserSwitch" onclick="Socket.setKeyValue('reverseRobot',true,'write',true)">Reverse Controls</button>
-			<button id="AutoLiferSwitch" onclick="Socket.setKeyValue('autoLift',true,'write',true)">Auto  Lifter</button>
-			<img src=""></img>
-
+		<div class="MainDivide" id="webcam" >
+			<!-- TODO: need placeholder image -->
 		</div>
 
 		<div class="MainDivide" id="RobotDiagram">
 
+						<div class="AlloftheLevels BinsLiftLevels" id="AllofthemBins">
+						<button id="BinButton6" onclick="NetworkTables.setValue('SmartDashboard/binTo',2048)">Bin Max</button>
+						<button id="BinButton5" onclick="NetworkTables.setValue('SmartDashboard/binTo',4)">Bin 4</button>
+						<button id="BinButton4" onclick="NetworkTables.setValue('SmartDashboard/binTo',3)">Bin 3</button>
+						<button id="BinButton3" onclick="NetworkTables.setValue('SmartDashboard/binTo',2)">Bin 2</button>
+						<button id="BinButton2" onclick="NetworkTables.setValue('SmartDashboard/binTo',1)">Bin 1</button>
+						<button class="buttonactive" id="BinButton1" onclick="NetworkTables.setValue('SmartDashboard/binTo',0)">Bin 0</button>
+						</div>
+						<div class="Robotimg">
 
             <img id=dog src="Resources/arrowleftred_benji_par_01.svg.thumb.png"></img>
             <img id=do src="Resources/arrowrightred_benji_pa_01.svg.thumb.png"></img>
-            <img id=circle src="Resources/wheel.png"></img>
-            <img id=circle1 src="Resources/wheel.png"></img>
+						<!--<img id=circle src="Resources/wheel.png"></img>
+            <img id=circle1 src="Resources/wheel.png"></img>-->
+            <img id=robotsv src="UIRobot1.png"></img>
+            <img id=toteArm1 src="toteArm.png"></img>
+            <img id=toteArm2 src="toteArm.png"></img>
+            <img id=toteArm3 src="toteArm.png"></img>
+            <img id=toteArm4 src="toteArm.png"></img>
+            <img id=binArm src="binArm.png"></img>
+           
+
+						</div>
+						<div class="AlloftheLevels ToteLiftLevels" id="AllofthemTotes">
+							<button id="ToteButton6" onclick="NetworkTables.setValue('SmartDashboard/liftTo',2048)">Tote Max</button>
+							<button id="ToteButton5" onclick="NetworkTables.setValue('SmartDashboard/liftTo',4)">Tote 4</button>
+							<button id="ToteButton4" onclick="NetworkTables.setValue('SmartDashboard/liftTo',3)">Tote 3</button>
+							<button id="ToteButton3" onclick="NetworkTables.setValue('SmartDashboard/liftTo',2)">Tote 2</button>
+							<button id="ToteButton2" onclick="NetworkTables.setValue('SmartDashboard/liftTo',1)" >Tote 1</button>
+							<button class="buttonactive" id="ToteButton1" onclick="NetworkTables.setValue('SmartDashboard/liftTo',0)">Tote 0</button>
+						</div>
         </div>
-		<div id="GameTimer">
-			<p class="Timers"id="Timetilldoom"><span id="timer" align:center></span></p>
-			<button id="TimerButton" onclick="startTimer()">Start Timer</button>
-			<script>
-
-
-			function startTimer(){
-				var count=150;
-				var counter=setInterval(timer, 1000);
-				function timer(){
-					count=count-1;
-					if (count <= -1){
-						clearInterval(counter);
-						return;
-					}
-					document.getElementById("timer").innerHTML=count + " secs  Left!";
-					if (count == 0){
-
-						document.getElementById("timer").innerHTML="Game Over!";
-						return;
-					}
-				}
-			}
-			</script>
-		</div>
-		<div class="MainDivide" id="SpareBox">
-		</div>
-		<div class="MainDivide, Timers" id="Checklist">
-			<p>Remember to:</p>
-			<ul>
-				<li>RESET robot!</li>
-			</ul>
-		</div>
-		<div class="MainDivide" id="GyroStuff">
-			<p class="Timers">Gyro:<span id="GyroNumero"></span></p>
-			<script>
-			var gyroField=$('#GyroNumero')
-			gyroField.text(keyStore[RegExp.escape("/SmartDashboard/"+'gyroAngle')]);
-			</script>
-		</div>
-		<div class="MainDivide" id="AutoBox">
+		<div class="MainDivide" id="AutoBox"><br>
+		<button class="SpecialButtons" id="ReverserSwitch" onclick="NetworkTables.setValue('SmartDashboard/reverseRobot',true)">Reverse Controls</button>
+		<button class="SpecialButtons" id="AutoLiferSwitch" onclick="NetworkTables.setValue('SmartDashboard/autoLift',true)">Auto  Lifter</button>
+		<button class="SpecialButtons" id="Slo-MoSwitch" onclick=>Slow-Mo</button>
 		<select id="AutoPathChoice">
 		</select>
 		</div>
 
+<script type="text/javascript">
+"use strict";
 
 
-			<script type="text/javascript">
+$(document).ready(function(){
 
+	window.setTimeout(function(){
+		fillAutonomousBox("#AutoPathChoice",'/SmartDashboard/Autonomous Mode/');
+	},300);
 
-			$(document).ready(
-				function(){
-					window.setTimeout(function(){
-						fillAutonomousBox("#AutoPathChoice",RegExp.escape('/SmartDashboard/Autonomous Mode/'));
-					},300);
+	$("div.ToteLiftLevels button").click(function() {
+		$("div.ToteLiftLevels button").removeClass("buttonactive");
+		$(this).addClass("buttonactive");
+	});
 
+	$("div.BinsLiftLevels button").click(function() {
+		$("div.BinsLiftLevels button").removeClass("buttonactive");
+		$(this).addClass("buttonactive");
+	});
 
-					var	$autoSelector=$("#AutoPathChoice");
-					$autoSelector.change(function(event){
-						event.preventDefault();
-						//alert( $autoSelector.children(':selected').text());
-						var val=$autoSelector.find('option:selected').text();
-						//alert(val);
-						var sendVal={
-							key://RegExp.escape(
-								'/SmartDashboard/Autonomous Mode/selected'//)
-								,
-							value:val,
-							action:"writeToSubtable",
-							tableName:"Autonomous Mode"
-						};
-						Socket.setValue(sendVal);
-					});
+	// sets a function that will be called when the websocket connects/disconnects
+	NetworkTables.addWsConnectionListener(onNetworkTablesConnection, true);
 
-				}
-			);
-			function fillAutonomousBox(key,arrayId,defaultVal){
+	// sets a function that will be called when the robot connects/disconnects
+	NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 
-				console.log(keyStore);
-				d3.select(key)
-				.selectAll("select")
-				.data(keyStore[arrayId+'options'])
-				.enter()
-				.append("option")
-				.text(function(d,i){
-					return keyStore[arrayId+'options'][i];
-				});
-				if(!(arrayId+'selected' in keyStore)||
-				keyStore[arrayId+'selected']==undefined){
-					$(key).val(keyStore[arrayId+'default']);
-				}
-				else{
-					$(key).val(keyStore[arrayId+'selected' ]);
-				}
+	// sets a function that will be called when any NetworkTables key/value changes
+	NetworkTables.addGlobalListener(onValueChanged, true);
+
+});
+
+function fillAutonomousBox(key,arrayId,defaultVal){
+	var data=NetworkTables.getValue(arrayId+'options');
+	d3.select(key)
+			.selectAll("select")
+			.data(data)
+			.enter()
+			.append("option")
+			.text(function(d,i){
+				return data[i];
+			});
+			if(!(NetworkTables.containsKey(arrayId+'selected'))||
+			NetworkTables.getValue(arrayId+'selected')==undefined){
+				$(key).val(NetworkTables.getValue(arrayId+'default'));
 			}
-               </script>
-            <script src="RobotSV.js"></script>
-            <script src="topDownRobot.js"></script>
+			else{
+				$(key).val(NetworkTables.getValue(arrayId+'selected' ));
+			}
+		}
+		//could be inside $doc.onload()
+		var	$autoSelector=$("#AutoPathChoice");
+		$autoSelector.change(function(event){
+			event.preventDefault();
+			//alert( $autoSelector.children(':selected').text());
+			var val=$autoSelector.find('option:selected').text();
+			//alert(val);
+			NetworkTables.setValue('/SmartDashboard/Autonomous Mode/selected',val);
+		});
+
+
+// called when the robot connects/disconnects via networktables
+function onRobotConnection(connected) {
+
+	// TODO: change some indicator
+
+	console.log("Robot connected: " + connected);
+
+	// make sure the camera stream isn't connected until the robot connects to us
+	if (connected) {
+		$('#webcam').prepend('<img id="frontwebcam" src="' + Config.frontcam + '/?action=stream" width="320" height="240" />');
+		//$('#webcam').prepend('<img id="backwebcam" src="' + Config.backcam + '/?action=stream" width="320" height="240" />');
+	} else {
+		// hide it, TODO: replace it with an error message
+		$('#frontwebcam').remove();
+		$('#backwebcam').remove();
+	}
+
+}
+
+// called when the websocket connects/disconnects
+function onNetworkTablesConnection(connected) {
+	// TODO: change some indicator
+}
+
+function onValueChanged(key, value, isNew) {
+
+	// key thing here: we're using the various NetworkTable keys as
+	// the id of the elements that we're appending, for simplicity. However,
+	// the key names aren't always valid HTML identifiers, so we use
+	// the NetworkTables.keyToId() function to convert them appropriately
+
+
+	// similarly, use keySelector to convert the key to a valid jQuery
+	// selector. This should work for class names also, not just for ids
+	$('#' + NetworkTables.keySelector(key)).text(value);
+}
+
+</script>
 
 </body>
 </html>
