@@ -5,7 +5,9 @@
 var imageNr = 0; // Serial number of current image
 var finished = new Array(); // References to img objects which have finished downloading
 var paused = false;
+var camUrl=NetworkTables.getValue('camUrl');
 window.onload = function () {
+  camUrl=ntCache.getValue('imgUrl');
   createImageLayer();
 }
 function createImageLayer() {
@@ -17,7 +19,7 @@ function createImageLayer() {
   img.style.zIndex = -1;
   img.onload = imageOnload;
   img.onclick = imageOnclick;
-  img.src = keyStore["imgUrl"] + "/?action=snapshot&n=" + (++imageNr);
+  img.src = camUrl + "/?action=snapshot&n=" + (++imageNr);
   var webcam = document.getElementById("webcam");
   webcam.insertBefore(img, webcam.firstChild);
   console.log(img);
