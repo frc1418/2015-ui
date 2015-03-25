@@ -1,17 +1,13 @@
 .MainDivide{
- 	height: 40vh;
-	width: 40vw;
   border: 5px inset gray;
   border-radius: 2vmin;
-  display:block;
+  padding: 0.5vw;
 }
+
 .Timers{
     color:black;
 }
-.nav{
-    height:6.5vh;
-    width:110vw;
-}
+
 .buttonactive{
     text-shadow:0 1px 0 #fff;
     background-image:-webkit-linear-gradient(top,#fff 0,##980000 100%);
@@ -24,113 +20,82 @@
     border-color:#b31c18;
     border-color:#b31c18;
 }
-.AlloftheLevels{
-   	height: 38vh;
-  	width: 10vw;
-    display:inline-block;
-    border:1px;
-}
-.Hidden{
- 	height: 0vh;
-	width: 0vw;
-  border: none;
-  border-radius: 0vmin;
-  display:none;
 
-}
 .SpecialButtons{
- 	height:14vh;
+  margin: 0 auto;
+   height:14vh;
   width:16vw;
-  margin:0.5vmin;
-  margin-left: 5.25vw;
-	display:inline;
+  
   font-size:4vmin;
 }
+
 .Robotimg{
    	height: 38vh;
   	width: 18vw;
     display:inline-block;
     border:1px;
 }
-div{
-  border: 5px inset gray;
-  border-radius: 2vmin;
-  display:block;
-}
+
 .UIPage{
     /*background-image:url("RobotUIBackground.png");*/
     /*background-color: #EBF8FF;*/
-    background-image:-webkit-linear-gradient(top,#fff 0,##980000 100%);
-    background-image:-o-linear-gradient(top,#fff 0,#980000 100%);
-    background-image:-webkit-gradient(linear,left top,left bottom,from(#fff),to(#980000));
-    background-image:linear-gradient(to bottom,#fff 0,#b31c18 100%);
+    background-image:-webkit-linear-gradient(top,#980000 0,##000 100%);
+    background-image:-o-linear-gradient(top,#980000 0,#000 100%);
+    background-image:-webkit-gradient(linear,left top,left bottom,from(#980000),to(#000));
+    background-image:linear-gradient(to bottom,#980000 0,#000 100%);
     background-size:100vw 100vh;
     background-repeat: no-repeat;
 }
-.Tabs{
-    height:6.5vh;
-    width:6.5vw;
-    font-size:2.5vmin;
-    color:black;
-}
-#ThisTab{
-    height:6.5vh;
-    width:5.5vw;
-    font-size:2.5vmin;
-    color:black;
-    background-color:;
 
+#leftSection {
+  position: fixed; 
+  left: 1vw;
+  top: 1vw;
+  
+  width: 28vw;
+  height: 26.5vw;
 }
-#ForkliftControls{
-    position: fixed;
-    top: 8vh;
-    left: 1vw;
-    width: 58vw;
+
+#leftSection ul {
+  border: none;
 }
-#webcam{
-    position: fixed;
-    top: 8vh;
-    left: 1vw;
- 	  width: 24vw;
-    height: 91vh;
+
+#frontcam-tab {
+  width: 30vw;
 }
-#AllofthemBins{
-    position: fixed;
-    left:26vw;
+
+.webcam-img {
+  width: 26vw;
+  height: 21.5vw;
 }
-#AllofthemTotes{
-    position: fixed;
-    right:32vw;
+
+#hammertime {
+  position: fixed;
+  top: 28.5vw;
+  left: 11vw;
 }
-.webcam{
-    position: fixed;
-    top: 8vh;
-    left: 1vw;
-}
+
 #RobotDiagram{
     position: fixed;
-    top: 8vh;
-    left: 25vw;
-    height: 91vh;
-    width: 46vw;
+    left: 29.5vw;
+    top: 1vw;
+    height: 96vh;
+    width: 50vw;
 
 }
-#AutoPathHolder{
-    position: fixed;
-    top: 25vh;
-    right: 6vw;
- 	  width: 37vw;
-}
+
 #AutoPathChoice{
-    width: 26vw;
-    height:31vh;
+  width: 16vw;
+  margin-top: 5vmin;
+  font-size: 4vmin;
 }
+
 #AutoBox{
     position: fixed;
-    top: 8vh;
+    top: 1vw;
     right: 1vw;
-    width: 28vw;
-    height: 91vh;
+    width: 19vw;
+    height: 96vh;
 }
 #Checklist{
     position: fixed;
@@ -229,39 +194,27 @@ div{
   height:4vh;
   width:11.5vw;
 }
-* {
 
+.AlloftheLevels {
+  width: 10vw;
 }
 
-.BinsLiftLevels button{
+.AlloftheLevels button{
    	height:13.75vh;
 	  width:12vw;
     margin:0.5vmin;
   	display:inline;
     font-size:4vmin;
 }
-.ToteLiftLevels button{
-   	height:13.75vh;
-	  width:12vw;
-    margin:0.5vmin;
-  	display:inline;
-    font-size:4vmin;
-}
-.
-. {
-	height: 20px;
-	width: 90px;
-	border: none;
-  	display:block;
-}
-select {
-	height:26vh;
-	width: 35vw;
-	border: 1vmin none;
-	margin:1vmin;
-  	display:inline-block;
-	font-size:50px;
 
+#AllofthemTotes {
+  left: 66vw;
+  top: 2vw;
+  position: fixed;
+}
+
+#AllofthemTotes button {
+  height: 11.5vh;
 }
 
 .Atonpageselect {
@@ -330,7 +283,7 @@ select {
 {
 
     position:fixed;
-    height:70vh;
+    height:90vh;
     right:38.5vw;
     top:5vh;
 
