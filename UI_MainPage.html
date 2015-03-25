@@ -9,6 +9,7 @@
 			<script src="Resources/d3/d3.js"></script>
 			<script src="Resources/jquery-2.1.3.min.js"></script>
 			<link href="Resources/dist/css/bootstrap.min.css" rel="stylesheet">
+			<link href="Resources/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 			<script src="Resources/dist/js/bootstrap.min.js"></script>
 			<link type="text/css" rel="stylesheet" href="AkiUI_MainPageCSS.css"/>
 </head>
@@ -30,18 +31,18 @@
 			<br><br>
 		</div>
 		<div class="MainDivide" id="webcam" >
-			<!-- TODO: need placeholder image -->
+			<img id="CameraOffline" src="Resources/CamFeedOffline.png"></img>
 		</div>
 
 		<div class="MainDivide" id="RobotDiagram">
 
 						<div class="AlloftheLevels BinsLiftLevels" id="AllofthemBins">
-						<button id="BinButton6" onclick="NetworkTables.setValue('SmartDashboard/binTo',2048)">Bin Max</button>
-						<button id="BinButton5" onclick="NetworkTables.setValue('SmartDashboard/binTo',4)">Bin 4</button>
-						<button id="BinButton4" onclick="NetworkTables.setValue('SmartDashboard/binTo',3)">Bin 3</button>
-						<button id="BinButton3" onclick="NetworkTables.setValue('SmartDashboard/binTo',2)">Bin 2</button>
-						<button id="BinButton2" onclick="NetworkTables.setValue('SmartDashboard/binTo',1)">Bin 1</button>
-						<button class="buttonactive" id="BinButton1" onclick="NetworkTables.setValue('SmartDashboard/binTo',0)">Bin 0</button>
+						<button class="btn-primary" id="BinButton6" onclick="NetworkTables.setValue('SmartDashboard/binTo',2048)">Bin Max</button>
+						<button class="btn-primary" id="BinButton5" onclick="NetworkTables.setValue('SmartDashboard/binTo',4)">Bin 4</button>
+						<button class="btn-primary" id="BinButton4" onclick="NetworkTables.setValue('SmartDashboard/binTo',3)">Bin 3</button>
+						<button class="btn-primary" id="BinButton3" onclick="NetworkTables.setValue('SmartDashboard/binTo',2)">Bin 2</button>
+						<button class="btn-primary" id="BinButton2" onclick="NetworkTables.setValue('SmartDashboard/binTo',1)">Bin 1</button>
+						<button class="btn-primary buttonactive" id="BinButton1" onclick="NetworkTables.setValue('SmartDashboard/binTo',0)">Bin 0</button>
 						</div>
 						<div class="Robotimg">
 
@@ -55,22 +56,22 @@
             <img id=toteArm3 src="toteArm.png"></img>
             <img id=toteArm4 src="toteArm.png"></img>
             <img id=binArm src="binArm.png"></img>
-           
+
 
 						</div>
 						<div class="AlloftheLevels ToteLiftLevels" id="AllofthemTotes">
-							<button id="ToteButton6" onclick="NetworkTables.setValue('SmartDashboard/liftTo',2048)">Tote Max</button>
-							<button id="ToteButton5" onclick="NetworkTables.setValue('SmartDashboard/liftTo',4)">Tote 4</button>
-							<button id="ToteButton4" onclick="NetworkTables.setValue('SmartDashboard/liftTo',3)">Tote 3</button>
-							<button id="ToteButton3" onclick="NetworkTables.setValue('SmartDashboard/liftTo',2)">Tote 2</button>
-							<button id="ToteButton2" onclick="NetworkTables.setValue('SmartDashboard/liftTo',1)" >Tote 1</button>
-							<button class="buttonactive" id="ToteButton1" onclick="NetworkTables.setValue('SmartDashboard/liftTo',0)">Tote 0</button>
+							<button class="btn-primary" id="ToteButton6" onclick="NetworkTables.setValue('SmartDashboard/liftTo',2048)">Tote Max</button>
+							<button class="btn-primary" id="ToteButton5" onclick="NetworkTables.setValue('SmartDashboard/liftTo',4)">Tote 4</button>
+							<button class="btn-primary" id="ToteButton4" onclick="NetworkTables.setValue('SmartDashboard/liftTo',3)">Tote 3</button>
+							<button class="btn-primary" id="ToteButton3" onclick="NetworkTables.setValue('SmartDashboard/liftTo',2)">Tote 2</button>
+							<button class="btn-primary" id="ToteButton2" onclick="NetworkTables.setValue('SmartDashboard/liftTo',1)" >Tote 1</button>
+							<button class="btn-primary buttonactive" id="ToteButton1" onclick="NetworkTables.setValue('SmartDashboard/liftTo',0)">Tote 0</button>
 						</div>
         </div>
 		<div class="MainDivide" id="AutoBox"><br>
-		<button class="SpecialButtons" id="ReverserSwitch" onclick="NetworkTables.setValue('SmartDashboard/reverseRobot',true)">Reverse Controls</button>
-		<button class="SpecialButtons" id="AutoLiferSwitch" onclick="NetworkTables.setValue('SmartDashboard/autoLift',true)">Auto  Lifter</button>
-		<button class="SpecialButtons" id="Slo-MoSwitch" onclick=>Slow-Mo</button>
+		<button class="btn-primary SpecialButtons" id="ReverserSwitch" onclick="NetworkTables.setValue('SmartDashboard/reverseRobot',true)">Reverse Controls</button>
+		<button class="btn-primary SpecialButtons" id="AutoLiferSwitch" onclick="NetworkTables.setValue('SmartDashboard/autoLift',true)">Auto  Lifter</button>
+		<button class="btn-primary SpecialButtons" id="Slo-MoSwitch" onclick=>Slow-Mo</button>
 		<select id="AutoPathChoice">
 		</select>
 		</div>
