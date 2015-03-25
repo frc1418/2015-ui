@@ -14,15 +14,15 @@
 }
 .buttonactive{
     text-shadow:0 1px 0 #fff;
-    background-image:-webkit-linear-gradient(top,#fff 0,#e0e0e0 100%);
-    background-image:-o-linear-gradient(top,#fff 0,#111242 100%);
-    background-image:-webkit-gradient(linear,left top,left bottom,from(#fff),to(#e0e0e0));
-    background-image:linear-gradient(to bottom,#fff 0,#111242 100%);
+    background-image:-webkit-linear-gradient(top,#fff 0,##980000 100%);
+    background-image:-o-linear-gradient(top,#fff 0,#980000 100%);
+    background-image:-webkit-gradient(linear,left top,left bottom,from(#fff),to(#980000));
+    background-image:linear-gradient(to bottom,#fff 0,#b31c18 100%);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#111242', GradientType=0);
     filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);
     background-repeat:repeat-x;
-    border-color:#dbdbdb;
-    border-color:#ccc;
+    border-color:#b31c18;
+    border-color:#b31c18;
 }
 .AlloftheLevels{
    	height: 38vh;
@@ -345,7 +345,7 @@ select {
     height:100vh;
     right:20.225vw;
     top:5vh;
-    
+
 }
 #toteArm2
 {
@@ -353,7 +353,7 @@ select {
     height:100vh;
     right:20.225vw;
     top:-5vh;
-    
+
 }
 #toteArm3
 {
@@ -361,7 +361,7 @@ select {
     height:100vh;
     right:20.225vw;
     top:-15vh;
-    
+
 }
 #toteArm4
 {
@@ -369,7 +369,7 @@ select {
     height:100vh;
     right:20.225vw;
     top:-25vh;
-    
+
 }
 #circle1
 {
