@@ -13,10 +13,10 @@
 
 .buttonactive{
     text-shadow:0 1px 0 #fff;
-    background-image:-webkit-linear-gradient(top,#fff 0,##980000 100%);
+    background-image:-webkit-linear-gradient(top,#fff 0,#980000 100%);
     background-image:-o-linear-gradient(top,#fff 0,#980000 100%);
     background-image:-webkit-gradient(linear,left top,left bottom,from(#fff),to(#980000));
-    background-image:linear-gradient(to bottom,#fff 0,#b31c18 100%);
+    background-image:linear-gradient(to bottom,#fff 0,#980000 100%);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#111242', GradientType=0);
     filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);
     background-repeat:repeat-x;
@@ -28,7 +28,7 @@
   margin: 5vh auto;
    height:14vh;
   width:16vw;
-  
+  margin-left:0.5vw;
   font-size:4vmin;
 }
 
@@ -51,37 +51,49 @@
 }
 
 #leftSection {
-  position: fixed; 
+  position: fixed;
   left: 1vw;
-  top: 1vw;
-  
+  top: 2vh;
+
   width: 28vw;
-  height: 26.5vw;
+  height: 54vh;
 }
 
 #leftSection ul {
   border: none;
 }
-
+#camtab li{
+  width: 4.75vw;
+  height: 3vh;
+  font-size:2.5vmin;
+}
 #frontcam-tab {
   width: 30vw;
 }
 
 .webcam-img {
+  position: fixed;
+  left: 2vw;
+  top: 10.25vh;
   width: 26vw;
-  height: 21.5vw;
+  height: 44.5vh;
 }
-
+#AutoPathHolder{
+  position: fixed;
+  top: 25vh;
+  right: 6vw;
+  width: 37vw;
+}
 #hammertime {
   position: fixed;
-  top: 28.5vw;
+  top: 76vh;
   left: 11vw;
 }
 
 #RobotDiagram{
     position: fixed;
     left: 29.5vw;
-    top: 1vw;
+    top: 2vh;
     height: 96vh;
     width: 50vw;
 
@@ -95,7 +107,7 @@
 
 #AutoBox{
     position: fixed;
-    top: 1vw;
+    top: 2vh;
     right: 1vw;
     width: 19vw;
     height: 96vh;
@@ -160,7 +172,6 @@
   overflow:scroll;
   height: 65vh;
   width: 50vw;
-  border: 5px inset grey;
   border-radius: 2vmin;
   display:block;
   position: fixed;
@@ -271,31 +282,35 @@
 #dog
 {
     position:fixed;
-    top:55vh;
-    left:45vw;
-    height:19px;
+    top:65vh;
+    left:43vw;
+    height:5vh;
+    width:4vw;
 }
 #do
 {
     position:fixed;
-    top:55vh;
-    right:44.75vw;
-    height:19px;
+    top:65vh;
+    right:34.5vw;
+    height:5vh;
+    width:4vw;
 }
 #robotsv
 {
 
     position:fixed;
-    height:90vh;
-    right:38.5vw;
-    top:5vh;
+    height:80vh;
+    right:39.5vw;
+    width:13vw;
+    top:10vh;
 
 }
 #binArm
 {
     position:fixed;
     height:15vh;
-    right:50.625vw;
+    right:51.625vw;
+    width:6vw;
     top:50vh;
 }
 
@@ -303,7 +318,8 @@
 {
     position:fixed;
     height:100vh;
-    right:20.225vw;
+    width:27.5vw;
+    right:21.225vw;
     top:5vh;
 
 }
@@ -311,7 +327,8 @@
 {
     position:fixed;
     height:100vh;
-    right:20.225vw;
+    width:27.5vw;
+    right:21.225vw;
     top:-5vh;
 
 }
@@ -319,7 +336,8 @@
 {
     position:fixed;
     height:100vh;
-    right:20.225vw;
+    width:27.5vw;
+    right:21.225vw;
     top:-15vh;
 
 }
@@ -327,7 +345,8 @@
 {
     position:fixed;
     height:100vh;
-    right:20.225vw;
+    width:27.5vw;
+    right:21.225vw;
     top:-25vh;
 
 }
