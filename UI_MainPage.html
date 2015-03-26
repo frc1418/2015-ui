@@ -40,48 +40,50 @@
 	
 </div>
 
-		<div class="MainDivide" id="RobotDiagram">
+<div class="MainDivide" id="RobotDiagram">
 
-						<div class="AlloftheLevels" id="AllofthemBins">
-						<button class="btn-primary" id="BinButton6" onclick="NetworkTables.setValue('SmartDashboard/binTo',2048)">Bin Max</button>
-						<button class="btn-primary" id="BinButton5" onclick="NetworkTables.setValue('SmartDashboard/binTo',4)">Bin 4</button>
-						<button class="btn-primary" id="BinButton4" onclick="NetworkTables.setValue('SmartDashboard/binTo',3)">Bin 3</button>
-						<button class="btn-primary" id="BinButton3" onclick="NetworkTables.setValue('SmartDashboard/binTo',2)">Bin 2</button>
-						<button class="btn-primary" id="BinButton2" onclick="NetworkTables.setValue('SmartDashboard/binTo',1)">Bin 1</button>
-						<button class="btn-primary buttonactive" id="BinButton1" onclick="NetworkTables.setValue('SmartDashboard/binTo',0)">Bin 0</button>
-						</div>
-						<div class="Robotimg">
-
-            <img id=dog src="Resources/arrowleftred_benji_par_01.svg.thumb.png"></img>
-            <img id=do src="Resources/arrowrightred_benji_pa_01.svg.thumb.png"></img>
-						<!--<img id=circle src="Resources/wheel.png"></img>
-            <img id=circle1 src="Resources/wheel.png"></img>-->
-            <img id=robotsv src="Resources/uirobot.png"></img>
-            <img id=toteArm1 src="toteArm.png"></img>
-            <img id=toteArm2 src="toteArm.png"></img>
-            <img id=toteArm3 src="toteArm.png"></img>
-            <img id=toteArm4 src="toteArm.png"></img>
-            <img id=binArm src="binArm.png"></img>
-
-
-						</div>
-						<div class="AlloftheLevels" id="AllofthemTotes">
-							<button class="btn-primary" id="ToteButton6" onclick="NetworkTables.setValue('SmartDashboard/liftTo',6)">Tote 6</button>
-							<button class="btn-primary" id="ToteButton5" onclick="NetworkTables.setValue('SmartDashboard/liftTo',5)">Tote 5</button>
-							<button class="btn-primary" id="ToteButton4" onclick="NetworkTables.setValue('SmartDashboard/liftTo',4)">Tote 4</button>
-							<button class="btn-primary" id="ToteButton3" onclick="NetworkTables.setValue('SmartDashboard/liftTo',3)">Tote 3</button>
-							<button class="btn-primary" id="ToteButton2" onclick="NetworkTables.setValue('SmartDashboard/liftTo',2)">Tote 2</button>
-							<button class="btn-primary" id="ToteButton1" onclick="NetworkTables.setValue('SmartDashboard/liftTo',1)" >Tote 1</button>
-							<button class="btn-primary buttonactive" id="ToteButton0" onclick="NetworkTables.setValue('SmartDashboard/liftTo',0)">Tote 0</button>
-						</div>
-        </div>
+	<div class="AlloftheLevels BinButtons" id="AllofthemBins">
+		<button class="btn-primary" id="BinButton5" onclick="NetworkTables.setValue('/SmartDashboard/canTo',2048)">Bin Max</button>
+		<button class="btn-primary" id="BinButton4" onclick="NetworkTables.setValue('/SmartDashboard/canTo',4)">Bin 4</button>
+		<button class="btn-primary" id="BinButton3" onclick="NetworkTables.setValue('/SmartDashboard/canTo',3)">Bin 3</button>
+		<button class="btn-primary" id="BinButton2" onclick="NetworkTables.setValue('/SmartDashboard/canTo',2)">Bin 2</button>
+		<button class="btn-primary" id="BinButton1" onclick="NetworkTables.setValue('/SmartDashboard/canTo',1)">Bin 1</button>
+		<button class="btn-primary" id="BinButton0" onclick="NetworkTables.setValue('/SmartDashboard/canTo',0)">Bin 0</button>
+	</div>
+	
+	<div class="Robotimg">
+		<img id=dog src="Resources/arrowleftred_benji_par_01.svg.thumb.png"></img>
+		<img id=do src="Resources/arrowrightred_benji_pa_01.svg.thumb.png"></img>
+		
+		<img id=robotsv src="Resources/uirobot.png"></img>
+		<img id=toteArm1 src="toteArm.png"></img>
+		<img id=toteArm2 src="toteArm.png"></img>
+		<img id=toteArm3 src="toteArm.png"></img>
+		<img id=toteArm4 src="toteArm.png"></img>
+		<img id=binArm src="binArm.png"></img>
+	</div>
+	
+	<div class="AlloftheLevels ToteButtons" id="AllofthemTotes">
+		<button class="btn-primary" id="ToteButton6" onclick="NetworkTables.setValue('/SmartDashboard/toteTo',6)">Tote 6</button>
+		<button class="btn-primary" id="ToteButton5" onclick="NetworkTables.setValue('/SmartDashboard/toteTo',5)">Tote 5</button>
+		<button class="btn-primary" id="ToteButton4" onclick="NetworkTables.setValue('/SmartDashboard/toteTo',4)">Tote 4</button>
+		<button class="btn-primary" id="ToteButton3" onclick="NetworkTables.setValue('/SmartDashboard/toteTo',3)">Tote 3</button>
+		<button class="btn-primary" id="ToteButton2" onclick="NetworkTables.setValue('/SmartDashboard/toteTo',2)">Tote 2</button>
+		<button class="btn-primary" id="ToteButton1" onclick="NetworkTables.setValue('/SmartDashboard/toteTo',1)">Tote 1</button>
+		<button class="btn-primary" id="ToteButton0" onclick="NetworkTables.setValue('/SmartDashboard/toteTo',0)">Tote 0</button>
+	</div>
+</div>
 				
 <div class="MainDivide" id="AutoBox">
-	<button class="btn-primary SpecialButtons" id="ReverserSwitch" onclick="NetworkTables.setValue('SmartDashboard/reverseRobot',true)">Reverse Controls</button>
-	<button class="btn-primary SpecialButtons" id="AutoLiferSwitch" onclick="NetworkTables.setValue('SmartDashboard/autoLift',true)">Auto  Lifter</button>
-	<button class="btn-primary SpecialButtons" id="Slo-MoSwitch">Slow-Mo</button>
+	<button class="btn-primary SpecialButtons" id="ReverserSwitch" onclick="toggleNt('/SmartDashboard/reverseRobot')">Reverse Controls</button>
+	<button class="btn-primary SpecialButtons" id="AutoLifterSwitch" onclick="toggleNt('/SmartDashboard/autoLift')">Auto Lifting</button>
+	<button class="btn-primary SpecialButtons" id="Slo-MoSwitch" onclick="toggleNt('/SmartDashboard/slowMo')">Slow-Mo</button>
 	<select id="AutoPathChoice">
 	</select>
+	<div>
+		<input type="checkbox" id="cooperate" onclick="toggleNt('/SmartDashboard/Three Tote Hot\\cooperate'); return false" />
+		Cooperate
+	</div>
 </div>
 
 <script type="text/javascript">
@@ -92,10 +94,6 @@ $(document).ready(function(){
 
 	$('#camtab').tab('show');
 
-	window.setTimeout(function(){
-		fillAutonomousBox("#AutoPathChoice",'/SmartDashboard/Autonomous Mode/');
-	},300);
-
 	$("div.ToteLiftLevels button").click(function() {
 		$("div.ToteLiftLevels button").removeClass("buttonactive");
 		$(this).addClass("buttonactive");
@@ -104,6 +102,15 @@ $(document).ready(function(){
 	$("div.BinsLiftLevels button").click(function() {
 		$("div.BinsLiftLevels button").removeClass("buttonactive");
 		$(this).addClass("buttonactive");
+	});
+	
+	var	$autoSelector=$("#AutoPathChoice");
+	$autoSelector.change(function(event){
+		event.preventDefault();
+		//alert( $autoSelector.children(':selected').text());
+		var val=$autoSelector.find('option:selected').text();
+		//alert(val);
+		NetworkTables.setValue('/SmartDashboard/Autonomous Mode/selected', val);
 	});
 
 	// sets a function that will be called when the websocket connects/disconnects
@@ -117,33 +124,39 @@ $(document).ready(function(){
 
 });
 
-function fillAutonomousBox(key,arrayId,defaultVal){
-	var data=NetworkTables.getValue(arrayId+'options');
-	d3.select(key)
-			.selectAll("select")
-			.data(data)
-			.enter()
-			.append("option")
-			.text(function(d,i){
-				return data[i];
-			});
-			if(!(NetworkTables.containsKey(arrayId+'selected'))||
-			NetworkTables.getValue(arrayId+'selected')==undefined){
-				$(key).val(NetworkTables.getValue(arrayId+'default'));
-			}
-			else{
-				$(key).val(NetworkTables.getValue(arrayId+'selected' ));
-			}
-		}
-		//could be inside $doc.onload()
-		var	$autoSelector=$("#AutoPathChoice");
-		$autoSelector.change(function(event){
-			event.preventDefault();
-			//alert( $autoSelector.children(':selected').text());
-			var val=$autoSelector.find('option:selected').text();
-			//alert(val);
-			NetworkTables.setValue('/SmartDashboard/Autonomous Mode/selected',val);
-		});
+function toggleNt(key) {
+	NetworkTables.setValue(key, !NetworkTables.getValue(key));
+}
+
+function updateChooser(id, key) {
+	
+	var options = NetworkTables.getValue(key + '/options');
+	if (options === undefined)
+		return;
+	
+	var optDefault = NetworkTables.getValue(key + '/default');
+	var selected = NetworkTables.getValue(key + '/selected');
+	
+	var opt = d3.select(id)
+		.selectAll("option")
+		.data(options);
+	
+	opt.enter()
+		.append("option");
+	
+	opt.text(function(d,i){
+		return options[i];
+	});
+	
+	opt.exit().remove();
+	
+	if (selected !== undefined) {
+		$(id).val(selected);
+	} else if (optDefault !== undefined) {
+		$(id).val(optDefault);
+	}
+}
+		
 
 
 // called when the robot connects/disconnects via networktables
@@ -182,6 +195,51 @@ function onValueChanged(key, value, isNew) {
 	// the key names aren't always valid HTML identifiers, so we use
 	// the NetworkTables.keyToId() function to convert them appropriately
 
+	//console.log(key, value);
+	
+	switch (key) {
+		case "/SmartDashboard/Tote Forklift|Target Position":
+			$(".ToteButtons button").removeClass("buttonactive");
+			
+			if (value != -1) {
+				$('#ToteButton' + value).addClass("buttonactive");
+			}
+			break;
+			
+		case "/SmartDashboard/Can Forklift|Target Position":
+			$(".BinButtons button").removeClass("buttonactive");
+			
+			if (value != -1) {
+				$('#BinButton' + value).addClass("buttonactive");
+			}
+			
+			break;
+			
+		case "/SmartDashboard/autoLift":
+			if (value)
+				$('#AutoLifterSwitch').addClass('buttonactive');
+			else
+				$('#AutoLifterSwitch').removeClass('buttonactive');
+			break;
+	
+		case "/SmartDashboard/reverseRobot":
+			if (value)
+				$('#ReverserSwitch').addClass('buttonactive');
+			else
+				$('#ReverserSwitch').removeClass('buttonactive');
+			break;
+			
+		case "/SmartDashboard/Three Tote Hot\\cooperate":
+			$('#cooperate').prop('checked', value);
+			break;
+		
+		case "/SmartDashboard/Autonomous Mode/options":
+		case "/SmartDashboard/Autonomous Mode/default":
+		case "/SmartDashboard/Autonomous Mode/selected":
+			updateChooser('#AutoPathChoice', '/SmartDashboard/Autonomous Mode');
+			break;
+	}
+	
 
 	// similarly, use keySelector to convert the key to a valid jQuery
 	// selector. This should work for class names also, not just for ids

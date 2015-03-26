@@ -25,7 +25,7 @@
 }
 
 .SpecialButtons{
-  margin: 0 auto;
+  margin: 5vh auto;
    height:14vh;
   width:16vw;
   
@@ -272,7 +272,7 @@
 {
     position:fixed;
     top:55vh;
-    left:40.5vw;
+    left:45vw;
     height:19px;
 }
 #do
@@ -295,7 +295,7 @@
 {
     position:fixed;
     height:15vh;
-    right:56.625vw;
+    right:50.625vw;
     top:50vh;
 }
 
@@ -331,14 +331,7 @@
     top:-25vh;
 
 }
-#circle1
-{
-    position:fixed;
-    top:64vh;
-    right:72.75vw;
-    width: 40wh;
-    height: 40vh;
-}
+
 
 .part{
     visibility:hidden;
