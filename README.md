@@ -1,7 +1,28 @@
-2015-ui
-=======
+FRC Team 1418's 2015 Driver Station Code
+========================================
 
-Team 1418's Driver Station code for 2015
+We're really excited to release our Driver Station code for 2015! At the
+Greater DC Regional, 1418 won an Innovation In Control award, and the
+polished UI was mentioned as one of the reasons for winning the award.
+
+One of the really cool ideas that was a departure from last year's UI 
+was using HTML5 & Javascript to create the driver station interface. The
+UI features:
+
+* Touchscreen web browser interface provides richer control interface
+  for secondary robot operator
+* Provides full access to robot functionality
+  * Can raise or lower the forklifts to any given position 
+  * Enable and disable automatic functions of the robot
+  * Tune autonomous modes and other robot parameters in the pits 
+* Select one of multiple autonomous modes
+* Live streaming camera views to assist operators when view is blocked
+
+The HTML/JavaScript interface is made possible by using [pynetworktables2js]
+(https://github.com/robotpy/pynetworktables2js) to forward NetworkTables
+traffic to the webpage. pynetworktables2js was initially prototyped by
+Leon Tan, our lead UI student, but it is now maintained by the RobotPy
+project so that other teams can benefit from our work.
 
 Running the code
 ================
@@ -9,43 +30,46 @@ Running the code
 Requirements
 ------------
 
+python 3 must be installed!
+
 Make sure you have pynetworktables2 installed:
 
-	pip3 install pynetworktables2js
+    pip3 install pynetworktables2js
 	
 Connect to a local simulation
 -----------------------------
 
 Run this command:
 
-	python3 driverStationServer.py
+    python3 driverStationServer.py
 	
 Connect to the robot
 --------------------
 
 Run this command:
 
-	python3 driverStationClientV1.py --host=roborio-1418.local
-	
-	
+    python3 driverStationClientV1.py --host=roborio-1418.local
+
 View the output
 ---------------
 
 Open a web browser (preferably Chrome), and go to:
 
-	http://localhost:8888/
+    http://localhost:8888/
 	
 You can replace the HTML file at the end of the URL with whatever you're
 trying to test.
 
 
-NOTES
------
+Authors
+=======
 
-http://i.imgur.com/cx0mcut.jpg
-http://i.imgur.com/hP6BA7A.jpg
-http://i.imgur.com/heevRlk.jpg
-http://i.imgur.com/j77ekyb.jpg
-http://i.imgur.com/CVz4YB6.jpg
-http://i.imgur.com/kzIR7Zg.jpg
-http://i.imgur.com/fNA2Jrj.jpg
+Students
+
+* Leon Tan, UI Lead
+* Aki Maher
+* Jacob Hanse
+* Tyler Gogal
+* Cami Borja
+
+Dustin Spicuzza, mentor
