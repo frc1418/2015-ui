@@ -1,8 +1,13 @@
-
-![ScreenShot](ss.png)
-
 FRC1418 2015 Driver Station Code
 ================================
+
+* Code: [Robot](https://github.com/frc1418/2015-robot) | **UI** | [Image Processing](https://github.com/frc1418/2015-vision) | [Oculus Rift](https://github.com/frc1418/2015-oculus)
+* Factsheet: [Google Doc](https://docs.google.com/document/d/1irbUm-Qfxz_Ua2XiB5KzYWG2Ec5Xhr038NqL-k4FveA)
+
+Introduction
+------------
+
+![ScreenShot](ss.png)
 
 We're really excited to release our Driver Station code for 2015! At the
 Greater DC Regional, 1418 won an Innovation In Control award, and the
