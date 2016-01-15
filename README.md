@@ -56,7 +56,7 @@ Connect to the robot
 
 Run this command:
 
-    python3 driverStationClientV1.py --host=roborio-1418.local
+    python3 driverStationServer.py --host=roborio-1418.local
 
 View the output
 ---------------
