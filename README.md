@@ -9,6 +9,8 @@ Introduction
 
 ![ScreenShot](ss.png)
 
+## We've made an updated version of our UI which is way easier to use and modify for other teams. You can find it [here](https://github.com/FRCDashboard/FRCDashboard).
+
 We're really excited to release our Driver Station code for 2015! At the
 Greater DC Regional, 1418 won an Innovation In Control award, and the
 polished UI was mentioned as one of the reasons for winning the award.
